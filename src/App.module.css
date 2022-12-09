@@ -1,5 +1,11 @@
-html, :global(#root) {
+html {
   min-height: 100%;
+  height: 100%;
+}
+:global(#root) {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 body {
   min-height: 100%;
@@ -10,6 +16,8 @@ body {
     linear-gradient(25deg, rgba(113, 122, 249, 1) 0%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 1) 100%);
   background-size: 800px 800px, 100% 100%, 100% 100%, 100% 100%;
   color: var(--c-text);
+  display: flex;
+  flex-direction: column;
 }
 * {
   font-family: "Neue Machina", Arial, Helvetica, sans-serif;
