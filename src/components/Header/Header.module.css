@@ -1,0 +1,53 @@
+.root {
+	padding: 1em 2em;
+	background-color: var(--c-primary);
+	display: flex;
+	justify-content: center;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+	width: 100%;
+	max-width: var(--max-width);
+	display: flex;
+	justify-content: space-between;
+}
+
+.brand {
+	font-family: 'Neue Machina';
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+.link {
+	font-family: 'Neue Machina';
+	font-style: normal;
+	font-weight: 500;
+	color: var(--c-text);
+	text-decoration-skip-ink: none;
+	text-decoration: none;
+	cursor: pointer;
+}
+.link:hover {
+	text-decoration: underline;
+}
+.linkActive {
+	color: var(--c-link);
+	text-decoration: underline;
+}
+
+.switchers {
+	display: flex;
+}
+
+.switchers button {
+	background: none;
+	border: none;
+	margin-right: 0.5em;
+}
+.switchers button:last-child {
+	background: none;
+	border: none;
+	margin-right: 0;
+	margin-left: 1em;
+}

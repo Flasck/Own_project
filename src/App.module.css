@@ -1,8 +1,41 @@
-.block {
-  border: 1px solid red;
+html, :global(#root) {
+  min-height: 100%;
+}
+body {
+  min-height: 100%;
+  background:
+    right top no-repeat radial-gradient(circle, rgba(248, 206, 247, 1) 0%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0) 100%),
+    left top linear-gradient(130deg, #00EA7A4D 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%),
+    right bottom linear-gradient(-25deg, #00EA7A4D 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%),
+    linear-gradient(25deg, rgba(113, 122, 249, 1) 0%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 1) 100%);
+  background-size: 800px 800px, 100% 100%, 100% 100%, 100% 100%;
+  color: var(--c-text);
 }
 * {
   font-family: "Neue Machina", Arial, Helvetica, sans-serif;
+}
+
+body {
+  --max-width: 800px;
+
+  --c-text: black;
+  --c-link: #099550;
+  --c-primary: white;
+  --c-second: #00EA7A;
+}
+:global(body.darkTheme) {
+  --c-text: #d4d4d4;
+  --c-link: #099550;
+  --c-primary: #1E1E1E;
+  --c-second: #099550;
+
+
+  background:
+    right top no-repeat radial-gradient(circle, rgba(189, 27, 186, 0.15) 0%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0) 100%),
+    left top linear-gradient(160deg, #008a474d 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%),
+    right bottom linear-gradient(-25deg, #008a474d 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%),
+    linear-gradient(25deg, rgb(43, 48, 126) 0%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 1) 100%);
+  background-size: 800px 800px, 100% 100%, 100% 100%, 100% 100%;
 }
 
 @font-face {

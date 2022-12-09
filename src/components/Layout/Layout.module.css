@@ -1,0 +1,22 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	margin: 1.5em 0;
+	flex-grow: 1;
+}
+
+.content {
+	width: 100%;
+	max-width: var(--max-width);
+}
+
+.header {
+	position: sticky;
+	top: 0;
+}
