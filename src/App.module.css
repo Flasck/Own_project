@@ -10,17 +10,24 @@ html {
 body {
   min-height: 100%;
   background:
-    right top no-repeat radial-gradient(circle, rgba(248, 206, 247, 1) 0%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0) 100%),
-    left top linear-gradient(130deg, #00EA7A4D 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%),
-    right bottom linear-gradient(-25deg, #00EA7A4D 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%),
-    linear-gradient(25deg, rgba(113, 122, 249, 1) 0%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 1) 100%);
+    right top no-repeat radial-gradient(circle, rgba(252, 76, 249, 0.3) 0%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0) 100%),
+    left top linear-gradient(130deg, rgba(0, 234, 122, 0.3) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%),
+    right bottom linear-gradient(-25deg, rgba(0, 234, 122, 0.3) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%),
+    linear-gradient(25deg, rgba(113, 122, 249, 1) 0%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 0) 100%)
+    white;
   background-size: 800px 800px, 100% 100%, 100% 100%, 100% 100%;
   color: var(--c-text);
   display: flex;
   flex-direction: column;
+	transition: color, background-color;
+	transition: color, background-color, background;
+	transition-duration: 400ms;
 }
 * {
   font-family: "Neue Machina", Arial, Helvetica, sans-serif;
+	transition: background-color;
+	transition: background;
+	transition-duration: 400ms;
 }
 
 body {
@@ -42,7 +49,8 @@ body {
     right top no-repeat radial-gradient(circle, rgba(189, 27, 186, 0.15) 0%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0) 100%),
     left top linear-gradient(160deg, #008a474d 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%),
     right bottom linear-gradient(-25deg, #008a474d 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%),
-    linear-gradient(25deg, rgb(43, 48, 126) 0%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 1) 100%);
+    linear-gradient(25deg, rgb(43, 48, 126) 0%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0) 100%)
+    black;
   background-size: 800px 800px, 100% 100%, 100% 100%, 100% 100%;
 }
 

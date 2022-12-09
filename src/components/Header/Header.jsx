@@ -11,8 +11,8 @@ export const Header = ({ className }) =>
             <NavLink className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)} to={"/"}>Наша команда</NavLink>
             <NavLink className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)} to={"/OurCases"}>Наши проекты</NavLink>
             <span className={styles.switchers}>
-                <button className={classnames(styles.link, true && styles.linkActive)}>рус</button>
-                <button className={classnames(styles.link, false && styles.linkActive)}>eng</button>
+                <button className={classnames(styles.langSwitch, styles.link, true && styles.linkActive)}>рус</button>
+                <button className={classnames(styles.langSwitch, styles.link, false && styles.linkActive)}>eng</button>
                 <ThemeSwither />
             </span>
         </div>
