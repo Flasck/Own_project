@@ -42,11 +42,9 @@ export const TeamSlider = () => {
 
 	return (
 		<Swiper
-			navigation={{ enabled: true }}
 			slidesPerView={2}
 			centeredSlides={true}
 			className={styles.slider}
-			modules={[Navigation]}
 			spaceBetween={70}
 			autoplay={{ delay: 5000 }}
 		>
