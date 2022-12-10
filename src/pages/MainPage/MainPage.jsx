@@ -1,12 +1,13 @@
-import React from 'react'
-import { HeroBlock } from '../../components/HeroBlock/HeroBlock'
-import { MapBlock } from '../../components/MapBlock/MapBlock'
-import { OurTeam } from '../../components/OurTeam/OurTeam'
-import styles from './MainPage.module.css'
+import React from "react"
+import { HeroBlock } from "../../components/HeroBlock/HeroBlock"
+import { MapBlock } from "../../components/MapBlock/MapBlock"
+import { TeamSlider } from "../../components/TeamSlider/TeamSlider"
+import styles from "./MainPage.module.css"
 
-export const MainPage = () =>
-    <>
-        <HeroBlock />
-        <OurTeam />
-        <MapBlock />
-    </>
+export const MainPage = () => (
+	<>
+		<HeroBlock />
+		<TeamSlider />
+		<MapBlock />
+	</>
+)
