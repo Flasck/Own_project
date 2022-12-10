@@ -1,0 +1,75 @@
+.wrapper {
+	width: 300px;
+	height: 300px;
+	position: relative;
+}
+
+.front,
+.back {
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+	box-sizing: border-box;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	border-radius: 10px;
+	border: 1px solid;
+	transition: 0.3s ease-in;
+	backface-visibility: hidden;
+}
+
+.back {
+	transform: rotateY(180deg);
+}
+
+.photo {
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	border: 1px solid;
+}
+
+.name {
+	margin: 0;
+	margin-top: 10px;
+}
+.post {
+	margin: 15px 0 5px 0;
+}
+
+.techs {
+	text-align: center;
+	margin: 0;
+}
+
+.desc {
+	text-align: center;
+}
+
+.click {
+	margin-top: 10px;
+	opacity: 0.3;
+	font-size: 10px;
+	align-self: flex-end;
+}
+
+.front_base {
+	transform: perspective(700px) rotateY(180deg);
+}
+
+.back_base {
+	transform: perspective(700px) rotateY(360deg);
+}
+
+.front_rev {
+	transform: perspective(700px) rotateY(0deg);
+}
+
+.back_rev {
+	transform: perspective(700px) rotateY(180deg);
+}
