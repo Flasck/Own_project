@@ -24,6 +24,7 @@ const config = {
         extensions: ['.js', '.jsx', 'json'],
         alias: {
             '@images': path.resolve(__dirname, 'public/images'),
+            '@fonts': path.resolve(__dirname, 'public/fonts'),
             '@pages': path.resolve(__dirname, 'src/pages'),
 			'@components': path.resolve(__dirname, 'src/components'),
         }

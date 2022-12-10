@@ -1,0 +1,15 @@
+.root {
+	padding: 3em 2em;
+	background-color: var(--c-primary);
+	display: flex;
+	justify-content: center;
+	font-size: 0.8rem;
+}
+
+.container {
+	width: 100%;
+	max-width: var(--max-width);
+	display: flex;
+	flex-direction: column;
+	gap: 0.8em;
+}
