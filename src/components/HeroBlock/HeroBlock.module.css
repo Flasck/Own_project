@@ -1,3 +1,56 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 800px;
+    height: 517px;
+    background: linear-gradient(180deg, rgba(0, 234, 122, 0.3) 0%,
+    rgba(0, 234, 122, 0) 50%),
+    url(./Bg.png);
+    border-radius: 12px;
+    padding: 32px;
+    font-family: 'Neue Machina';
+    font-style: normal;
+    color: var(--c-text);
+}
+
+.left_side {
+    display: flex;
+    flex-direction: column;
+    margin-right: 16px;
+}
+
+.left_side__wrapper {
+    margin-top: 54px;
+}
+
+.left_side__title {
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 46px;
+    margin-bottom: 8px;
+}
+
+.left_side__description {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 19px;
+}
+
+.right_side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.downArrow {
+    margin: 16px 0;
+    width: 29px;
+    height: 17px;
+}
+
+.downArrowPath {
+    stroke: var(--c-text);
+}
 /* Убрать перед реализацей */
 .root {
 	height: 517px;
