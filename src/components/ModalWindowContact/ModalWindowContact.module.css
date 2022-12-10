@@ -2,7 +2,7 @@
     height: 100%;
     width: 100%;
     background-color: rgba(0,0,0,0.5);
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     display: flex;
@@ -21,8 +21,8 @@
     justify-content: center;
     align-items: center;
     transform: scale(1);
+    z-index: 1000;
 }
-
 
 .modal__content {
     display: flex;
@@ -33,6 +33,7 @@
     font-family: 'Neue Machina';
     font-style: normal;
     position: relative;
+    max-height: 676px;
 }
 
 .modal__closeIcon {
@@ -67,6 +68,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    position: relative;
 }
 .modal__form__block__labelArea {
     font-weight: 500;
@@ -93,14 +95,19 @@
 }
 
 .modal__form__block {
-    margin-bottom: 16px;
+    margin-bottom: 32px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 .modal__form__block__error {
     margin-bottom: 10px;
+    position: absolute;
+    bottom: -34px;
+    right: 0;
+    display: flex;
     color: red;
 }
 .modal__form__block__label {
@@ -126,6 +133,18 @@
 
 .modal__form__block__input:focus {
     border: 1px solid #4B4C52;
+}
+
+.customCheckBox {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #4B4C52;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
 }
 
 .modal__btn {

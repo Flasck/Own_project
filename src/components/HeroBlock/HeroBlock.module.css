@@ -5,7 +5,7 @@
     height: 517px;
     background: linear-gradient(180deg, rgba(0, 234, 122, 0.3) 0%,
     rgba(0, 234, 122, 0) 50%),
-    url(@images/HeroBLock/Bg.png);
+    url(./Bg.png);
     border-radius: 12px;
     padding: 32px;
     font-family: 'Neue Machina';
