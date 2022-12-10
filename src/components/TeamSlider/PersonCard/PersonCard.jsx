@@ -15,6 +15,7 @@ export const PersonCard = ({ photo, name, post, techs, desc }) => {
 				<h1 className={styles.name}>{name}</h1>
 				<p className={styles.post}>{post}</p>
 				<p className={styles.techs}>{techs}</p>
+				<span className={styles.click}>Клик</span>
 			</div>
 
 			<div className={classnames(styles.front, side ? styles.front_base : styles.front_rev)}>
