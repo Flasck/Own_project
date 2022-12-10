@@ -1,0 +1,30 @@
+.root {
+	background-color: var(--c-second);
+	color: var(--c-text);
+	border: none;
+	border-radius: 1em;
+	padding: 0.5em;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1), inset 0px 0px 2px rgba(128, 128, 128, 0.5);
+	cursor: pointer;
+	transition: transform, box-shadow;
+	transition-duration: 200ms;
+}
+:global(.darkTheme) .root {
+	box-shadow: 0px 4px 4px rgba(174, 174, 174, 0.1), inset 0px 0px 2px rgba(174, 174, 174, 0.5);
+}
+
+.root:hover {
+	transform: translateY(-10%);
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3), inset 0px 0px 2px rgba(128, 128, 128, 0.7);
+}
+:global(.darkTheme) .root:hover {
+	box-shadow: 0px 4px 6px rgba(174, 174, 174, 0.4), inset 0px 0px 2px rgba(174, 174, 174, 0.7);
+}
+
+.root:active {
+	transform: translateY(0%);
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1), inset 0px 0px 2px rgba(128, 128, 128, 0.5);
+}
+:global(.darkTheme) .root:active {
+	box-shadow: 0px 4px 4px rgba(174, 174, 174, 0.1), inset 0px 0px 2px rgba(174, 174, 174, 0.5);
+}

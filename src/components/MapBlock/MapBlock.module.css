@@ -1,7 +1,17 @@
-/* Убрать перед реализацей */
-.root {
-	height: 517px;
-	border: 4px solid lightpink;
-	border-radius: 2em;
+.root {}
+
+.title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1em 2em;
 }
-/* Убрать перед реализацей */
+
+.title__text {
+	font-size: 1.5rem;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: 3fr 5fr;
+}
