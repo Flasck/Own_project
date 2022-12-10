@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Button } from '../../Button/Button'
 import styles from './ThemeSwither.module.css'
 import sun from "./sun.svg"
 import moon from "./moon.svg"
@@ -13,11 +14,9 @@ export const ThemeSwither = () =>
         localStorage.setItem("darkTheme", darkTheme);
     }, [darkTheme]);
 
-    return <div className={styles.root}>
-        <button onClick={() => setDarkTheme(!darkTheme)} className={styles.button}>
+    return <Button onClick={() => setDarkTheme(!darkTheme)} className={styles.root}>
             <img src={darkTheme ? sun : moon} className={styles.img}></img>
-        </button>
-    </div>
+        </Button>
 }
 
 function getTheme()

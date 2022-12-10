@@ -28,6 +28,7 @@ body {
 	transition: background-color;
 	transition: background;
 	transition-duration: 400ms;
+	text-decoration-skip-ink: none;
 }
 
 body {
