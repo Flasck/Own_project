@@ -1,0 +1,27 @@
+.root { }
+
+.name {
+	font-weight: 500;
+}
+
+.places {
+	padding-left: 1em;
+	padding-right: 1em;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+.place {
+	display: flex;
+	gap: 0.5em;
+	align-items: center;
+}
+
+.icon {
+
+}
+
+.place {
+	font-size: 0.9rem;
+}
