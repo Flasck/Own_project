@@ -1,5 +1,5 @@
 .root {
-	padding: 1.3em 2em;
+	padding: 0.6em 2em;
 	background-color: var(--c-primary);
 	display: flex;
 	justify-content: center;
@@ -11,6 +11,7 @@
 	max-width: var(--max-width);
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .brand {
