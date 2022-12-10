@@ -37,12 +37,14 @@ body {
   --c-link: #099550;
   --c-primary: white;
   --c-second: #00EA7A;
+  --c-card: #FFFFFF;
 }
 :global(body.darkTheme) {
   --c-text: #d4d4d4;
   --c-link: #099550;
   --c-primary: #1E1E1E;
   --c-second: #099550;
+  --c-card: #2E2D34;
 
 
   background:

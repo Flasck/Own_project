@@ -18,6 +18,7 @@ html {
    */
 body {
   font-family: "Open Sans", sans-serif;
+  --c-text: #000000;
 }
 
 /**
