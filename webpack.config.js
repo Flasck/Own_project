@@ -47,7 +47,9 @@ const config = {
 					{
 						loader: require.resolve('css-loader'),
 						options: {
-							modules: true,
+                            modules: {
+                                auto: p => p.indexOf("node_modules") < 0
+                            },
 						},
 					},
 				],
