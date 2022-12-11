@@ -3,7 +3,6 @@ import { Api } from "./api";
 import "./routes";
 
 const headers = {
-	"Content-Type": "application/json",
 	"Access-Control-Allow-Origin": "*"
 };
 
@@ -12,7 +11,7 @@ const server = http.createServer(async (req, res) =>
 	try
 	{
 		const apiRes = await Api.process(req.url || "");
-		res.writeHead(apiRes.status, headers);
+		res.writeHead(apiRes.status, { ...headers, ...apiRes.headers, "Content-Type": apiRes.type });
 		res.write(apiRes.body);
 	}
 	catch (e)

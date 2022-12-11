@@ -1,7 +1,7 @@
 import { Api } from "./api";
 
 
-Api.addRoute("/", async q =>
+Api.addRouteJSON("/", async q =>
 {
 	return {
 		"?lang=en": "Use 'en' lang",
@@ -77,3 +77,13 @@ Api.addRouteSqlAll("/projects",
 	authors: JSON.parse(row.authors),
 	technologies: JSON.parse(row.technologies),
 })));
+
+
+Api.addRouteFile("/image?id", "png", async (q, h) =>
+{
+	if (q.id == undefined) throw new Api.RouteError("param id is undefined");
+	const id = typeof q.id == "string" ? q.id : q.id[0];
+	h["Content-Disposition"] = `inline; filename="${id}"`;
+	h["Cache-Control"] = `public, max-age=${360 * 24 * 60 * 60 * 1000}`;
+	return `/../data/imgs/${id}`;
+});
