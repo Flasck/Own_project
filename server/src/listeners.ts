@@ -18,12 +18,12 @@ Api.addRouteSqlAll("/person",
 			from Text as pt
 			inner join TextType as tt On pt.typeId = tt.id and tt.name = 'personName'
 			inner join Lang as l On pt.langId = l.id and l.name = $1
-			where pt.personId = p.id) as name,
+			where pt.objId = p.id) as name,
 		(select text
 			from Text as pt
 			inner join TextType as tt On pt.typeId = tt.id and tt.name = 'personDescription'
 			inner join Lang as l On pt.langId = l.id and l.name = $1
-			where pt.personId = p.id) as description,
+			where pt.objId = p.id) as description,
 		(select json_group_array(t.name)
 			from Person_Technology as pt
 			inner join Technology as t
@@ -41,8 +41,15 @@ Api.addRouteSqlAll("/places",
 		from Text as pt
 		inner join TextType as tt On pt.typeId = tt.id and l.name = $1
 		inner join Lang as l On pt.langId = l.id and tt.name = 'personName'
-		where pt.personId = p.personId) as person,
-		json_group_array((json_object('address', address, 'coords', coords))) as places
+		where pt.objId = p.personId) as person,
+		json_group_array(
+			(json_object('address',
+				(select text
+				from Text as pt
+				inner join TextType as tt On pt.typeId = tt.id and l.name = $1
+				inner join Lang as l On pt.langId = l.id and tt.name = 'address'
+				where pt.objId = p.id),
+			'coords', coords))) as places
 	from Place as p
 	group By person
 	order by p.id
