@@ -60,8 +60,23 @@ Api.addRouteSqlAll("/places",
 })));
 
 Api.addRouteSqlAll("/projects",
-	`select id, name as title, date, image as imageName, description,
-		(select name from ProjectType where id = p.typeId) as type,
+	`select id,
+		(select text
+			from Text as t
+			inner join TextType as tt on t.typeId = tt.id and tt.name = 'projectName'
+			inner join Lang as l on t.langId = l.id and l.name = $1
+			where t.objId = p.id) as title,
+		date, image as imageName,
+		(select text
+			from Text as t
+			inner join TextType as tt on t.typeId = tt.id and tt.name = 'projectDescription'
+			inner join Lang as l on t.langId = l.id and l.name = $1
+			where t.objId = p.id) as description,
+		(select text
+			from Text as t
+			inner join TextType as tt on t.typeId = tt.id and tt.name = 'projectType'
+			inner join Lang as l on t.langId = l.id and l.name = $1
+			where t.objId = p.typeId) as type,
 		(select json_group_array(text)
 			from Text as t
 			inner join TextType as tt on t.typeId = tt.id and tt.name = 'personName'
