@@ -39,7 +39,6 @@ body {
   --c-primary: white;
   --c-second: #00EA7A;
   --c-card: #FFFFFF;
-  --c-btn: #D2D3D9;
 }
 :global(body.darkTheme) {
   --c-text: #d4d4d4;
@@ -47,7 +46,6 @@ body {
   --c-primary: #1E1E1E;
   --c-second: #099550;
   --c-card: #2E2D34;
-  --c-btn: #2E2D34;
 
   background:
     right top no-repeat radial-gradient(circle, rgba(189, 27, 186, 0.15) 0%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0) 100%),
