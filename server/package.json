@@ -5,6 +5,8 @@
   "main": "build/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "buildWatch": "cd src && tsc --watch",
+    "startWatch": "cd build && node --watch server.js",
     "buildAndStart": "cd src && echo Compilation && tsc && cd ../build && echo Starting && node server.js",
     "build": "cd src && tsc",
     "start": "cd build && node server.js"
