@@ -25,6 +25,7 @@ const server = http.createServer(async (req, res) =>
 	res.end();
 });
 
+Api.PrettyPrint = process.env.DEV?.trim() == "1";
 const port = 3001;
 console.log(`Start server on http://localhost:${port}`);
 server.listen(port);

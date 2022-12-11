@@ -5,6 +5,7 @@ import { DataBase } from "./database";
 class API
 {
 	private routes: RouteData[] = [];
+	public PrettyPrint = false;
 	public db = new DataBase("../data/db.db");
 
 	public async process(url: string): Promise<ApiResponse>
@@ -21,7 +22,7 @@ class API
 						const r = await route.route(urlParsed.query);
 						return {
 							status: 200,
-							body: route.prettyPrint ? JSON.stringify(r, undefined, 4) : JSON.stringify(r)
+							body: route.prettyPrint || this.PrettyPrint ? JSON.stringify(r, undefined, 4) : JSON.stringify(r)
 						};
 					}
 					catch (e)
