@@ -8,6 +8,7 @@ Api.addRoute("/", async q =>
 		"?lang=ru": "Use 'ru' lang",
 		"/person": [{ id: "number", name: "string", description: "string", technologies: "string[]" }],
 		"/places": [{ person: "string", places: { address: "string", coods: "string" } }],
+		"/projects": [{ id: "number", title: "string", date: "string", imageName: "string | null", description: "string", type: "string", authors: "string[]", technologies: "string[]", }],
 	};
 }, true);
 
@@ -56,4 +57,23 @@ Api.addRouteSqlAll("/places",
 `, [["lang", "ru"]], rows => rows.map(row => ({
 	...row,
 	places: JSON.parse(row.places),
+})));
+
+Api.addRouteSqlAll("/projects",
+	`select id, name as title, date, image as imageName, description,
+		(select name from ProjectType where id = p.typeId) as type,
+		(select json_group_array(text)
+			from Text as t
+			inner join TextType as tt on t.typeId = tt.id and tt.name = 'personName'
+			inner join Lang as l on t.langId = l.id and l.name = $1
+			inner join Project_Person as pp on pp.personId = t.objId and pp.projectId = p.id) as authors,
+		(select json_group_array(name)
+			from Project_Technology as pt
+			inner join Technology as t on pt.technologyId = t.id
+			where projectId = p.id) as technologies
+	from Project as p
+`, [["lang", "ru"]], rows => rows.map(row => ({
+	...row,
+	authors: JSON.parse(row.authors),
+	technologies: JSON.parse(row.technologies),
 })));
