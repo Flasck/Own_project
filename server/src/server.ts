@@ -1,6 +1,6 @@
 import * as http from "http";
 import { Api } from "./api";
-import "./listeners";
+import "./routes";
 
 const headers = {
 	"Content-Type": "application/json",
