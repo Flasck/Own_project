@@ -15,13 +15,13 @@ Api.addRoute("/", async q =>
 Api.addRouteSqlAll("/person",
 	`Select p.id,
 		(Select text
-			From Person_Text as pt
-			Inner Join TextType as tt On pt.typeId = tt.id and tt.name = 'name'
+			From Text as pt
+			Inner Join TextType as tt On pt.typeId = tt.id and tt.name = 'personName'
 			Inner Join Lang as l On pt.langId = l.id and l.name = $1
 			Where pt.personId = p.id) as name,
 		(Select text
-			From Person_Text as pt
-			Inner Join TextType as tt On pt.typeId = tt.id and tt.name = 'description'
+			From Text as pt
+			Inner Join TextType as tt On pt.typeId = tt.id and tt.name = 'personDescription'
 			Inner Join Lang as l On pt.langId = l.id and l.name = $1
 			Where pt.personId = p.id) as description,
 		(Select json_group_array(t.name)
@@ -38,9 +38,9 @@ Api.addRouteSqlAll("/person",
 
 Api.addRouteSqlAll("/places",
 	`Select (Select text
-		From Person_Text as pt
+		From Text as pt
 		Inner Join TextType as tt On pt.typeId = tt.id and l.name = $1
-		Inner Join Lang as l On pt.langId = l.id and tt.name = 'name'
+		Inner Join Lang as l On pt.langId = l.id and tt.name = 'personName'
 		Where pt.personId = p.personId) as person,
 		json_group_array((json_object('address', address, 'coords', coords))) as places
 	From Place as p
