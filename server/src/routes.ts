@@ -7,6 +7,7 @@ Api.addRouteJSON("/", async q =>
 		"?lang=en": "Use 'en' lang",
 		"?lang=ru": "Use 'ru' lang",
 		"image?id": "PNG image",
+		"text?lang": "JSON with texts",
 		"/person": [{ id: "number", name: "string", description: "string", technologies: "string[]" }],
 		"/places": [{ person: "string", places: { address: "string", coods: "string" } }],
 		"/projects": [{ id: "number", title: "string", date: "string", imageName: "string | null", description: "string", type: "string", authors: "string[]", technologies: "string[]", }],
@@ -107,4 +108,12 @@ Api.addRoute("/image?id", "png", async (q, h) =>
 	return await Api.readFile(`../data/imgs/${id}`, null);
 });
 
+const Langs = ["ru", "en"];
+Api.addRoute("/text", "json", async q =>
+{
+	if (q.lang == undefined) q.lang = Langs[0];
+	let lang = typeof q.lang == "string" ? q.lang : q.lang[0];
+	lang = lang.trim();
+	if (Langs.indexOf(lang) < 0) lang = Langs[0];
+	return await Api.readFile(`../data/text/${lang}.json`, "utf8");
 });
