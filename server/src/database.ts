@@ -17,25 +17,30 @@ export class DataBase
 
 	public all(sql: string, params: string[]): Promise<Row[]>
 	{
-		return new Promise(resolve =>
-		{
-			this.db.all(sql, params, (err, rows) =>
-			{
-				if (err) throw err;
-				resolve(rows);
-			});
-		});
+		return this.req(this.db.all.bind(this.db, sql, params));
 	}
 
 	public first(sql: string, params: string[]): Promise<Row>
 	{
-		return new Promise(resolve =>
+		return this.req(this.db.get.bind(this.db, sql, params));
+	}
+
+	private req<T>(f: (f: (e: any, rows: any) => void) => void): Promise<T>
+	{
+		return new Promise((resolve, reject) =>
 		{
-			this.db.get(sql, params, (err, row) =>
+			try
 			{
-				if (err) throw err;
-				resolve(row);
-			});
+				f((err, rows) =>
+				{
+					if (err) reject(err);
+					else resolve(rows);
+				});
+			}
+			catch (e)
+			{
+				reject(e)
+			}
 		});
 	}
 }

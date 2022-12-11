@@ -31,7 +31,7 @@ class API
 							return { status: 400, body: e.message };
 						}
 
-						console.log(`Error: route: ${route.route.name}; path: ${urlParsed.pathname}; query: ${urlParsed.query}`);
+						console.log(`Error: route: ${route.path + "?" + route.reqParams.join("&")}; path: ${urlParsed.pathname}; query: ${JSON.stringify(urlParsed.query)}`);
 						console.log(e);
 
 						return { status: 500, body: "API error" };
