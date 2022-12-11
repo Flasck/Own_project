@@ -13,39 +13,39 @@ Api.addRoute("/", async q =>
 
 
 Api.addRouteSqlAll("/person",
-	`Select p.id,
-		(Select text
-			From Text as pt
-			Inner Join TextType as tt On pt.typeId = tt.id and tt.name = 'personName'
-			Inner Join Lang as l On pt.langId = l.id and l.name = $1
-			Where pt.personId = p.id) as name,
-		(Select text
-			From Text as pt
-			Inner Join TextType as tt On pt.typeId = tt.id and tt.name = 'personDescription'
-			Inner Join Lang as l On pt.langId = l.id and l.name = $1
-			Where pt.personId = p.id) as description,
-		(Select json_group_array(t.name)
-			From Person_Technology as pt
-			Inner Join Technology as t
+	`select p.id,
+		(select text
+			from Text as pt
+			inner join TextType as tt On pt.typeId = tt.id and tt.name = 'personName'
+			inner join Lang as l On pt.langId = l.id and l.name = $1
+			where pt.personId = p.id) as name,
+		(select text
+			from Text as pt
+			inner join TextType as tt On pt.typeId = tt.id and tt.name = 'personDescription'
+			inner join Lang as l On pt.langId = l.id and l.name = $1
+			where pt.personId = p.id) as description,
+		(select json_group_array(t.name)
+			from Person_Technology as pt
+			inner join Technology as t
 			On t.id = pt.technologyId
-			Where pt.personId = p.id) as technology
-	From Person as p
-	Order by p.id
+			where pt.personId = p.id) as technology
+	from Person as p
+	order by p.id
 `, [["lang", "ru"]], rows => rows.map(row => ({
 	 ...row,
 	technology: JSON.parse(row.technology),
 })));
 
 Api.addRouteSqlAll("/places",
-	`Select (Select text
-		From Text as pt
-		Inner Join TextType as tt On pt.typeId = tt.id and l.name = $1
-		Inner Join Lang as l On pt.langId = l.id and tt.name = 'personName'
-		Where pt.personId = p.personId) as person,
+	`select (select text
+		from Text as pt
+		inner join TextType as tt On pt.typeId = tt.id and l.name = $1
+		inner join Lang as l On pt.langId = l.id and tt.name = 'personName'
+		where pt.personId = p.personId) as person,
 		json_group_array((json_object('address', address, 'coords', coords))) as places
-	From Place as p
-	Group By person
-	Order by p.id
+	from Place as p
+	group By person
+	order by p.id
 `, [["lang", "ru"]], rows => rows.map(row => ({
 	...row,
 	places: JSON.parse(row.places),
