@@ -10,7 +10,7 @@ const server = http.createServer(async (req, res) =>
 {
 	try
 	{
-		const apiRes = await Api.process(req.url || "");
+		const apiRes = await Api.process(req.url || "", req.method || "GET");
 		res.writeHead(apiRes.status, { ...headers, ...apiRes.headers, "Content-Type": apiRes.type });
 		res.write(apiRes.body);
 	}

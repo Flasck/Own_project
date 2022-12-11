@@ -10,14 +10,15 @@ class API
 	public db = new DataBase("../data/db.db");
 	public RouteError = RouteError;
 
-	public async process(url: string): Promise<ApiResponse>
+	public async process(url: string, method: string): Promise<ApiResponse>
 	{
+		if (!Methods.includes(<any>method)) method = "GET";
 		const urlParsed = Url.parse(url, true);
 		if (urlParsed.pathname)
 		{
 			for (const route of this.routes)
 			{
-				if (this.checkRoute(route, urlParsed.pathname, urlParsed.query))
+				if (route.method == method && this.checkRoute(route, urlParsed.pathname, urlParsed.query))
 				{
 					try
 					{
@@ -50,7 +51,7 @@ class API
 		return { status: 404, body: "Page not found", type: "application/json" };
 	}
 
-	public addRoute(path: string, type: keyof typeof RouteTypes, route: Route, stringify = false, prettyPrint = false)
+	public addRoute(method: Method, path: string, type: keyof typeof RouteTypes, route: Route, stringify = false, prettyPrint = false)
 	{
 		const pathSplited = path.split("?");
 		this.routes.push({
@@ -60,12 +61,13 @@ class API
 			prettyPrint,
 			type: type,
 			stringify,
+			method,
 		});
 	}
 
 	public addRouteJSON(path: string, route: Route, prettyPrint = false)
 	{
-		this.addRoute(path, "json", route, true, prettyPrint);
+		this.addRoute("GET", path, "json", route, true, prettyPrint);
 	}
 	public addRouteSqlFirst(path: string, sql: string, queryParams: QueryParams, postprocess?: PostprocessData<Row>)
 	{
@@ -105,7 +107,7 @@ class API
 
 	private addRouteSql<T extends Row | Row[]>(path: string, sql: string, queryParams: QueryParams, first: boolean, postprocess?: PostprocessData<T>)
 	{
-		this.addRoute(path, "json", async q =>
+		this.addRoute("GET", path, "json", async q =>
 		{
 			const params: string[] = [];
 			for (const paramKey of queryParams)
@@ -113,7 +115,7 @@ class API
 				if (typeof paramKey == "string")
 				{
 					const v = q[paramKey];
-					if (!v) throw new RouteError(`param ${paramKey} is undefined`);
+					if (!v) throw new RouteError(`param "${paramKey}" is undefined`);
 					params.push(typeof v == "object" ? v[0] : v);
 				}
 				else
@@ -152,7 +154,7 @@ const RouteTypes = {
 	"json": "application/json",
 	"png": "image/png",
 }
-
+const Methods = ["GET", "POST"] as const;
 
 interface ApiResponse
 {
@@ -167,6 +169,7 @@ type QueryParams = (string | [string, string])[];
 type Query = { [key: string]: string | string[] | undefined };
 type Route = (query: Query, resHeaders: Headers) => Promise<any>;
 type Headers = { [v: string]: string };
+type Method = typeof Methods[number];
 interface RouteData
 {
 	route: Route,
@@ -175,6 +178,7 @@ interface RouteData
 	prettyPrint: boolean,
 	type: keyof typeof RouteTypes,
 	stringify: boolean,
+	method: Method
 }
 
 export const Api = new API();

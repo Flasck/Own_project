@@ -96,12 +96,11 @@ Api.addRouteSqlAll("/projects",
 })));
 
 
-Api.addRoute("/image?id", "png", async (q, h) =>
+Api.addRoute("GET","/image?id", "png", async (q, h) =>
 {
-	if (q.id == undefined) throw new Api.RouteError("param id is undefined");
-	const id = (typeof q.id == "string" ? q.id : q.id[0]).trim();
-	if (q.id == "") throw new Api.RouteError("param id is undefined");
-	if (id.indexOf("/") >= 0) throw new Api.RouteError("bad param id");
+	const id = parseParam(q.id, "id")
+	if (id == "") throw new Api.RouteError(`param "id" is undefined`);
+	if (id.indexOf("/") >= 0) throw new Api.RouteError(`bad param "id"`);
 
 	h["Content-Disposition"] = `inline; filename="${id}"`;
 	h["Cache-Control"] = `public, max-age=${360 * 24 * 60 * 60 * 1000}`;
@@ -109,11 +108,21 @@ Api.addRoute("/image?id", "png", async (q, h) =>
 });
 
 const Langs = ["ru", "en"];
-Api.addRoute("/text", "json", async q =>
+Api.addRoute("GET", "/text", "json", async q =>
 {
-	if (q.lang == undefined) q.lang = Langs[0];
-	let lang = typeof q.lang == "string" ? q.lang : q.lang[0];
-	lang = lang.trim();
+	let lang = parseParam(q.lang, "lang", Langs[0]);
 	if (Langs.indexOf(lang) < 0) lang = Langs[0];
 	return await Api.readFile(`../data/text/${lang}.json`, "utf8");
 });
+
+
+function parseParam(param: string | string[] | undefined, paramName: string, defaultV: string | null = null)
+{
+	if (param == undefined)
+	{
+		if (defaultV) return defaultV;
+		throw new Api.RouteError(`param "${paramName}" is undefined`);
+	}
+	param = typeof param == "string" ? param : param[0];
+	return param.trim();
+}
