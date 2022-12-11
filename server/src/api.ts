@@ -1,5 +1,5 @@
 import * as Url from "url";
-import { DataBase } from "./database";
+import { DataBase, Row } from "./database";
 
 
 class API
@@ -54,25 +54,33 @@ class API
 		});
 	}
 
-	public addRouteSqlFirst(path: string, sql: string, queryParams: string[])
+	public addRouteSqlFirst(path: string, sql: string, queryParams: QueryParams, postprocess?: PostprocessData<Row>)
 	{
-		this.addRouteSql(path, sql, queryParams, true);
+		this.addRouteSql(path, sql, queryParams, true, postprocess);
 	}
-	public addRouteSqlAll(path: string, sql: string, queryParams: string[])
+	public addRouteSqlAll(path: string, sql: string, queryParams: QueryParams, postprocess?: PostprocessData<Row[]>)
 	{
-		this.addRouteSql(path, sql, queryParams, false);
+		this.addRouteSql(path, sql, queryParams, false, postprocess);
 	}
 
-	private addRouteSql(path: string, sql: string, queryParams: string[], first: boolean)
+	private addRouteSql<T extends Row | Row[]>(path: string, sql: string, queryParams: QueryParams, first: boolean, postprocess?: PostprocessData<T>)
 	{
 		this.addRoute(path, async q =>
 		{
 			const params: string[] = [];
 			for (const paramKey of queryParams)
 			{
-				const v = q[paramKey];
-				if (!v) throw new RouteError(`param ${paramKey} is undefined`);
-				params.push(typeof v == "object" ? v[0] : v);
+				if (typeof paramKey == "string")
+				{
+					const v = q[paramKey];
+					if (!v) throw new RouteError(`param ${paramKey} is undefined`);
+					params.push(typeof v == "object" ? v[0] : v);
+				}
+				else
+				{
+					const v = q[paramKey[0]] || paramKey[1];
+					params.push(typeof v == "object" ? v[0] : v);
+				}
 			}
 
 			let res;
@@ -80,6 +88,7 @@ class API
 			else res = await Api.db.all(sql, params);
 
 			if (res === undefined) throw new RouteError(`Not Found`);
+			if (postprocess) res = await postprocess(<T>res);
 
 			return res;
 		});
@@ -106,7 +115,8 @@ interface ApiResponse
 	body: string,
 }
 
-
+type PostprocessData<T> = (rows: T) => any;
+type QueryParams = (string | [string, string])[];
 type Query = { [key: string]: string | string[] | undefined };
 type Route = (query: Query) => Promise<any>;
 interface RouteData
