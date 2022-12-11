@@ -6,6 +6,7 @@ Api.addRouteJSON("/", async q =>
 	return {
 		"?lang=en": "Use 'en' lang",
 		"?lang=ru": "Use 'ru' lang",
+		"image?id": "PNG image",
 		"/person": [{ id: "number", name: "string", description: "string", technologies: "string[]" }],
 		"/places": [{ person: "string", places: { address: "string", coods: "string" } }],
 		"/projects": [{ id: "number", title: "string", date: "string", imageName: "string | null", description: "string", type: "string", authors: "string[]", technologies: "string[]", }],
@@ -94,11 +95,16 @@ Api.addRouteSqlAll("/projects",
 })));
 
 
-Api.addRouteFile("/image?id", "png", async (q, h) =>
+Api.addRoute("/image?id", "png", async (q, h) =>
 {
 	if (q.id == undefined) throw new Api.RouteError("param id is undefined");
-	const id = typeof q.id == "string" ? q.id : q.id[0];
+	const id = (typeof q.id == "string" ? q.id : q.id[0]).trim();
+	if (q.id == "") throw new Api.RouteError("param id is undefined");
+	if (id.indexOf("/") >= 0) throw new Api.RouteError("bad param id");
+
 	h["Content-Disposition"] = `inline; filename="${id}"`;
 	h["Cache-Control"] = `public, max-age=${360 * 24 * 60 * 60 * 1000}`;
-	return `/../data/imgs/${id}`;
+	return await Api.readFile(`../data/imgs/${id}`, null);
+});
+
 });

@@ -25,7 +25,7 @@ class API
 						const r = await route.route(urlParsed.query, headers);
 						return {
 							status: 200,
-							body: route.type == "json" ?
+							body: route.stringify ?
 								(route.prettyPrint || this.PrettyPrint ? JSON.stringify(r, undefined, 4) : JSON.stringify(r))
 								: r,
 							type: RouteTypes[route.type],
@@ -50,7 +50,7 @@ class API
 		return { status: 404, body: "Page not found", type: "application/json" };
 	}
 
-	private addRoute(path: string, type: keyof typeof RouteTypes, route: Route, prettyPrint = false)
+	public addRoute(path: string, type: keyof typeof RouteTypes, route: Route, stringify = false, prettyPrint = false)
 	{
 		const pathSplited = path.split("?");
 		this.routes.push({
@@ -58,29 +58,14 @@ class API
 			path: pathSplited[0],
 			reqParams: pathSplited.length == 2 ? pathSplited[1].split("&") : [],
 			prettyPrint,
-			type: type
+			type: type,
+			stringify,
 		});
 	}
 
-	public addRouteFile(path: string, type: keyof typeof RouteTypes, route: RouteString)
-	{
-		this.addRoute(path, type, async (q, h) =>
-		{
-			const path = __dirname + await route(q, h);
-			if (!fs.existsSync(path)) throw new Api.RouteError("Not found");
-			return new Promise((resolve, reject) =>
-			{
-				fs.readFile(path, (err, data) =>
-				{
-					if (err) reject(err);
-					resolve(data);
-				});
-			});
-		});
-	}
 	public addRouteJSON(path: string, route: Route, prettyPrint = false)
 	{
-		this.addRoute(path, "json", route, prettyPrint);
+		this.addRoute(path, "json", route, true, prettyPrint);
 	}
 	public addRouteSqlFirst(path: string, sql: string, queryParams: QueryParams, postprocess?: PostprocessData<Row>)
 	{
@@ -89,6 +74,33 @@ class API
 	public addRouteSqlAll(path: string, sql: string, queryParams: QueryParams, postprocess?: PostprocessData<Row[]>)
 	{
 		this.addRouteSql(path, sql, queryParams, false, postprocess);
+	}
+
+	public readFile(relPath: string, textEncoding: BufferEncoding): Promise<string>
+	public readFile(relPath: string, textEncoding: null): Promise<Buffer>
+	public readFile(relPath: string, textEncoding: BufferEncoding | null = null): Promise<Buffer | string>
+	{
+		const path = __dirname + "/" + relPath;
+		if (!fs.existsSync(path)) throw new Api.RouteError("Not found");
+		return new Promise((resolve, reject) =>
+		{
+			if (textEncoding)
+			{
+				fs.readFile(path, {encoding: textEncoding}, (err, data) =>
+				{
+					if (err) reject(err);
+					resolve(data);
+				});
+			}
+			else
+			{
+				fs.readFile(path, (err, data) =>
+				{
+					if (err) reject(err);
+					resolve(data);
+				});
+			}
+		});
 	}
 
 	private addRouteSql<T extends Row | Row[]>(path: string, sql: string, queryParams: QueryParams, first: boolean, postprocess?: PostprocessData<T>)
@@ -119,7 +131,7 @@ class API
 			if (postprocess) res = await postprocess(<T>res);
 
 			return res;
-		});
+		}, true);
 	}
 
 	private checkRoute(route: RouteData, path: string, params: Query)
@@ -154,7 +166,6 @@ type PostprocessData<T> = (rows: T) => any;
 type QueryParams = (string | [string, string])[];
 type Query = { [key: string]: string | string[] | undefined };
 type Route = (query: Query, resHeaders: Headers) => Promise<any>;
-type RouteString = (query: Query, resHeaders: Headers) => Promise<string>;
 type Headers = { [v: string]: string };
 interface RouteData
 {
@@ -163,6 +174,7 @@ interface RouteData
 	reqParams: string[],
 	prettyPrint: boolean,
 	type: keyof typeof RouteTypes,
+	stringify: boolean,
 }
 
 export const Api = new API();
