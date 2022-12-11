@@ -1,5 +1,5 @@
-import * as Url from 'url';
-import { DataBase } from './database';
+import * as Url from "url";
+import { DataBase } from "./database";
 
 
 class API

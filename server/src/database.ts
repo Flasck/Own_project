@@ -1,5 +1,5 @@
-import { verbose } from 'sqlite3';
-import * as path from 'path';
+import { verbose } from "sqlite3";
+import * as path from "path";
 const sqlite3 = verbose();
 
 export class DataBase

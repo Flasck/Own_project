@@ -1,9 +1,9 @@
-import * as http from 'http';
-import { Api } from './api';
-import './listeners';
+import * as http from "http";
+import { Api } from "./api";
+import "./listeners";
 
 const headers = {
-	'Content-Type': 'application/json',
+	"Content-Type": "application/json",
 	"Access-Control-Allow-Origin": "*"
 };
 
