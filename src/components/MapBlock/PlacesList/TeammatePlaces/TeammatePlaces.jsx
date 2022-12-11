@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './TeammatePlaces.module.css'
-import iconMark from "../../iconMark.svg"
+import iconMark from "../iconMark.svg"
 
 export const TeammatePlaces = ({ data }) =>
 	<div className={styles.root}>
