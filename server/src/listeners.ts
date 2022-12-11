@@ -15,20 +15,20 @@ Api.addRoute("/", async q =>
 Api.addRouteSqlAll("/person",
 	`select p.id,
 		(select text
-			from Text as pt
-			inner join TextType as tt On pt.typeId = tt.id and tt.name = 'personName'
-			inner join Lang as l On pt.langId = l.id and l.name = $1
-			where pt.objId = p.id) as name,
+			from Text as t
+			inner join TextType as tt On t.typeId = tt.id and tt.name = 'personName'
+			inner join Lang as l On t.langId = l.id and l.name = $1
+			where t.objId = p.id) as name,
 		(select text
-			from Text as pt
-			inner join TextType as tt On pt.typeId = tt.id and tt.name = 'personDescription'
-			inner join Lang as l On pt.langId = l.id and l.name = $1
-			where pt.objId = p.id) as description,
+			from Text as t
+			inner join TextType as tt On t.typeId = tt.id and tt.name = 'personDescription'
+			inner join Lang as l On t.langId = l.id and l.name = $1
+			where t.objId = p.id) as description,
 		(select json_group_array(t.name)
-			from Person_Technology as pt
+			from Person_Technology as t
 			inner join Technology as t
-			On t.id = pt.technologyId
-			where pt.personId = p.id) as technology
+			On t.id = t.technologyId
+			where t.personId = p.id) as technology
 	from Person as p
 	order by p.id
 `, [["lang", "ru"]], rows => rows.map(row => ({
@@ -38,17 +38,17 @@ Api.addRouteSqlAll("/person",
 
 Api.addRouteSqlAll("/places",
 	`select (select text
-		from Text as pt
-		inner join TextType as tt On pt.typeId = tt.id and l.name = $1
-		inner join Lang as l On pt.langId = l.id and tt.name = 'personName'
-		where pt.objId = p.personId) as person,
+		from Text as t
+		inner join TextType as tt On t.typeId = tt.id and l.name = $1
+		inner join Lang as l On t.langId = l.id and tt.name = 'personName'
+		where t.objId = p.personId) as person,
 		json_group_array(
 			(json_object('address',
 				(select text
-				from Text as pt
-				inner join TextType as tt On pt.typeId = tt.id and l.name = $1
-				inner join Lang as l On pt.langId = l.id and tt.name = 'address'
-				where pt.objId = p.id),
+				from Text as t
+				inner join TextType as tt On t.typeId = tt.id and l.name = $1
+				inner join Lang as l On t.langId = l.id and tt.name = 'address'
+				where t.objId = p.id),
 			'coords', coords))) as places
 	from Place as p
 	group By person
