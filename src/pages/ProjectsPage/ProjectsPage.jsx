@@ -1,7 +1,8 @@
 import React from "react"
-import { SearchBar } from "../../components/SearchBar/SearchBar";
-import {CardCase} from "@components/CardCase/CardCase";
-import styles from "./ProjectsPage.module.css";
+import { SearchBar } from "../../components/SearchBar/SearchBar"
+import styles from "./ProjectsPage.module.css"
+import { CardCase } from "../../components/CardCase/CardCase"
+
 
 export const ProjectsPage = () => {
 	const db = [
@@ -53,12 +54,13 @@ export const ProjectsPage = () => {
 	]
 	return (
 		<>
-			<SearchBar/>
+			<SearchBar />
 			<article className={styles.wrapper}>
 				{db.map((c) => (
-				    <CardCase key={c.id} arr={c} />
+					<CardCase key={c.id} arr={c} />
 				))}
 			</article>
 		</>
 	)
 }
+
