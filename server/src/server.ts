@@ -19,8 +19,8 @@ const server = http.createServer(async (req, res) =>
 	{
 		console.log(`Path: ${req.url}`);
 		console.log(e);
-		res.writeHead(500, headers);
-		res.write("Server error");
+		res.writeHead(500, { ...headers, "Content-Type": "application/json" });
+		res.write(`"Server error"`);
 	}
 	res.end();
 });

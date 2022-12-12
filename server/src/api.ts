@@ -42,13 +42,13 @@ class API
 					{
 						if (e instanceof RouteError)
 						{
-							return { status: 400, body: e.message, type: "application/json" };
+							return { status: 400, body: JSON.stringify(e.message), type: "application/json" };
 						}
 
 						console.log(`Error: route: ${route.path + "?" + route.reqParams.join("&")}; path: ${urlParsed.pathname}; query: ${JSON.stringify(urlParsed.query)}`);
 						console.log(e);
 
-						return { status: 500, body: "API error", type: "application/json" };
+						return { status: 500, body: `"API error"`, type: "application/json" };
 					}
 				}
 			}
