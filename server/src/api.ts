@@ -14,6 +14,7 @@ class API
 	public async process(req: IncomingMessage): Promise<ApiResponse>
 	{
 		const method = Methods.includes(<any>req.method) ? req.method : "GET";
+		if (method == "OPTIONS") return { status: 200, body: `"ok"`, type: "application/json" };
 		const urlParsed = Url.parse(req.url || "", true);
 		if (urlParsed.pathname)
 		{
@@ -28,7 +29,7 @@ class API
 							resHeaders: {},
 							readBodyJSON: this.readBodyJSON.bind(this, req),
 						};
-						const r = await route.route.bind(routeThis)(urlParsed.query);
+						const r = await route.route.bind(routeThis)(urlParsed.query) || "ok";
 						return {
 							status: 200,
 							body: route.stringify ?
@@ -177,7 +178,7 @@ const RouteTypes = {
 	"json": "application/json",
 	"png": "image/png",
 }
-const Methods = ["GET", "POST"] as const;
+const Methods = ["GET", "POST", "OPTIONS"] as const;
 
 interface ApiResponse
 {

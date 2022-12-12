@@ -11,6 +11,8 @@ Api.addRouteJSON("/", async q =>
 		"/person": [{ id: "number", name: "string", description: "string", technologies: "string[]" }],
 		"/places": [{ person: "string", places: { address: "string", coods: "string" } }],
 		"/projects": [{ id: "number", title: "string", date: "string", imageId: "string | null", description: "string", type: "string", authors: "string[]", technologies: "string[]", }],
+		"/comment": [{ id: "string", author: "string", email: "string", text: "string" }],
+		"POST /comment?name&email&text": "Post new comment",
 	};
 }, true);
 
@@ -116,13 +118,29 @@ Api.addRoute("GET", "/text", "json", async q =>
 });
 
 
-function parseParam(param: string | string[] | undefined, paramName: string, defaultV: string | null = null)
+Api.addRouteSqlAll("/comment", `select id, author, email, text from Comment`, []);
+Api.addRoute("POST", "/comment", "json", async function ()
 {
-	if (param == undefined)
+	const data = await this.readBodyJSON();
+	const author = parseParam(data.author, "author");
+	const email = parseParam(data.email, "email");
+	const text = parseParam(data.text, "text");
+
+	Api.db.commit(
+		`insert into Comment (author, email, text)
+		values (?, ?, ?)`, [author, email, text]);
+}, true);
+
+
+
+function parseParam(param: unknown, paramName: string, defaultV?: any): string
+{
+	if (param === undefined)
 	{
-		if (defaultV) return defaultV;
+		if (defaultV !== undefined) return defaultV;
 		throw new Api.RouteError(`param "${paramName}" is undefined`);
 	}
-	param = typeof param == "string" ? param : param[0];
+	if (param instanceof Array) param = param[0];
+	if (typeof param != "string") throw new Api.RouteError(`Bad param "${paramName}"`);
 	return param.trim();
 }
