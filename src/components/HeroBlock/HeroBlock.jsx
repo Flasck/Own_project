@@ -7,7 +7,7 @@ export const HeroBlock = () => {
         <div className={styles.container}>
             <div className={styles.side_left}>
                 <div className={styles.side_left_wrapper}>
-                    <h2 className={styles.side_left_title}>РАЗРАБОТКА САЙТОВ ПОД КЛЮЧ</h2>
+                    <h2 className={styles.side_left_title}>разработка сайтов под ключ</h2>
                     <p className={styles.side_left_description}>Разработаем сайт, исходя из Вашего рынка, геогрaфии, портрета клиента и внутренних бизнес-процессов</p>
                 </div>
             </div>
