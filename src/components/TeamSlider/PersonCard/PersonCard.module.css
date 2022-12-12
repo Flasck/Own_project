@@ -27,37 +27,6 @@
 	transform: rotateY(180deg);
 }
 
-.photo {
-	width: 100%;
-	height: 100%;
-	border-radius: 10px;
-	border: 1px solid;
-}
-
-.name {
-	margin: 0;
-	margin-top: 10px;
-}
-.post {
-	margin: 15px 0 5px 0;
-}
-
-.techs {
-	text-align: center;
-	margin: 0;
-}
-
-.desc {
-	text-align: center;
-}
-
-.click {
-	margin-top: 10px;
-	opacity: 0.3;
-	font-size: 10px;
-	align-self: flex-end;
-}
-
 .front_base {
 	transform: perspective(700px) rotateY(180deg);
 }
@@ -72,4 +41,44 @@
 
 .back_rev {
 	transform: perspective(700px) rotateY(180deg);
+}
+
+.person_wrapper {
+	width: 100%;
+	display: flex;
+	flex-flow: column wrap;
+}
+
+.person {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.photo {
+	border-radius: 100%;
+	font-size: 0.5rem;
+}
+.name {
+	font-size: 1.7em;
+}
+
+.links {
+	display: flex;
+	margin: 0 -0.3em;
+}
+
+.github,
+.tg {
+	display: flex;
+	margin: 0 0.3em;
+}
+
+.short {
+	margin-bottom: 0.5em;
+}
+
+.techs {
+	display: flex;
+	width: 100%;
 }
