@@ -1,0 +1,16 @@
+.stroke {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: fit-content;
+	height: fit-content;
+	border: 2px solid var(--c-second-light);
+	border-radius: 0.5rem;
+	padding: 0.3rem;
+	margin-right: 0.5rem;
+}
+
+.text {
+	text-align: center;
+	color: var(--c-second-light);
+}

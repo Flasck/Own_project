@@ -25,7 +25,7 @@
     z-index: 10;
 }
 
-.modal__content {
+.content {
     max-width: 420px;
     display: flex;
     flex-direction: column;
@@ -38,21 +38,21 @@
 }
 
 
-.modal__title {
+.title {
     font-weight: 500;
     font-size: 24px;
     line-height: 23px;
     color: var(--c-text);
 }
 
-.modal__form {
+.form {
     margin-top: 24px;
     display: flex;
     flex-direction: column;
 }
 
 
-.modal__form__block__textArea {
+.textArea {
     background: var(--c-card);
     border: 1px solid var(--c-text);
     border-radius: 6px;
@@ -67,22 +67,22 @@
     resize: none;
 }
 
-.modal__form__block__textArea:focus {
+.textArea:focus {
     border: 1px solid #099550;
 }
 
-.modal__form__block {
+.form_block {
     margin-bottom: 19px;
     display: flex;
     flex-direction: column;
     position: relative;
 }
 
-.modal__form__block:last-child {
+.form_block:last-child {
     margin: 26px;
 }
 
-.modal__form__block__error {
+.error {
     position: absolute;
     bottom: -18px;
     right: 0;
@@ -92,7 +92,7 @@
     font-size: 12px;
     line-height: 7px;
 }
-.modal__form__block__label {
+.label {
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
@@ -100,11 +100,11 @@
     margin-bottom: 4px;
 }
 
-.modal__form__block__label:last-child {
+.label:last-child {
     margin: 0;
 }
 
-.modal__form__block__input {
+.input {
     background: var(--c-card);
     border: 1px solid var(--c-text);
     border-radius: 6px;
@@ -118,7 +118,7 @@
     padding: 12px 8px 12px 8px;
 }
 
-.modal__form__block__input:focus {
+.input:focus {
     border: 1px solid #099550;
 }
 
@@ -133,18 +133,18 @@
     margin-right: 8px;
 }
 
-.customCheckBox__path {
+.customCheckBox_path {
     stroke: var(--c-text);
 }
 
-.modal__btn__wrapper {
+.wrapper {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
 }
 
-.modal__btn {
+.btn {
     background: #00EA7A;
     border-radius: 12px;
     padding: 12px 22px;
@@ -157,12 +157,12 @@
     cursor:  pointer;
 }
 
-.modal__btn:disabled {
+.btn:disabled {
     opacity: 0.5;
 }
 
 
-.modal__btn_status{
+.btn_status{
    width: max-content;
    margin: 0 auto;
 }
@@ -180,7 +180,7 @@
     animation: spin 1s linear infinite;
 }
 
-.loadingIconPath {
+.loadingIcon_path {
     fill: var(--c-text);
 }
 
