@@ -1,0 +1,26 @@
+{
+	"header": {
+		"mainPage": "Our team",
+		"projectsPage": "Our projects"
+	},
+	"footer": {
+		"text1": "Project as part of the Yandex Academy Intensive",
+		"text2": "Start of work on the project: 7/12/2022"
+	},
+	"mainPage": {
+		"heroBlock": {
+			"title": "Development of turnkey sites",
+			"subtitle": "We will develop a website based on your market, geography, client portrait and internal business processes",
+			"card1": "Analytics and marketing as the basis for making a decision when creating a website",
+			"card2": "SEO site design with coverage up to 99% of the target audience",
+			"card3": "The conversion rate is 2-3.5 times higher than the market average (But here it will be more beautiful in length)"
+		},
+		"mapBlock": {
+			"title": "Contact Information",
+			"contactButton": "Connect with us"
+		}
+	},
+	"projectsPage": {
+		"searchBar": "Search by projects..."
+	}
+}
