@@ -8,10 +8,10 @@ Api.addRouteJSON("/", async q =>
 		"?lang=ru": "Use 'ru' lang",
 		"image?id": "PNG image",
 		"text?lang": "JSON with texts",
-		"/person": [{ id: "number", name: "string", description: "string", technologies: "string[]" }],
+		"/persons": [{ id: "number", name: "string", description: "string", technologies: "string[]" }],
 		"/places": [{ person: "string", places: { address: "string", coods: "string" } }],
 		"/projects": [{ id: "number", title: "string", date: "string", imageId: "string | null", description: "string", type: "string", authors: "string[]", technologies: "string[]", }],
-		"/comment": [{ id: "string", author: "string", email: "string", text: "string" }],
+		"/comments": [{ id: "string", author: "string", email: "string", text: "string" }],
 		"POST /comment": { author: "string", email: "string", text: "string" },
 		"/comment/comments": "Page with comments list",
 		"/comment/form": "Page with send comment form",
@@ -19,7 +19,7 @@ Api.addRouteJSON("/", async q =>
 }, true);
 
 
-Api.addRouteSqlAll("/person",
+Api.addRouteSqlAll("/persons",
 	`select p.id,
 		(select text
 			from Text as t
@@ -122,7 +122,7 @@ Api.addRoute("GET", "/text", "json", async q =>
 
 Api.addRoute("GET", "/comment/form", "html", () => Api.readFile(`../data/pages/form.html`, "utf8"));
 Api.addRoute("GET", "/comment/comments", "html", () => Api.readFile(`../data/pages/comments.html`, "utf8"));
-Api.addRouteSqlAll("/comment", `select id, author, email, text from Comment`, []);
+Api.addRouteSqlAll("/comments", `select id, author, email, text from Comment`, []);
 Api.addRoute("POST", "/comment", "json", async function ()
 {
 	const data = await this.readBodyJSON();

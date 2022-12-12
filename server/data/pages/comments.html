@@ -89,7 +89,7 @@
 	<script>
 		const template = document.getElementById("row");
 		const content = document.getElementById("content");
-		fetch("/comment")
+		fetch("/comments")
 		.then(v => v.json())
 		.then(data => {
 			data.forEach(comment => {
