@@ -3,14 +3,15 @@ import { Api } from "./api";
 import "./routes";
 
 const headers = {
-	"Access-Control-Allow-Origin": "*"
+	"Access-Control-Allow-Origin": "*",
+	"Access-Control-Allow-Headers": "Content-Type",
 };
 
 const server = http.createServer(async (req, res) =>
 {
 	try
 	{
-		const apiRes = await Api.process(req.url || "", req.method || "GET");
+		const apiRes = await Api.process(req);
 		res.writeHead(apiRes.status, { ...headers, ...apiRes.headers, "Content-Type": apiRes.type });
 		res.write(apiRes.body);
 	}

@@ -1,6 +1,7 @@
 import * as Url from "url";
 import * as fs from "fs";
 import { DataBase, Row } from "./database";
+import type { IncomingMessage } from "http";
 
 
 class API
@@ -10,10 +11,10 @@ class API
 	public db = new DataBase("../data/db.db");
 	public RouteError = RouteError;
 
-	public async process(url: string, method: string): Promise<ApiResponse>
+	public async process(req: IncomingMessage): Promise<ApiResponse>
 	{
-		if (!Methods.includes(<any>method)) method = "GET";
-		const urlParsed = Url.parse(url, true);
+		const method = Methods.includes(<any>req.method) ? req.method : "GET";
+		const urlParsed = Url.parse(req.url || "", true);
 		if (urlParsed.pathname)
 		{
 			for (const route of this.routes)
@@ -22,15 +23,19 @@ class API
 				{
 					try
 					{
-						const headers = {};
-						const r = await route.route(urlParsed.query, headers);
+						const routeThis: RouteThis = {
+							reqHeaders: req.headers,
+							resHeaders: {},
+							readBodyJSON: this.readBodyJSON.bind(this, req),
+						};
+						const r = await route.route.bind(routeThis)(urlParsed.query);
 						return {
 							status: 200,
 							body: route.stringify ?
 								(route.prettyPrint || this.PrettyPrint ? JSON.stringify(r, undefined, 4) : JSON.stringify(r))
 								: r,
 							type: RouteTypes[route.type],
-							headers: headers,
+							headers: routeThis.resHeaders,
 						};
 					}
 					catch (e)
@@ -146,6 +151,24 @@ class API
 		}
 		return true;
 	}
+
+	private readBodyJSON(req: IncomingMessage): Promise<bodyJSON>
+	{
+		if (req.headers["content-type"] !== "application/json")
+			throw new Api.RouteError("Request content-type is not application/json");
+
+		return new Promise((resolve, reject) =>
+		{
+			let body = '';
+			req.on("error", e => reject(e));
+			req.on('data', chunk => body += chunk.toString());
+			req.on('end', () =>
+			{
+				try { resolve(JSON.parse(body)); }
+				catch (e) { reject(e); }
+			});
+		})
+	}
 }
 
 class RouteError extends Error { };
@@ -167,8 +190,9 @@ interface ApiResponse
 type PostprocessData<T> = (rows: T) => any;
 type QueryParams = (string | [string, string])[];
 type Query = { [key: string]: string | string[] | undefined };
-type Route = (query: Query, resHeaders: Headers) => Promise<any>;
+type Route = (this: RouteThis, query: Query) => Promise<any>;
 type Headers = { [v: string]: string };
+type bodyJSON = { [v: string]: string | bodyJSON }
 type Method = typeof Methods[number];
 interface RouteData
 {
@@ -179,6 +203,12 @@ interface RouteData
 	type: keyof typeof RouteTypes,
 	stringify: boolean,
 	method: Method
+}
+interface RouteThis
+{
+	reqHeaders: Query,
+	resHeaders: Headers,
+	readBodyJSON: () =>  Promise<bodyJSON>,
 }
 
 export const Api = new API();

@@ -96,14 +96,14 @@ Api.addRouteSqlAll("/projects",
 })));
 
 
-Api.addRoute("GET","/image?id", "png", async (q, h) =>
+Api.addRoute("GET","/image?id", "png", async function(q)
 {
 	const id = parseParam(q.id, "id")
 	if (id == "") throw new Api.RouteError(`param "id" is undefined`);
 	if (id.indexOf("/") >= 0) throw new Api.RouteError(`bad param "id"`);
 
-	h["Content-Disposition"] = `inline; filename="${id}"`;
-	h["Cache-Control"] = `public, max-age=${360 * 24 * 60 * 60 * 1000}`;
+	this.resHeaders["Content-Disposition"] = `inline; filename="${id}"`;
+	this.resHeaders["Cache-Control"] = `public, max-age=${360 * 24 * 60 * 60 * 1000}`;
 	return await Api.readFile(`../data/imgs/${id}`, null);
 });
 
