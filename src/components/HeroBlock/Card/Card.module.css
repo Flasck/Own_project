@@ -15,14 +15,14 @@
     box-shadow: 0 3px 7px rgba(0, 0, 0,0.25), 0 3px 3px rgba(0, 0, 0,0.22);
 }
 
-.card__number {
+.card_number {
     font-weight: 500;
     font-size: 36px;
     line-height: 35px;
     margin-bottom: 8px;
 }
 
-.card__text {
+.card_text {
     font-weight: 400;
     font-size: 14px;
     line-height: 14px;

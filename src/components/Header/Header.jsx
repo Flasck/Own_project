@@ -4,8 +4,8 @@ import { classnames } from '../../utils/classnames'
 import styles from './Header.module.css'
 import { ThemeSwither } from './ThemeSwither/ThemeSwither'
 
-export const Header = ({ className }) =>
-    <header className={classnames(styles.root, className)}>
+export const Header = ({ className }) => {
+    return (<header className={classnames(styles.root, className)}>
         <div className={styles.container}>
             <span className={styles.brand}>Turtle</span>
             <NavLink className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)} to={"/"}>Наша команда</NavLink>
@@ -16,4 +16,5 @@ export const Header = ({ className }) =>
                 <ThemeSwither />
             </span>
         </div>
-    </header>
+    </header>)
+}
