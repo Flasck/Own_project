@@ -2,28 +2,27 @@ import { createSlice } from "@reduxjs/toolkit"
 import { Statuses } from "../../utils/Statuses"
 
 const initialState = {
-	modalView: false,
+	text: { ru: null, en: null },
 	status: Statuses.idle,
 }
 
-export const FeedbackSlice = createSlice({
-	name: "Feedback",
+export const ConstantSlice = createSlice({
+	name: "constantSlice",
 	initialState: initialState,
 	reducers: {
-		changeView: (state, action) => {
-			state.modalView = !state.modalView
-		},
-		startLoading: (state, action) => {
+		startLoading: (state) => {
 			state.status = Statuses.inProgress
 		},
 		successLoading: (state, action) => {
+			if (action.payload.lang === "ru") {
+				state.text.ru = action.payload.data
+			} else if (action.payload.lang === "en") {
+				state.text.en = action.payload.data
+			}
 			state.status = Statuses.success
 		},
-		failLoading: (state, action) => {
+		failLoading: (state) => {
 			state.status = Statuses.failed
-		},
-		changeStatus: (state, action) => {
-			state.status = action.payload
 		},
 	},
 })
