@@ -11,30 +11,31 @@
 	color: var(--c-text);
 }
 
-.left_side {
+.side_left {
 	display: flex;
 	flex-direction: column;
 	margin-right: 16px;
 }
 
-.left_side__wrapper {
+.side_left_wrapper {
 	margin-top: 54px;
 }
 
-.left_side__title {
+.side_left_title {
 	font-weight: 800;
 	font-size: 48px;
 	line-height: 46px;
 	margin-bottom: 8px;
+	text-transform: uppercase;
 }
 
-.left_side__description {
+.side_left_description {
 	font-weight: 400;
 	font-size: 20px;
 	line-height: 19px;
 }
 
-.right_side {
+.side_right {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -42,10 +43,8 @@
 
 .downArrow {
 	margin: 16px 0;
-	width: 29px;
-	height: 17px;
 }
 
-.downArrowPath {
+.downArrow_path {
 	stroke: var(--c-text);
 }
