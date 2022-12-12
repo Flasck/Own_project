@@ -13,31 +13,30 @@
     color: var(--c-text);
 }
 
-.side_left {
+.left_side {
     display: flex;
     flex-direction: column;
     margin-right: 16px;
 }
 
-.side_left_wrapper {
+.left_side__wrapper {
     margin-top: 54px;
 }
 
-.side_left_title {
+.left_side__title {
     font-weight: 800;
     font-size: 48px;
     line-height: 46px;
     margin-bottom: 8px;
-    text-transform: uppercase;
 }
 
-.side_left_description {
+.left_side__description {
     font-weight: 400;
     font-size: 20px;
     line-height: 19px;
 }
 
-.side_right {
+.right_side {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,9 +44,11 @@
 
 .downArrow {
     margin: 16px 0;
+    width: 29px;
+    height: 17px;
 }
 
-.downArrow_path {
+.downArrowPath {
     stroke: var(--c-text);
 }
 /* Убрать перед реализацей */

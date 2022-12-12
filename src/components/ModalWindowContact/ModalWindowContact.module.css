@@ -25,7 +25,7 @@
     z-index: 10;
 }
 
-.modal_content {
+.modal__content {
     max-width: 420px;
     display: flex;
     flex-direction: column;
@@ -38,21 +38,21 @@
 }
 
 
-.modal_title {
+.modal__title {
     font-weight: 500;
     font-size: 24px;
     line-height: 23px;
     color: var(--c-text);
 }
 
-.modal_form {
+.modal__form {
     margin-top: 24px;
     display: flex;
     flex-direction: column;
 }
 
 
-.modal_form_block_textArea {
+.modal__form__block__textArea {
     background: var(--c-card);
     border: 1px solid var(--c-text);
     border-radius: 6px;
@@ -67,22 +67,22 @@
     resize: none;
 }
 
-.modal_form_block_textArea:focus {
+.modal__form__block__textArea:focus {
     border: 1px solid #099550;
 }
 
-.modal_form_block {
+.modal__form__block {
     margin-bottom: 19px;
     display: flex;
     flex-direction: column;
     position: relative;
 }
 
-.modal_form_block:last-child {
+.modal__form__block:last-child {
     margin: 26px;
 }
 
-.modal_form_block_error {
+.modal__form__block__error {
     position: absolute;
     bottom: -18px;
     right: 0;
@@ -92,7 +92,7 @@
     font-size: 12px;
     line-height: 7px;
 }
-.modal_form_block_label {
+.modal__form__block__label {
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
@@ -100,11 +100,11 @@
     margin-bottom: 4px;
 }
 
-.modal_form_block_label:last-child {
+.modal__form__block__label:last-child {
     margin: 0;
 }
 
-.modal_form_block_input {
+.modal__form__block__input {
     background: var(--c-card);
     border: 1px solid var(--c-text);
     border-radius: 6px;
@@ -118,7 +118,7 @@
     padding: 12px 8px 12px 8px;
 }
 
-.modal_form_block_input:focus {
+.modal__form__block__input:focus {
     border: 1px solid #099550;
 }
 
@@ -133,18 +133,18 @@
     margin-right: 8px;
 }
 
-.customCheckBox_path {
+.customCheckBox__path {
     stroke: var(--c-text);
 }
 
-.modal_btn_wrapper {
+.modal__btn__wrapper {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
 }
 
-.modal_btn {
+.modal__btn {
     background: #00EA7A;
     border-radius: 12px;
     padding: 12px 22px;
@@ -157,12 +157,12 @@
     cursor:  pointer;
 }
 
-.modal_btn:disabled {
+.modal__btn:disabled {
     opacity: 0.5;
 }
 
 
-.modal_btn_status{
+.modal__btn_status{
    width: max-content;
    margin: 0 auto;
 }

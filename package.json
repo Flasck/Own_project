@@ -27,7 +27,6 @@
     "@babel/core": "^7.20.5",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
-    "@pbe/react-yandex-maps": "^1.2.2",
     "babel": "^6.23.0",
     "babel-loader": "^9.1.0",
     "clean-webpack-plugin": "^4.0.0",
