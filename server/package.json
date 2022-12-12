@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "buildWatch": "cd src && tsc --watch",
+    "startWatch": "set DEV=1 && cd build && node --watch server.js",
+    "build": "cd src && tsc",
+    "startDEV": "set DEV=1 && cd build && node server.js",
+    "start": "cd build && node server.js"
+  },
+  "author": "Mixel Te",
+  "license": "ISC",
+  "dependencies": {
+    "sqlite3": "^5.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.11",
+    "typescript": "^4.9.4"
+  }
+}

@@ -3,6 +3,7 @@ import { SearchBar } from "../../components/SearchBar/SearchBar"
 import styles from "./ProjectsPage.module.css"
 import { CardCase } from "../../components/CardCase/CardCase"
 
+
 export const ProjectsPage = () => {
 	const db = [
 		{
@@ -62,3 +63,4 @@ export const ProjectsPage = () => {
 		</>
 	)
 }
+
