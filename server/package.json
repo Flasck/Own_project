@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "buildWatch": "cd src && tsc --watch",
     "startWatch": "set DEV=1 && cd build && node --watch server.js",
-    "buildAndStart": "cd src && echo Compilation && tsc && cd ../build && echo Starting && node server.js",
     "build": "cd src && tsc",
+    "startDEV": "set DEV=1 && cd build && node server.js",
     "start": "cd build && node server.js"
   },
   "author": "Mixel Te",
