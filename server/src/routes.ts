@@ -12,7 +12,9 @@ Api.addRouteJSON("/", async q =>
 		"/places": [{ person: "string", places: { address: "string", coods: "string" } }],
 		"/projects": [{ id: "number", title: "string", date: "string", imageId: "string | null", description: "string", type: "string", authors: "string[]", technologies: "string[]", }],
 		"/comment": [{ id: "string", author: "string", email: "string", text: "string" }],
-		"POST /comment?name&email&text": "Post new comment",
+		"POST /comment": { author: "string", email: "string", text: "string" },
+		"/comment/comments": "Page with comments list",
+		"/comment/form": "Page with send comment form",
 	};
 }, true);
 
@@ -118,6 +120,8 @@ Api.addRoute("GET", "/text", "json", async q =>
 });
 
 
+Api.addRoute("GET", "/comment/form", "html", () => Api.readFile(`../data/pages/form.html`, "utf8"));
+Api.addRoute("GET", "/comment/comments", "html", () => Api.readFile(`../data/pages/comments.html`, "utf8"));
 Api.addRouteSqlAll("/comment", `select id, author, email, text from Comment`, []);
 Api.addRoute("POST", "/comment", "json", async function ()
 {

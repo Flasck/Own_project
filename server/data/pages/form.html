@@ -10,6 +10,12 @@
 			display: flex;
 			justify-content: center;
 			margin-top: 10em;
+			background-color: #1e1e1e;
+			color: #d4d4d4;
+		}
+		form {
+			background-color: #0c7e2c;
+			border-radius: 1em;
 		}
 		div {
 			margin: 1em;
@@ -49,7 +55,7 @@
 				text: document.getElementById("text").value,
 			};
 
-			fetch('http://localhost:3001/comment', {
+			fetch('/comment', {
 				method: "POST",
 				headers: {
 					'Content-Type': 'application/json',
@@ -57,8 +63,8 @@
 				body: JSON.stringify(data),
 			})
 			.then(r => r.json())
-			.then(d => console.log(d))
-			.catch(e => console.error(e));
+			.then(d => { console.log(d); alert(d) })
+			.catch(e => { console.error(e); alert(e) });
 		});
 	</script>
 </body>

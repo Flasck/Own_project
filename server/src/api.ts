@@ -177,6 +177,7 @@ class RouteError extends Error { };
 const RouteTypes = {
 	"json": "application/json",
 	"png": "image/png",
+	"html": "text/html; charset=utf-8",
 }
 const Methods = ["GET", "POST", "OPTIONS"] as const;
 
