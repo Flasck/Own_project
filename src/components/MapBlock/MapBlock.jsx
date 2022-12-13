@@ -7,10 +7,12 @@ import { YMaps } from "@pbe/react-yandex-maps";
 import { ContactButton } from "./ContactButton/ContactButton"
 import { OurMap } from "./OurMap/OurMap"
 import { PlacesList } from "./PlacesList/PlacesList"
+import { Placeholder } from "@components/Placeholder/Placeholder";
 
 import { FeedbackSlice } from "@store/FeedbackSlice";
 import { LoadMapIfNotExist } from "@store/MapSlice/LoadMapIfNotExist";
 import { selectAllPlaces, selectStatusMap } from "@store/MapSlice/selectors"
+import { selectConstants } from "@store/ConstantsSlice/selectors"
 
 
 export const MapBlock = () =>
@@ -18,6 +20,7 @@ export const MapBlock = () =>
 	const dispatch = useDispatch();
 	const allPlaces = useSelector((state) => selectAllPlaces(state));
 	const statusLoadMap = useSelector((state) => selectStatusMap(state));
+    const texts = useSelector(selectConstants);
 
 	useEffect(() => dispatch(LoadMapIfNotExist()), []);
 
@@ -34,8 +37,10 @@ export const MapBlock = () =>
 
 	return <section>
 		<div className={styles.title}>
-			<h2 className={styles.title__text}>Контактная информация</h2>
-			<ContactButton onClick={() => dispatch(FeedbackSlice.actions.changeView())} />
+			<h2 className={styles.title__text}>{texts ? texts.mainPage.mapBlock.title : <Placeholder width={20} />}</h2>
+			<ContactButton onClick={() => dispatch(FeedbackSlice.actions.changeView())} >
+				{texts ? texts.mainPage.mapBlock.contactButton : <Placeholder width={12} />}
+			</ContactButton>
 		</div>
 		<div className={styles.container}>
 			<PlacesList />

@@ -8,6 +8,7 @@ import { classnames } from "@utils/classnames"
 import { LanguageSlice } from "@store/LanguageSlice/index"
 import { selectLanguage } from "@store/LanguageSlice/selectors"
 import { selectConstants } from "@store/ConstantsSlice/selectors"
+import { Placeholder } from "../Placeholder/Placeholder"
 
 
 export const Header = ({ className }) =>
@@ -21,10 +22,10 @@ export const Header = ({ className }) =>
 			<span className={styles.brand}>Turtle</span>
 
 			<NavLink className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)} to={"/"}>
-				{text?.header?.mainPage}
+				{text ? text.header.mainPage : <Placeholder width={12}/>}
 			</NavLink>
 			<NavLink className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)} to={"/OurCases"}>
-				{text?.header?.projectsPage}
+				{text ? text.header.projectsPage : <Placeholder width={12}/>}
 			</NavLink>
 
 			<span className={styles.switchers}>

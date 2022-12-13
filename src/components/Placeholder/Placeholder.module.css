@@ -1,0 +1,31 @@
+.inner {
+	background-color: transparent;
+	color: transparent;
+	width: var(--data-width);
+	height: var(--data-height);
+	border-radius: 0.2em;
+
+	background-image: linear-gradient(70deg,
+			transparent calc((var(--data-w) + 300px) / 2 - 100px),
+			rgb(211, 211, 211, 0.6) calc((var(--data-w) + 300px) / 2),
+			transparent calc((var(--data-w) + 300px) / 2 + 100px));
+	background-size: calc(var(--data-w) + 600px) var(--data-h);
+	background-position: calc(0px - var(--data-x)) calc(0px - var(--data-y));
+	background-position-x: calc(0px - var(--data-w) / 2 - 50px - var(--data-x));
+
+	animation: anim 2s ease-in-out 0s infinite;
+}
+
+@keyframes anim {
+	0% {
+		background-position-x: calc(0px - var(--data-w) / 2 - 250px - var(--data-x));
+	}
+
+	100% {
+		background-position-x: calc(var(--data-w) + 400px - var(--data-w) / 2 - 50px - var(--data-x));
+	}
+}
+
+.inner_rounded {
+	border-radius: 8px;
+}

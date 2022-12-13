@@ -1,11 +1,18 @@
 import React from "react"
 import styles from "./Footer.module.css"
+import { useSelector } from "react-redux";
+import { selectConstants } from "@store/ConstantsSlice/selectors"
+import { Placeholder } from "@components/Placeholder/Placeholder";
 
 
 export const Footer = () =>
-    <footer className={styles.root}>
+{
+    const texts = useSelector(selectConstants);
+
+    return <footer className={styles.root}>
         <div className={styles.container}>
-            <div>Проект в рамках интенсива Академии Яндекса</div>
-            <div>Начало работы над проектом: 7/12/2022</div>
+            <div>{texts ? texts.footer.text1 : <Placeholder width={36}/>}</div>
+            <div>{texts ? texts.footer.text2 : <Placeholder width={32}/>}</div>
         </div>
     </footer>
+}
