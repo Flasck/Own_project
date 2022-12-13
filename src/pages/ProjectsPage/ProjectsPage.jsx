@@ -1,18 +1,29 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styles from "./ProjectsPage.module.css"
 import { SearchBar } from "@components/SearchBar/SearchBar"
 import { ProjectCard } from "@components/ProjectCard/ProjectCard"
+import { useDispatch, useSelector } from "react-redux"
+import { selectLanguage } from "../../store/LanguageSlice/selectors"
+import { LoadProjectsIfNotExist } from "../../store/ProjectsSlice/LoadProjectsIfNotExist"
+import { selectProjects } from "../../store/ProjectsSlice/selectors"
 
 
 export const ProjectsPage = () =>
 {
-	return <>
+	const dispatch = useDispatch();
+	const curLan = useSelector(selectLanguage);
+	useEffect(() => dispatch(LoadProjectsIfNotExist), [curLan]);
+
+	const ProjectsList = useSelector(selectProjects);
+	console.log(ProjectsList)
+	return (
+	<>
 		<SearchBar />
 		<section className={styles.wrapper}>
-			{db.map(data => <ProjectCard key={data.id} data={data} />)}
+		{ProjectsList?.map((project) => <ProjectCard key={project.id} project={project} />)}
 		</section>
 	</>
-}
+)}
 
 const db = [
 	{

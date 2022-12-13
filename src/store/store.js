@@ -4,6 +4,7 @@ import { ConstantsSlice } from "./ConstantsSlice"
 import { LanguageSlice } from "./LanguageSlice"
 import { PeopleSlice } from "./PeopleSlice"
 import { MapSlice } from "./MapSlice"
+import { ProjectsSlice } from "./ProjectsSlice"
 
 
 export const store = configureStore({
@@ -12,6 +13,7 @@ export const store = configureStore({
 		Constants: ConstantsSlice.reducer,
 		Language: LanguageSlice.reducer,
 		People: PeopleSlice.reducer,
-		Map: MapSlice.reducer
+		Map: MapSlice.reducer,
+		Projects: ProjectsSlice.reducer
 	}),
 });
