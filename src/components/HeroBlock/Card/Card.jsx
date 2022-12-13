@@ -1,11 +1,9 @@
 import React from "react";
 import styles from "./Card.module.css";
 
-export const Card = ({title, text}) => {
-    return (
-    <div className={styles.card}>
-        <span className={styles.card__number}>{title}</span>
-        <p className={styles.card__text}>{text}</p>
+
+export const Card = ({ title, text }) =>
+    <div className={styles.root}>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.text}>{text}</p>
     </div>
-    )
-}

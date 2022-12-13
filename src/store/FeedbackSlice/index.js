@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { Statuses } from "../../utils/Statuses"
+import { Statuses } from "@utils/Statuses"
+
 
 const initialState = {
 	modalView: false,

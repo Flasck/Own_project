@@ -1,14 +1,36 @@
 import React, { useState } from "react"
 import styles from "./SearchBar.module.css"
 
+
 export const SearchBar = () =>
 {
 	const [value, setValue] = useState("");
+
 	return <div className={styles.root}>
-		<input className={styles.input} placeholder={"Поиск по проектам..."} id="searchBar" value={value} onChange={(e) => setValue(e.target.value)} />
+		<input
+			className={styles.input}
+			placeholder={"Поиск по проектам..."}
+			id="searchBar" value={value}
+			onChange={(e) => setValue(e.target.value)}
+		/>
+
 		<div className={styles.border}></div>
-		<label className={styles.magnifier} htmlFor="searchBar"><Magnifier /></label>
-		{value ? <button className={styles.cross} onClick={() => setValue("")}><Cross /></button> : null}
+
+		<label
+			className={styles.magnifier}
+			htmlFor="searchBar"
+		>
+			<Magnifier />
+		</label>
+
+		{!value ? null :
+			<button
+				className={styles.cross}
+				onClick={() => setValue("")}
+			>
+				<Cross />
+			</button>
+		}
 	</div>
 }
 

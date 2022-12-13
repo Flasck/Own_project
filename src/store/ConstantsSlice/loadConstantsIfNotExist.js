@@ -1,8 +1,9 @@
 import { selectLanguage } from "../LanguageSlice/selectors"
 import { ConstantsSlice } from "./index"
-import { selectConstantsIsLoaded } from "./selectors";
+import { selectConstantsIsLoaded } from "./selectors"
 
-export const LoadConstantsIfNotExist = () => (dispatch, getState) =>
+
+export const LoadConstantsIfNotExist = (dispatch, getState) =>
 {
 	const state = getState();
 	if (selectConstantsIsLoaded(state)) return;

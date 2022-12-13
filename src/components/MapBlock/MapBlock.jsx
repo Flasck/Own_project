@@ -1,10 +1,12 @@
 import React from "react"
+import styles from "./MapBlock.module.css"
+import { useDispatch } from "react-redux";
 import { ContactButton } from "./ContactButton/ContactButton"
 import { Map } from "./Map/Map"
 import { PlacesList } from "./PlacesList/PlacesList"
-import styles from "./MapBlock.module.css"
-import { useDispatch } from "react-redux";
+
 import { FeedbackSlice } from "@store/FeedbackSlice";
+
 
 export const MapBlock = () =>
 {

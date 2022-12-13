@@ -1,12 +1,14 @@
 import React from "react"
+import styles from "./Header.module.css"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
-import { classnames } from "../../utils/classnames"
-import styles from "./Header.module.css"
 import { ThemeSwither } from "./ThemeSwither/ThemeSwither"
+import { classnames } from "@utils/classnames"
+
 import { LanguageSlice } from "@store/LanguageSlice/index"
 import { selectLanguage } from "@store/LanguageSlice/selectors"
 import { selectConstants } from "@store/ConstantsSlice/selectors"
+
 
 export const Header = ({ className }) =>
 {

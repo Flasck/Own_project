@@ -1,6 +1,7 @@
-import React from 'react'
-import styles from './PlacesList.module.css'
-import { TeammatePlaces } from './TeammatePlaces/TeammatePlaces'
+import React from "react"
+import styles from "./PlacesList.module.css"
+import { TeammatePlaces } from "./TeammatePlaces/TeammatePlaces"
+
 
 export const PlacesList = () =>
 	<div className={styles.root}>
