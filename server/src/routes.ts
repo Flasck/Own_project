@@ -7,9 +7,9 @@ Api.addRouteJSON("/", async q =>
 		"?lang=en": "Use 'en' lang",
 		"?lang=ru": "Use 'ru' lang",
 		"image?id": "PNG image",
-		"text?lang": "JSON with texts",
-		"/persons": [{ id: "number", name: "string", description: "string", technologies: "string[]" }],
-		"/places": [{ person: "string", places: { address: "string", coods: "string" } }],
+		"texts?lang": "JSON with texts",
+		"/persons": [{ id: "number", name: "string", descriptionShort: "string", description: "string", technologies: "string[]" }],
+		"/places": [{ person: "string", places: [{ address: "string", coods: ["number", "number"] }] }],
 		"/projects": [{ id: "number", title: "string", date: "string", imageId: "string | null", description: "string", type: "string", authors: "string[]", technologies: "string[]", }],
 		"/comments": [{ id: "string", author: "string", email: "string", text: "string" }],
 		"POST /comment": { author: "string", email: "string", text: "string" },
@@ -26,6 +26,11 @@ Api.addRouteSqlAll("/persons",
 			inner join TextType as tt on t.typeId = tt.id and tt.name = 'personName'
 			inner join Lang as l on t.langId = l.id and l.name = $1
 			where t.objId = p.id) as name,
+		(select text
+			from Text as t
+			inner join TextType as tt on t.typeId = tt.id and tt.name = 'personDescriptionShort'
+			inner join Lang as l on t.langId = l.id and l.name = $1
+			where t.objId = p.id) as descriptionShort,
 		(select text
 			from Text as t
 			inner join TextType as tt on t.typeId = tt.id and tt.name = 'personDescription'
@@ -62,7 +67,10 @@ Api.addRouteSqlAll("/places",
 	order by p.id
 `, [["lang", "ru"]], rows => rows.map(row => ({
 	...row,
-	places: JSON.parse(row.places),
+	places: JSON.parse(row.places).map((place: any) => ({
+		...place,
+		coords: place.coords.split(";").map(parseFloat),
+	})),
 })));
 
 Api.addRouteSqlAll("/projects",
@@ -112,11 +120,11 @@ Api.addRoute("GET","/image?id", "png", async function(q)
 });
 
 const Langs = ["ru", "en"];
-Api.addRoute("GET", "/text", "json", async q =>
+Api.addRoute("GET", "/texts", "json", async q =>
 {
 	let lang = parseParam(q.lang, "lang", Langs[0]);
 	if (Langs.indexOf(lang) < 0) lang = Langs[0];
-	return await Api.readFile(`../data/text/${lang}.json`, "utf8");
+	return await Api.readFile(`../data/texts/${lang}.json`, "utf8");
 });
 
 
