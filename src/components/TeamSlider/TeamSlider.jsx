@@ -8,7 +8,7 @@ import { PersonCard } from "./PersonCard/PersonCard"
 
 import { selectPeople } from "@store/PeopleSlice/selectors"
 import { selectLanguage } from "@store/LanguageSlice/selectors"
-import { LoadPeopleIfNotExist } from "@store/PeopleSlice/loadPeopleIfNotExist"
+import { LoadPeopleIfNotExist } from "@store/PeopleSlice/LoadPeopleIfNotExist"
 
 
 export const TeamSlider = () =>
