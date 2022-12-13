@@ -4,6 +4,7 @@ import { ConstantsSlice } from "./ConstantsSlice"
 import { LanguageSlice } from "./LanguageSlice"
 import { PeopleSlice } from "./PeopleSlice"
 
+
 export const store = configureStore({
 	reducer: combineReducers({
 		Feedback: FeedbackSlice.reducer,
@@ -11,4 +12,4 @@ export const store = configureStore({
 		Language: LanguageSlice.reducer,
 		People: PeopleSlice.reducer,
 	}),
-})
+});

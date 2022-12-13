@@ -14,7 +14,7 @@
 .content {
 	width: 100%;
 	max-width: var(--max-width);
-	overflow: hidden;
+	padding: 0 1em;
 }
 
 .header {

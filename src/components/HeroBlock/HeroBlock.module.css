@@ -1,50 +1,43 @@
-.container {
+.root {
 	display: flex;
-	flex-direction: row;
-	width: 800px;
-	height: 517px;
-	background: linear-gradient(180deg, rgba(0, 234, 122, 0.3) 0%, rgba(0, 234, 122, 0) 50%), url(./Bg.png);
-	border-radius: 12px;
-	padding: 32px;
-	font-family: "Neue Machina";
-	font-style: normal;
-	color: var(--c-text);
+	background: linear-gradient(180deg, rgba(0, 234, 122, 0.3) 0%, rgba(0, 234, 122, 0) 50%),
+				no-repeat url(./background.svg);
+	border-radius: 0.75em;
+	padding: 2em;
+	cursor: default;
 }
 
-.side_left {
+.leftBlock {
 	display: flex;
 	flex-direction: column;
-	margin-right: 16px;
+	margin-right: 1em;
+	margin-top: 3.375em;
 }
 
-.side_left_wrapper {
-	margin-top: 54px;
-}
-
-.side_left_title {
+.title {
+	font-size: 3rem;
 	font-weight: 800;
-	font-size: 48px;
-	line-height: 46px;
-	margin-bottom: 8px;
+	line-height: 0.95em;
+	margin-bottom: 0.5rem;
 	text-transform: uppercase;
 }
 
-.side_left_description {
+.subTitle {
+	font-size: 1.25rem;
 	font-weight: 400;
-	font-size: 20px;
-	line-height: 19px;
+	line-height: 0.95em;
 }
 
-.side_right {
+.rightBlock {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-.downArrow {
+.arrow {
 	margin: 16px 0;
 }
 
-.downArrow_path {
+.arrow__path {
 	stroke: var(--c-text);
 }

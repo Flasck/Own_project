@@ -71,7 +71,7 @@
     border: 1px solid #099550;
 }
 
-.form_block {
+.form__block {
     margin-bottom: 19px;
     display: flex;
     flex-direction: column;
@@ -155,10 +155,6 @@
     line-height: 15px;
     color: #000000;
     cursor:  pointer;
-}
-
-.btn:disabled {
-    opacity: 0.5;
 }
 
 

@@ -1,66 +1,78 @@
 import React from "react"
-import { SearchBar } from "../../components/SearchBar/SearchBar"
 import styles from "./ProjectsPage.module.css"
-import { CardCase } from "../../components/CardCase/CardCase"
+import { SearchBar } from "@components/SearchBar/SearchBar"
+import { ProjectCard } from "@components/ProjectCard/ProjectCard"
 
 
-export const ProjectsPage = () => {
-	const db = [
-		{
-			id: "123",
-			time: "12:06 11/11/2021",
-			name: "Unnamed project №1",
-			authors: "Иван Иванов",
-			for: "Личный проект",
-			desc: "Lorem ipsum dolor tas enim aliquam veritatis corrupti iusto placeat, repellendus fugit, explicabo ut est? Cum, a, inventore porro, neque eum maiores exercitationem eligendi modi dolorum officiis veritatis deleniti necessitatibus ipsum debitis veniam. A.",
-			techs: ["HTML", "CSS", "React", "Redux"],
-		},
-		{
-			id: "456",
-			time: "12:06 11/11/2021",
-			name: "Unnamed project №1",
-			authors: "Иван Иванов, Сергей Бобров",
-			for: "Личный проект",
-			desc: "Lorem ipsum dolor sre voluptas enim aliquam veritatis corrupti iusto placeat, repellendus fugit, explicabo ut est? Cum, a, inventore porro, neque eum maiores exercitationem eligendi modi dolorum officiis veritatis deleniti necessitatibus ipsum debitis veniam. A.",
-			techs: ["HTML", "CSS", "React", "Redux"],
-		},
-		{
-			id: "789",
-			time: "12:06 11/11/2021",
-			name: "Unnamed project №1",
-			authors: "Иван Иванов, Сергей Бобров",
-			for: "Личный проект",
-			desc: "Lorem Tempore voluptas enim aliquam veritatis corrupti iusto placeat, repellendus fugit, explicabo ut est? Cum, a, inventore porro, neque eum maiores exercitationem eligendi modi dolorum officiis veritatis deleniti necessitatibus ipsum debitis veniam. A.",
-			techs: ["HTML", "CSS", "React", "Redux"],
-		},
-		{
-			id: "711",
-			time: "12:06 11/11/2021",
-			name: "Unnamed project №1",
-			authors: "Иван Иванов, Сергей Бобров",
-			for: "Личный проект",
-			desc: "Lorem Tempore voluptas enim aliquam veritatis to placeat, repellendus fugit, explicabo ut est? Cum, a, inventore porro, neque eum maiores exercitationem eligendi modi dolorum officiis veritatis deleniti necessitatibus ipsum debitis veniam. A.",
-			techs: ["HTML", "CSS", "React", "Redux"],
-		},
-		{
-			id: "7229",
-			time: "12:06 11/11/2021",
-			name: "Unnamed project №1",
-			authors: "Иван Иванов, Сергей Бобров",
-			for: "Личный проект",
-			desc: "Lorem Teto placeat, repellendus fugit, explicabo ut est? Cum, a, inventore porro, neque eum maiores exercitationem eligendi modi dolorum officiis veritatis deleniti necessitatibus ipsum debitis veniam. A.",
-			techs: ["HTML", "CSS", "React", "Redux"],
-		},
-	]
-	return (
-		<>
-			<SearchBar />
-			<article className={styles.wrapper}>
-				{db.map((c) => (
-					<CardCase key={c.id} arr={c} />
-				))}
-			</article>
-		</>
-	)
+export const ProjectsPage = () =>
+{
+	return <>
+		<SearchBar />
+		<section className={styles.wrapper}>
+			{db.map(data => <ProjectCard key={data.id} data={data} />)}
+		</section>
+	</>
 }
 
+const db = [
+	{
+		id: "1",
+		title: "Unnamed project №1",
+		date: "12:06 11/11/2021",
+        imageId: null,
+		description: "Lorem ipsum dolor tas enim aliquam veritatis corrupti iusto placeat, repellendus fugit, explicabo ut est? Cum, a, inventore porro, neque eum maiores exercitationem eligendi modi dolorum officiis veritatis deleniti necessitatibus ipsum debitis veniam. A.",
+		type: "Личный проект",
+		authors: ["Иван Иванов"],
+		technologies: ["HTML", "CSS", "React", "Redux"],
+	},
+	{
+		id: "2",
+		title: "Unnamed project №1",
+		date: "12:06 11/11/2021",
+        imageId: null,
+		description: "Lorem ipsum dolor sre voluptas enim aliquam veritatis corrupti iusto placeat, repellendus fugit, explicabo ut est? Cum, a, inventore porro, neque eum maiores exercitationem eligendi modi dolorum officiis veritatis deleniti necessitatibus ipsum debitis veniam. A.",
+		type: "Личный проект",
+		authors: ["Иван Иванов", "Сергей Бобров"],
+		technologies: ["HTML", "CSS", "React", "Redux"],
+	},
+	{
+		id: "3",
+		title: "Unnamed project №1",
+		date: "12:06 11/11/2021",
+        imageId: null,
+		description: "Lorem ipsum dolor sre voluptas enim aliquam veritatis corrupti iusto placeat, repellendus fugit, explicabo ut est? Cum, a, inventore porro, neque eum maiores exercitationem eligendi modi dolorum officiis veritatis deleniti necessitatibus ipsum debitis veniam. A.",
+		type: "Личный проект",
+		authors: ["Иван Иванов", "Сергей Бобров"],
+		technologies: ["HTML", "CSS", "React", "Redux"],
+	},
+	{
+		id: "4",
+		title: "Unnamed project №1",
+		date: "12:06 11/11/2021",
+        imageId: null,
+		description: "Lorem ipsum dolor sre voluptas enim aliquam veritatis corrupti iusto placeat, repellendus fugit, explicabo ut est? Cum, a, inventore porro, neque eum maiores exercitationem eligendi modi dolorum officiis veritatis deleniti necessitatibus ipsum debitis veniam. A.",
+		type: "Личный проект",
+		authors: ["Иван Иванов", "Сергей Бобров"],
+		technologies: ["HTML", "CSS", "React", "Redux"],
+	},
+	{
+		id: "5",
+		title: "Unnamed project №1",
+		date: "12:06 11/11/2021",
+        imageId: null,
+		description: "Lorem ipsum dolor sre voluptas enim aliquam veritatis corrupti iusto placeat, repellendus fugit, explicabo ut est? Cum, a, inventore porro, neque eum maiores exercitationem eligendi modi dolorum officiis veritatis deleniti necessitatibus ipsum debitis veniam. A.",
+		type: "Личный проект",
+		authors: ["Иван Иванов", "Сергей Бобров"],
+		technologies: ["HTML", "CSS", "React", "Redux"],
+	},
+	{
+		id: "6",
+		title: "Unnamed project №1",
+		date: "12:06 11/11/2021",
+        imageId: null,
+		description: "Lorem ipsum dolor sre voluptas enim aliquam veritatis corrupti iusto placeat, repellendus fugit, explicabo ut est? Cum, a, inventore porro, neque eum maiores exercitationem eligendi modi dolorum officiis veritatis deleniti necessitatibus ipsum debitis veniam. A.",
+		type: "Личный проект",
+		authors: ["Иван Иванов", "Сергей Бобров"],
+		technologies: ["HTML", "CSS", "React", "Redux"],
+	},
+]

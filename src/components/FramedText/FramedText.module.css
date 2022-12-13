@@ -1,0 +1,8 @@
+.root {
+	color: var(--c-second-light);
+	border: 1px solid var(--c-second-light);
+	border-radius: 0.3em;
+	padding: 0.16em 0.6em;
+	line-height: 1.6em;
+	font-size: 0.75rem;
+}
