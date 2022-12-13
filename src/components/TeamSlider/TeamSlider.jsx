@@ -10,20 +10,26 @@ import { selectPeople } from "@store/PeopleSlice/selectors"
 import { selectLanguage } from "@store/LanguageSlice/selectors"
 import { LoadPeopleIfNotExist } from "@store/PeopleSlice/LoadPeopleIfNotExist"
 
+export const TeamSlider = () => {
+	const dispatch = useDispatch()
+	const curLan = useSelector(selectLanguage)
+	useEffect(() => dispatch(LoadPeopleIfNotExist), [curLan])
 
-export const TeamSlider = () =>
-{
-	const dispatch = useDispatch();
-	const curLan = useSelector(selectLanguage);
-	useEffect(() => dispatch(LoadPeopleIfNotExist), [curLan]);
+	const PeopleList = useSelector(selectPeople)
 
-	const PeopleList = useSelector(selectPeople);
-
-	return <Swiper slidesPerView={2} centeredSlides={true} className={styles.slider} spaceBetween={70}>
-		{PeopleList?.map((person) =>
-			<SwiperSlide key={person.id}>
-				<PersonCard key={person.id + 100} person={person} />
-			</SwiperSlide>
-		)}
-	</Swiper>
+	return (
+		<>
+			{PeopleList ? (
+				<Swiper slidesPerView={2} centeredSlides={true} className={styles.slider} spaceBetween={70}>
+					{PeopleList?.map((person) => (
+						<SwiperSlide key={person.id}>
+							<PersonCard person={person} />
+						</SwiperSlide>
+					))}
+				</Swiper>
+			) : (
+				<div className={styles.err}>Error</div>
+			)}
+		</>
+	)
 }

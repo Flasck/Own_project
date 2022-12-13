@@ -2,4 +2,14 @@
 	margin: 3rem 0 3rem 3rem;
 	overflow: hidden;
 	user-select: none;
+	overflow: visible;
+}
+
+.err {
+	width: 100%;
+	padding: 2em;
+	text-align: center;
+	font-size: 1rem;
+	border: 1px solid;
+	border-radius: 12px;
 }
