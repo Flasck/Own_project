@@ -7,7 +7,8 @@
     "start": "webpack serve --mode development --config ./webpack.config.js ",
     "build": "webpack --mode production --config ./webpack.config.js",
     "lint:js": "npx eslint src/**/*.js --fix --ext .js",
-    "lint:css": "npx stylelint src/**/*.css --fix"
+    "lint:css": "npx stylelint src/**/*.css --fix",
+    "startServerDev": "cd server && npm run startDEV"
   },
   "repository": {
     "type": "git",
