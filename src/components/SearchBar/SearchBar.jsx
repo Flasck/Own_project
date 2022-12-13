@@ -1,15 +1,18 @@
 import React, { useState } from "react"
 import styles from "./SearchBar.module.css"
+import { useSelector } from "react-redux";
+import { selectConstants } from "@store/ConstantsSlice/selectors"
 
 
 export const SearchBar = () =>
 {
 	const [value, setValue] = useState("");
+    const texts = useSelector(selectConstants);
 
 	return <div className={styles.root}>
 		<input
 			className={styles.input}
-			placeholder={"Поиск по проектам..."}
+			placeholder={texts?.projectsPage?.searchBar}
 			id="searchBar" value={value}
 			onChange={(e) => setValue(e.target.value)}
 		/>
