@@ -1,5 +1,3 @@
-.root { }
-
 .name {
 	font-weight: 500;
 }
@@ -17,10 +15,6 @@
 	gap: 0.5em;
 	align-items: center;
 	cursor: pointer;
-}
-
-.icon {
-
 }
 
 .place {

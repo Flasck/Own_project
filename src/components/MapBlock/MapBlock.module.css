@@ -1,5 +1,3 @@
-.root {}
-
 .wrapper {
 	width: 100%;
 	height: 300px;
@@ -29,11 +27,11 @@
 	animation: spin 1s linear infinite;
 }
 
-.loadingIcon_path {
+.loadingIcon__path {
 	fill: var(--c-text);
 }
 
-@keyframes spin{
+@keyframes spin {
 	from {
 		transform: rotate(0);
 	}
