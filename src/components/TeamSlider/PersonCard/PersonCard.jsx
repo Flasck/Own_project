@@ -18,10 +18,24 @@ export const PersonCard = ({ person }) => {
 					<img className={styles.photo} src={Light_gh} alt="No img" />
 					<h1 className={styles.name}>{person.name}</h1>
 					<div className={styles.links}>
-						<a className={styles.link} href="https://github.com/" target="_blank">
+						<a
+							className={styles.link}
+							href="https://github.com/"
+							target="_blank"
+							onClick={(l) => {
+								change()
+							}}
+						>
 							<Icon_Gh />
 						</a>
-						<a className={styles.link} href="https://web.telegram.org/" target="_blank">
+						<a
+							className={styles.link}
+							href="https://web.telegram.org/"
+							target="_blank"
+							onClick={(l) => {
+								change()
+							}}
+						>
 							<img className={styles.link_logo} src={TG_logo} alt="" />
 						</a>
 					</div>
