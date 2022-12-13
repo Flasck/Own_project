@@ -1,12 +1,12 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit"
-import { FeedbackSlice } from "./Feedback"
-import { ConstantSlice } from "./ConstantSlice"
-import { CurrentLanguageSlice } from "./CurrentLanguage"
+import { FeedbackSlice } from "./FeedbackSlice"
+import { ConstantsSlice } from "./ConstantsSlice"
+import { LanguageSlice } from "./LanguageSlice"
 
 export const store = configureStore({
 	reducer: combineReducers({
 		Feedback: FeedbackSlice.reducer,
-		Constant: ConstantSlice.reducer,
-		CurrentLang: CurrentLanguageSlice.reducer,
+		Constants: ConstantsSlice.reducer,
+		Language: LanguageSlice.reducer,
 	}),
-})
+});

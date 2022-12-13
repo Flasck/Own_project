@@ -4,44 +4,42 @@ import { NavLink } from "react-router-dom"
 import { classnames } from "../../utils/classnames"
 import styles from "./Header.module.css"
 import { ThemeSwither } from "./ThemeSwither/ThemeSwither"
-import { CurrentLanguageSlice } from "../../store/CurrentLanguage/index"
-import { selectCurrentLang } from "../../store/CurrentLanguage/selectors"
-import { selectConstantText } from "../../store/ConstantSlice/selectors"
+import { LanguageSlice } from "@store/LanguageSlice/index"
+import { selectLanguage } from "@store/LanguageSlice/selectors"
+import { selectConstants } from "@store/ConstantsSlice/selectors"
 
-export const Header = ({ className }) => {
-	const curLan = useSelector((state) => selectCurrentLang(state))
-	const text = useSelector((state) => selectConstantText(state))
-	const dispatch = useDispatch()
+export const Header = ({ className }) =>
+{
+	const curLang = useSelector(selectLanguage);
+	const text = useSelector(selectConstants);
+	const dispatch = useDispatch();
 
-	return (
-		<header className={classnames(styles.root, className)}>
-			<div className={styles.container}>
-				<span className={styles.brand}>Turtle</span>
-				<NavLink className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)} to={"/"}>
-					{text?.header?.mainPage}
-				</NavLink>
-				<NavLink
-					className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)}
-					to={"/OurCases"}
+	return <header className={classnames(styles.root, className)}>
+		<div className={styles.container}>
+			<span className={styles.brand}>Turtle</span>
+
+			<NavLink className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)} to={"/"}>
+				{text?.header?.mainPage}
+			</NavLink>
+			<NavLink className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)} to={"/OurCases"}>
+				{text?.header?.projectsPage}
+			</NavLink>
+
+			<span className={styles.switchers}>
+				<button
+					className={classnames(styles.langSwitch, styles.link, curLang === "ru" && styles.linkActive)}
+					onClick={() => dispatch(LanguageSlice.actions.changeLang("ru"))}
 				>
-					Наши проекты
-				</NavLink>
-				<span className={styles.switchers}>
-					<button
-						className={classnames(styles.langSwitch, styles.link, curLan === "ru" && styles.linkActive)}
-						onClick={() => dispatch(CurrentLanguageSlice.actions.changeLang("ru"))}
-					>
-						рус
-					</button>
-					<button
-						className={classnames(styles.langSwitch, styles.link, curLan === "en" && styles.linkActive)}
-						onClick={() => dispatch(CurrentLanguageSlice.actions.changeLang("en"))}
-					>
-						eng
-					</button>
-					<ThemeSwither />
-				</span>
-			</div>
-		</header>
-	)
+					рус
+				</button>
+				<button
+					className={classnames(styles.langSwitch, styles.link, curLang === "en" && styles.linkActive)}
+					onClick={() => dispatch(LanguageSlice.actions.changeLang("en"))}
+				>
+					eng
+				</button>
+				<ThemeSwither />
+			</span>
+		</div>
+	</header>
 }

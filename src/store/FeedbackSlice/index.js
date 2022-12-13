@@ -7,23 +7,23 @@ const initialState = {
 }
 
 export const FeedbackSlice = createSlice({
-	name: "Feedback",
+	name: "FeedbackSlice",
 	initialState: initialState,
 	reducers: {
 		changeView: (state, action) => {
-			state.modalView = !state.modalView
+			state.modalView = !state.modalView;
 		},
 		startLoading: (state, action) => {
-			state.status = Statuses.inProgress
+			state.status = Statuses.inProgress;
 		},
 		successLoading: (state, action) => {
-			state.status = Statuses.success
+			state.status = Statuses.success;
 		},
 		failLoading: (state, action) => {
-			state.status = Statuses.failed
+			state.status = Statuses.failed;
 		},
 		changeStatus: (state, action) => {
-			state.status = action.payload
+			state.status = action.payload;
 		},
 	},
 })

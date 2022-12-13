@@ -2,12 +2,14 @@ import React, { useState } from "react"
 import styles from "./ModalWindowContact.module.css"
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
-import { selectStatusModalView, selectStatusModalViewRequest } from "../../store/Feedback/selectors"
-import { FeedbackSlice } from "../../store/Feedback"
-import { SendFeedBackIfNotExist } from "../../store/Feedback/SendFeedBackIfNotExist"
-import { Statuses } from "../../utils/Statuses"
 import { Button } from "@components/Button/Button"
-import { classnames } from "../../utils/classnames"
+import { Statuses } from "@utils/Statuses"
+import { classnames } from "@utils/classnames"
+
+import { FeedbackSlice } from "@store/FeedbackSlice"
+import { selectModalView, selectFeedbackStatus } from "@store/FeedbackSlice/selectors"
+import { SendFeedBack } from "@store/FeedbackSlice/sendFeedBack"
+
 
 export const ModalWindowContact = () => {
 	const {
@@ -17,11 +19,11 @@ export const ModalWindowContact = () => {
 		reset,
 	} = useForm({ mode: "onBlur" })
 	const dispatch = useDispatch()
-	const statusModalView = useSelector((state) => selectStatusModalView(state))
-	const statusModalRequest = useSelector((state) => selectStatusModalViewRequest(state))
+	const statusModalView = useSelector((state) => selectModalView(state))
+	const statusModalRequest = useSelector((state) => selectFeedbackStatus(state))
 	const [CheckBox, setCheckBox] = useState(false)
 	const onSubmit = (data) => {
-		dispatch(SendFeedBackIfNotExist(data))
+		dispatch(SendFeedBack(data))
 	}
 
 	if (statusModalRequest === Statuses.success) {
