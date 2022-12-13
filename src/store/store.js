@@ -3,6 +3,7 @@ import { FeedbackSlice } from "./FeedbackSlice"
 import { ConstantsSlice } from "./ConstantsSlice"
 import { LanguageSlice } from "./LanguageSlice"
 import { PeopleSlice } from "./PeopleSlice"
+import { MapSlice } from "./MapSlice"
 
 
 export const store = configureStore({
@@ -11,5 +12,6 @@ export const store = configureStore({
 		Constants: ConstantsSlice.reducer,
 		Language: LanguageSlice.reducer,
 		People: PeopleSlice.reducer,
+		Map: MapSlice.reducer
 	}),
 });

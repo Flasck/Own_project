@@ -1,43 +1,16 @@
 import React from "react"
 import styles from "./PlacesList.module.css"
-import { TeammatePlaces } from "./TeammatePlaces/TeammatePlaces"
+import {TeammatePlaces} from "./TeammatePlaces/TeammatePlaces"
+import {useSelector} from "react-redux";
+import {selectAllPlaces} from "@store/MapSlice/selectors";
 
+export const PlacesList = () => {
+    const allPlaces = useSelector((state) => selectAllPlaces(state))
 
-export const PlacesList = () =>
-	<div className={styles.root}>
-		{
-			data.map((v, i) => <TeammatePlaces key={i} data={v} />)
-		}
-	</div>
+    return <div className={styles.root}>
+        {
+            allPlaces.map((v, i) => <TeammatePlaces key={i} data={v}/>)
+        }
+    </div>
+}
 
-
-const data = [
-	{
-		name: "Петр Иванов",
-		places: [
-			"г. Москва, Ленинский пр-т, 10",
-			"г. Москва, ул. Большая Пушкинская, стр. 10",
-		]
-	},
-	{
-		name: "Иван Петров",
-		places: [
-			"г. Санкт-Петербург, ул. Большая Пушкинская, стр. 24",
-			"г. Казань, Ленинский пр-т, 10",
-		]
-	},
-	{
-		name: "Иван Петров",
-		places: [
-			"г. Санкт-Петербург, ул. Большая Пушкинская, стр. 24",
-			"г. Казань, Ленинский пр-т, 10",
-		]
-	},
-	{
-		name: "Иван Петров",
-		places: [
-			"г. Санкт-Петербург, ул. Большая Пушкинская, стр. 24",
-			"г. Казань, Ленинский пр-т, 10",
-		]
-	},
-]
