@@ -6,8 +6,8 @@ const initialState = {
 	status: Statuses.idle,
 }
 
-export const ConstantsSlice = createSlice({
-	name: "ConstantsSlice",
+export const PeopleSlice = createSlice({
+	name: "PeopleSlice",
 	initialState: initialState,
 	reducers: {
 		startLoading: (state) => {

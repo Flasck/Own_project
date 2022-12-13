@@ -1,54 +1,26 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { PersonCard } from "./PersonCard/PersonCard"
-import SwiperCore, { Autoplay } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/swiper.min.css"
 import "swiper/css/navigation"
 import styles from "./TeamSlider.module.css"
+import { useDispatch, useSelector } from "react-redux"
+import { selectPeople } from "../../store/PeopleSlice/selectors"
+import { selectLanguage } from "../../store/LanguageSlice/selectors"
+import { LoadPeopleIfNotExist } from "../../store/PeopleSlice/LoadPeopleIfNotExist"
 
 export const TeamSlider = () => {
-	const bd = [
-		{
-			id: 1,
-			name: "Дарья",
-			post: "Web-разработчик",
-			techs: ["HTML5", "CSS3", "JS", "React"],
-			desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nostrum porro, officiis nam reprehenderit accusamus consequuntur iure inventore veritatis quos eius doloribus ea! Illo ab quaerat saepe est architecto. Eveniet.",
-		},
-		{
-			id: 2,
-			name: "Михаил",
-			post: "Web-разработчик",
-			techs: ["HTML5", "CSS3", "JS", "React"],
-			desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consectetur ab facilis necessitatibus qui sint repellat accusamus! Assumenda nemo, inventore harum delectus cupiditate quam dolor vitae ut cumque nesciunt sequi?",
-		},
-		{
-			id: 3,
-			name: "Николай",
-			post: "Web-разработчик",
-			techs: ["HTML5", "CSS3", "JS", "React"],
-			desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem laborum rem labore esse consequuntur nesciunt quae ad molestias. Culpa facilis possimus magni tempore. Minima natus sint delectus porro blanditiis distinctio.",
-		},
-		{
-			id: 4,
-			name: "Влад",
-			post: "Web-разработчик",
-			techs: ["HTML5", "CSS3", "JS", "React"],
-			desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias ipsum quisquam alias non itaque error officiis quia tempora ullam. Quas harum sit consectetur doloribus repellendus neque quod dolorem reprehenderit ipsam.",
-		},
-	]
+	const dispatch = useDispatch()
+	const curLan = useSelector((state) => selectLanguage(state))
+	useEffect(() => dispatch(LoadPeopleIfNotExist()), [curLan])
+
+	const PeopleList = useSelector((state) => selectPeople(state))
 
 	return (
-		<Swiper
-			slidesPerView={2}
-			centeredSlides={true}
-			className={styles.slider}
-			spaceBetween={70}
-			autoplay={{ delay: 5000 }}
-		>
-			{bd.map((person) => (
+		<Swiper slidesPerView={2} centeredSlides={true} className={styles.slider} spaceBetween={70}>
+			{PeopleList?.map((person) => (
 				<SwiperSlide key={person.id}>
-					<PersonCard key={person.id} arr={person} />
+					<PersonCard key={person.id + 100} person={person} />
 				</SwiperSlide>
 			))}
 		</Swiper>
