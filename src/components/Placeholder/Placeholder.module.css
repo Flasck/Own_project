@@ -1,6 +1,11 @@
+.root {
+	display: block;
+}
 .inner {
+	display: block;
 	background-color: transparent;
-	color: transparent;
+	overflow: hidden;
+	color: var(--c-text);
 	width: var(--data-width);
 	height: var(--data-height);
 	border-radius: 0.2em;
@@ -24,8 +29,4 @@
 	100% {
 		background-position-x: calc(var(--data-w) + 400px - var(--data-w) / 2 - 50px - var(--data-x));
 	}
-}
-
-.inner_rounded {
-	border-radius: 8px;
 }
