@@ -2,7 +2,10 @@ import { createSlice } from "@reduxjs/toolkit"
 import { Statuses } from "@utils/Statuses"
 
 const initialState = {
-    allPlaces: null,
+    allPlaces: {
+        ru: null,
+        en: null
+    },
     currentActiveMark: {
         address: null,
         coords: null
@@ -21,7 +24,7 @@ export const MapSlice = createSlice({
         },
         successLoading: (state, action) => {
             state.status = Statuses.success
-            state.allPlaces = action.payload
+            state.allPlaces[action.payload.lang] = action.payload.data
         },
         failLoading: (state, action) => {
             state.status = Statuses.failed

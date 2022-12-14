@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./TeammatePlaces.module.css";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,8 +14,6 @@ export const TeammatePlaces = ({ data }) =>
     const dispatch = useDispatch();
     const activeMark = useSelector(selectCurrentActiveMark);
 
-    // useEffect(() => { }, [activeMark]);
-
     return <div>
         <div className={styles.name}>{data.person}</div>
         <div className={styles.places}>
@@ -23,7 +21,7 @@ export const TeammatePlaces = ({ data }) =>
                 data.places.map((v, i) =>
                     <div key={i} className={styles.place}>
                     {
-                        v.address === activeMark.address
+                        v.coords === activeMark.coords
                             ?
                             <img onClick={() => dispatch(MapSlice.actions.changeCurrentActive(v))}
                                 src={iconMarkActive}

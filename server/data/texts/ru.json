@@ -18,6 +18,30 @@
 		"mapBlock": {
 			"title": "Контактная информация",
 			"contactButton": "Связаться с нами"
+		},
+		"modalWindowContact": {
+			"title": "Свяжитесь с нами",
+			"author": {
+				"text": "Как Вас зовут",
+				"required": "Имя должно быть введено!",
+				"minLength": "Минимум 3 символа!"
+			},
+			"email": {
+				"text": "Ваш Email",
+				"required": "Email должен быть введен!",
+				"notPattern": "Email некорректен!"
+			},
+			"text": {
+				"text": "Ваше сообщение",
+				"required": "Сообщение должно быть введено!",
+				"minLength": "Минимум 6 символов!",
+				"maxLength": "Максимум 1000 символов!"
+			},
+			"checkBoxLabel": "Даю согласие на обработку персональных данных",
+			"onSuccess": "Форма успешно отправлена!",
+			"onFailed": "Не удалось отправить форму :(",
+			"buttonSend": "Отправить",
+			"buttonOk": "Ок"
 		}
 	},
 	"projectsPage": {

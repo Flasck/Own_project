@@ -7,10 +7,15 @@ export const SendFeedBack = (data) => (dispatch, getState) =>
 	fetch(`http://localhost:3001/comment`, {
 		method: "POST",
 		headers: {
-			"Content-Type": "application/json;charset=utf-8",
+			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify(data),
 	})
-		.then(() => dispatch(FeedbackSlice.actions.successLoading()))
+		.then((req) => {
+			if(req.status !== 200) {
+				return dispatch(FeedbackSlice.actions.failLoading())
+			}
+			return dispatch(FeedbackSlice.actions.successLoading())
+		})
 		.catch(() => dispatch(FeedbackSlice.actions.failLoading()))
 }

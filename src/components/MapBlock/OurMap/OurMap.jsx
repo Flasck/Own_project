@@ -1,17 +1,15 @@
 import React from "react"
 import styles from "./OurMap.module.css"
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
-import { Map, Placemark } from "@pbe/react-yandex-maps";
+import {Map, Placemark} from "@pbe/react-yandex-maps";
 import iconMark from "../IconMark.svg"
 import iconMarkActive from "../IconMarkActive.svg"
 
-import { selectAllPlaces, selectCurrentActiveMark } from "@store/MapSlice/selectors";
-import { MapSlice } from "@store/MapSlice";
+import {selectAllPlaces, selectCurrentActiveMark} from "@store/MapSlice/selectors";
+import {MapSlice} from "@store/MapSlice";
 
-
-export const OurMap = () =>
-{
+export const OurMap = () => {
     const activeMark = useSelector(selectCurrentActiveMark);
     const allPlaces = useSelector(selectAllPlaces);
     const dispatch = useDispatch();
@@ -36,7 +34,7 @@ export const OurMap = () =>
                         geometry={el.coords}
                         options={{
                             iconLayout: "default#image",
-                            iconImageHref: activeMark.address === el.address ? iconMarkActive : iconMark,
+                            iconImageHref: activeMark.coords === el.coords ? iconMarkActive : iconMark,
                             iconImageSize: [40, 40],
                         }}
                     />
