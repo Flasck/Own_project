@@ -46,5 +46,8 @@
 	},
 	"projectsPage": {
 		"searchBar": "Поиск по проектам..."
+	},
+	"notFoundPage": {
+		"title": "Данной страницы не существует"
 	}
 }

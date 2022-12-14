@@ -32,7 +32,7 @@
 				"notPattern": "Email is incorrect!"
 			},
 			"text": {
-				"text": "your message",
+				"text": "Your message",
 				"required": "The message must be entered!",
 				"minLength": "Minimum 6 characters!",
 				"maxLength": "Maximum 1000 characters!"
@@ -46,5 +46,8 @@
 	},
 	"projectsPage": {
 		"searchBar": "Search by projects..."
+	},
+	"notFoundPage": {
+		"title": "This page Not Found"
 	}
 }
