@@ -9,6 +9,7 @@ import { classnames } from "@utils/classnames"
 import { FeedbackSlice } from "@store/FeedbackSlice"
 import { selectModalView, selectFeedbackStatus } from "@store/FeedbackSlice/selectors"
 import { SendFeedBack } from "@store/FeedbackSlice/sendFeedBack"
+import {selectConstants} from "@store/ConstantsSlice/selectors";
 
 
 export const ModalWindowContact = () =>
@@ -23,13 +24,14 @@ export const ModalWindowContact = () =>
 	const statusModalView = useSelector(selectModalView);
 	const statusModalRequest = useSelector(selectFeedbackStatus);
 	const [CheckBox, setCheckBox] = useState(false);
+	const texts = useSelector(selectConstants);
 	const onSubmit = (data) => dispatch(SendFeedBack(data));
 
-	if (statusModalRequest === Statuses.success)
-		return renderSucces(statusModalView, dispatch, setCheckBox, reset)
-
+	if (statusModalRequest === Statuses.success){
+		return renderSuccess(statusModalView, dispatch, setCheckBox, reset, texts)
+	}
 	if (statusModalRequest === Statuses.failed)
-		return renderFailed(statusModalView, dispatch)
+		return renderFailed(statusModalView, dispatch, texts)
 
 	if (statusModalRequest === Statuses.inProgress)
 		return renderInProgress(statusModalView, dispatch)
@@ -43,16 +45,16 @@ export const ModalWindowContact = () =>
 			className={styles.content}
 			onClick={(e) => e.stopPropagation()}
 		>
-			<h2 className={styles.title}>Свяжитесь с нами</h2>
+			<h2 className={styles.title}>{texts?.mainPage?.modalWindowContact?.title}</h2>
 			<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 				<div className={styles.form__block}>
-					<label className={styles.label} htmlFor="input_author">Как Вас зовут</label>
+					<label className={styles.label} htmlFor="input_author">{texts?.mainPage?.modalWindowContact?.author?.text}</label>
 					<input
-						{...register("Name", {
-							required: "Имя должно быть введено!",
+						{...register("author", {
+							required: texts?.mainPage?.modalWindowContact?.author?.required,
 							minLength: {
 								value: 3,
-								message: "Минимум 3 символа!",
+								message: texts?.mainPage?.modalWindowContact?.author?.minLength,
 							},
 						})}
 						className={styles.input}
@@ -60,17 +62,17 @@ export const ModalWindowContact = () =>
 						id="input_author"
 					/>
 					<div className={styles.error}>
-						{errors?.Name && <p>{errors?.Name.message || "Error"}</p>}
+						{errors?.author && <p>{errors?.author.message || "Error"}</p>}
 					</div>
 				</div>
 				<div className={styles.form__block}>
-					<label className={styles.label} htmlFor="input_email">Ваш Email</label>
+					<label className={styles.label} htmlFor="input_email">{texts?.mainPage?.modalWindowContact?.email?.text}</label>
 					<input
-						{...register("Email", {
-							required: "Email должен быть введен!",
+						{...register("email", {
+							required: texts?.mainPage?.modalWindowContact?.email?.required,
 							pattern: {
 								value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-								message: "Email некорректен!",
+								message: texts?.mainPage?.modalWindowContact?.email?.notPattern,
 							},
 						})}
 						className={styles.input}
@@ -78,29 +80,29 @@ export const ModalWindowContact = () =>
 						id="input_email"
 					/>
 					<div className={styles.error}>
-						{errors?.Email && <p>{errors?.Email.message || "Error"}</p>}
+						{errors?.email && <p>{errors?.email.message || "Error"}</p>}
 					</div>
 				</div>
 				<div className={styles.form__block} style={{ marginBottom: "35px" }}>
-					<label className={styles.label} htmlFor="input_text">Ваше сообщение</label>
+					<label className={styles.label} htmlFor="input_text">{texts?.mainPage?.modalWindowContact?.text?.text}</label>
 					<textarea
-						{...register("Message", {
-							required: "Сообщение должно быть введено!",
+						{...register("text", {
+							required: texts?.mainPage?.modalWindowContact?.text?.required,
 							minLength: {
 								value: 6,
-								message: "Минимум 6 символов!",
+								message: texts?.mainPage?.modalWindowContact?.text?.minLength,
 							},
 							maxLength: {
 								value: 1000,
-								message: "Максимум 1000 символов!",
+								message: texts?.mainPage?.modalWindowContact?.text?.maxLength,
 							},
 						})}
 						className={styles.textArea}
-						name="Message"
+						name="text"
 						id="input_text"
 					/>
 					<div className={styles.error}>
-						{errors?.Message && <p>{errors?.Message.message || "Error"}</p>}
+						{errors?.text && <p>{errors?.text.message || "Error"}</p>}
 					</div>
 				</div>
 				<div
@@ -124,11 +126,11 @@ export const ModalWindowContact = () =>
 							/>
 						</svg>
 					</a>
-					<label className={styles.label}>Даю согласие на обработку персональных данных</label>
+					<label className={styles.label}>{texts?.mainPage?.modalWindowContact?.checkBoxLabel}</label>
 				</div>
 				<div className={styles.wrapper}>
 					<Button disabled={!isValid || !CheckBox} type="submit" className={styles.btn}>
-						Отправить
+						{texts?.mainPage?.modalWindowContact?.buttonSend}
 					</Button>
 				</div>
 			</form>
@@ -137,7 +139,7 @@ export const ModalWindowContact = () =>
 }
 
 
-function renderSucces(statusModalView, dispatch, setCheckBox, reset)
+function renderSuccess(statusModalView, dispatch, setCheckBox, reset, texts)
 {
 	return <div
 		className={statusModalView ? styles.modal_active : styles.modal}
@@ -153,22 +155,24 @@ function renderSucces(statusModalView, dispatch, setCheckBox, reset)
 			className={styles.content}
 			onClick={(e) => e.stopPropagation()}
 		>
-			<p className={styles.StatusText}>Форма успешно отправлена!</p>
+			<p className={styles.StatusText}>{texts?.mainPage?.modalWindowContact?.onSuccess}</p>
 			<Button
 				onClick={() =>
 				{
-					dispatch(FeedbackSlice.actions.changeStatus(Statuses.idle))
 					dispatch(FeedbackSlice.actions.changeView())
+					dispatch(FeedbackSlice.actions.changeStatus(Statuses.idle))
+					setCheckBox((e) => !e)
+					reset()
 				} }
 				className={classnames(styles.btn, styles.btn_status)}
 			>
-				Ок
+				{texts?.mainPage?.modalWindowContact?.buttonOk}
 			</Button>
 		</div>
 	</div>
 }
 
-function renderFailed(statusModalView, dispatch)
+function renderFailed(statusModalView, dispatch,texts)
 {
 	return <div
 		className={statusModalView ? styles.modal_active : styles.modal}
@@ -183,9 +187,7 @@ function renderFailed(statusModalView, dispatch)
 			onClick={(e) => e.stopPropagation()}
 		>
 			<p className={styles.StatusText}>
-				Произошла ошибка.
-				<br />
-				Не удалось отправить форму :(
+				{texts?.mainPage?.modalWindowContact?.onFailed}
 			</p>
 			<Button
 				onClick={() =>
@@ -195,7 +197,7 @@ function renderFailed(statusModalView, dispatch)
 				}}
 				className={classnames(styles.btn, styles.btn_status)}
 			>
-				Ок
+				{texts?.mainPage?.modalWindowContact?.buttonOk}
 			</Button>
 		</div>
 	</div>
@@ -204,6 +206,7 @@ function renderFailed(statusModalView, dispatch)
 
 function renderInProgress(statusModalView, dispatch)
 {
+
 	return <div
 		className={statusModalView ? styles.modal_active : styles.modal}
 		onClick={() => dispatch(FeedbackSlice.actions.changeView())}

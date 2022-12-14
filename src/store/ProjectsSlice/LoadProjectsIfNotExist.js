@@ -9,7 +9,6 @@ export const LoadProjectsIfNotExist = (dispatch, getState) =>
 
 	dispatch(ProjectsSlice.actions.startLoading());
 	const lang = selectLanguage(state);
-	console.log(lang)
 
 	fetch(`http://localhost:3001/projects?lang=${lang}`)
 		.then((v) => v.json())

@@ -18,6 +18,30 @@
 		"mapBlock": {
 			"title": "Contact Information",
 			"contactButton": "Connect with us"
+		},
+		"modalWindowContact": {
+			"title": "Contact us",
+			"author": {
+				"text": "What is your name",
+				"required": "Name must be entered!",
+				"minLength": "Minimum 3 characters!"
+			},
+			"email": {
+				"text": "Your Email",
+				"required": "Email must be entered!",
+				"notPattern": "Email is incorrect!"
+			},
+			"text": {
+				"text": "your message",
+				"required": "The message must be entered!",
+				"minLength": "Minimum 6 characters!",
+				"maxLength": "Maximum 1000 characters!"
+			},
+			"checkBoxLabel": "I agree to the processing of personal data",
+			"onSuccess": "Form sent successfully!",
+			"onFailed": "Failed to submit form :(",
+			"buttonSend": "Send",
+			"buttonOk": "Ok"
 		}
 	},
 	"projectsPage": {
