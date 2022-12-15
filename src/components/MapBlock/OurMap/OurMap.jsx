@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import styles from "./OurMap.module.css"
 import {useDispatch, useSelector} from "react-redux";
 
@@ -15,31 +15,31 @@ export const OurMap = () => {
     const dispatch = useDispatch();
 
     return <div className={styles.root}>
-        <Map
-            className={styles.img}
-            state={{
-                center: activeMark.coords != null
-                    ? activeMark.coords : [55.751574, 37.573856],
-                zoom: activeMark.coords != null ? 8 : 4,
-            }}
-            options={{
-                type: "yandex#satellite"
-            }}
-        >
-            {allPlaces.map(places =>
-                places.places.map((el, i) =>
-                    <Placemark
-                        onClick={() => dispatch(MapSlice.actions.changeCurrentActive(el))}
-                        key={i}
-                        geometry={el.coords}
-                        options={{
-                            iconLayout: "default#image",
-                            iconImageHref: activeMark.coords === el.coords ? iconMarkActive : iconMark,
-                            iconImageSize: [40, 40],
-                        }}
-                    />
-                )
-            )}
-        </Map>
+            <Map
+                className={styles.img}
+                state={{
+                    center: activeMark.coords != null
+                        ? activeMark.coords : [53.751574, 44.573856],
+                    zoom: activeMark.coords != null ? 12 : 5,
+                }}
+                options={{
+                    type: "yandex#satellite"
+                }}
+            >
+                {allPlaces.map(places =>
+                    places.places.map((el, i) =>
+                        <Placemark
+                            onClick={() => dispatch(MapSlice.actions.changeCurrentActive(el))}
+                            key={i}
+                            geometry={el.coords}
+                            options={{
+                                iconLayout: "default#image",
+                                iconImageHref: activeMark.coords === el.coords ? iconMarkActive : iconMark,
+                                iconImageSize: [40, 40],
+                            }}
+                        />
+                    )
+                )}
+            </Map>
     </div>
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import styles from "./ProjectCard.module.css"
 import img from "./image.svg"
 import { FramedText } from "../FramedText/FramedText"
@@ -7,7 +7,9 @@ export const ProjectCard = ({project}) =>
 {
 	return <article className={styles.root}>
 		<figure>
-			<img className={styles.img} src={img} alt="Не удалось загрузить фото" />
+			<img className={styles.img}
+				 src={project.imageId !== null ? `http://localhost:3001/image?id=${project.imageId}` : img}
+				 alt="Не удалось загрузить фото" />
 			<figcaption>
 				<time className={styles.time}>{project.date}</time>
 			</figcaption>

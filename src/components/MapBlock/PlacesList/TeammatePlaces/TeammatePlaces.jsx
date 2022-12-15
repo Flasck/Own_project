@@ -8,7 +8,6 @@ import iconMarkActive from "../../IconMarkActive.svg";
 import { selectCurrentActiveMark } from "@store/MapSlice/selectors";
 import { MapSlice } from "@store/MapSlice";
 
-
 export const TeammatePlaces = ({ data }) =>
 {
     const dispatch = useDispatch();
