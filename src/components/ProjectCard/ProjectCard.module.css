@@ -8,6 +8,7 @@
 	border-radius: 0.75em;
 	margin-bottom: 0.6em;
 	height: 270px;
+	object-fit: cover;
 }
 
 .time {
