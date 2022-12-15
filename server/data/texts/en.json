@@ -24,7 +24,8 @@
 			"author": {
 				"text": "What is your name",
 				"required": "Name must be entered!",
-				"minLength": "Minimum 3 characters!"
+				"minLength": "Minimum 3 characters!",
+				"notPattern": "The name was not obtained by special characters and numbers!"
 			},
 			"email": {
 				"text": "Your Email",

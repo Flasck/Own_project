@@ -18,7 +18,7 @@ export const NotFoundPage = () => {
 
 const renderPlaceholder = () =>
     <div className={styles.wrapper}>
-        <h1 className={styles.title}>
+        <h3 className={styles.title}>
             {<Placeholder height={1}/>}
-        </h1>
+        </h3>
     </div>

@@ -5,7 +5,7 @@ import { LanguageSlice } from "./LanguageSlice"
 import { PeopleSlice } from "./PeopleSlice"
 import { MapSlice } from "./MapSlice"
 import { ProjectsSlice } from "./ProjectsSlice"
-
+import {CommentsSlice} from "./CommentsSlice";
 
 export const store = configureStore({
 	reducer: combineReducers({
@@ -14,6 +14,7 @@ export const store = configureStore({
 		Language: LanguageSlice.reducer,
 		People: PeopleSlice.reducer,
 		Map: MapSlice.reducer,
-		Projects: ProjectsSlice.reducer
+		Projects: ProjectsSlice.reducer,
+		Comments: CommentsSlice.reducer
 	}),
 });

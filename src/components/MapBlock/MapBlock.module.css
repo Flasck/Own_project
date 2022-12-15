@@ -20,22 +20,6 @@
 
 .container {
 	display: grid;
-	grid-template-columns: 3fr 5fr;
+	grid-template-columns: 2fr 6fr;
 }
 
-.loadingIcon {
-	animation: spin 1s linear infinite;
-}
-
-.loadingIcon__path {
-	fill: var(--c-text);
-}
-
-@keyframes spin {
-	from {
-		transform: rotate(0);
-	}
-	to {
-		transform: rotate(360deg);
-	}
-}
