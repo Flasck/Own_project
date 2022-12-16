@@ -14,7 +14,7 @@ import { LoadConstantsIfNotExist } from "@store/ConstantsSlice/loadConstantsIfNo
 import { selectLanguage } from "@store/LanguageSlice/selectors"
 
 
-export const Application = () =>
+const Application = () =>
 {
 	const dispatch = useDispatch();
 	const curLan = useSelector(selectLanguage);
@@ -31,3 +31,5 @@ export const Application = () =>
 		</Layout>
 	</BrowserRouter>
 }
+
+export default Application
