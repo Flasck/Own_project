@@ -1,22 +1,25 @@
 import './index.css';
-import React from 'react'
+import React, {Suspense} from 'react'
 import ReactDOM from 'react-dom/client';
-import { Provider } from "react-redux";
-import { Application } from './App';
-import { store } from '@store/store.js'
-
+import {Provider} from "react-redux";
+import {store} from '@store/store.js'
+import {Preloader} from "@components/Preloader/Preloader";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const Application = React.lazy(() => import("./App"))
 
 // Enable dark theme
 const darkTheme = localStorage.getItem("darkTheme");
 if (darkTheme == "true" || darkTheme == null && window.matchMedia?.("(prefers-color-scheme: dark)")?.matches)
-	document.body.classList.add("darkTheme");
+    document.body.classList.add("darkTheme");
 
 root.render(
-	<React.Fragment>
-		<Provider store={store}>
-			<Application />
-		</Provider>
-	</React.Fragment>
+    <React.Fragment>
+        <Suspense fallback={<Preloader/>}>
+            <Provider store={store}>
+                <Application/>
+            </Provider>
+        </Suspense>
+    </React.Fragment>
 );
