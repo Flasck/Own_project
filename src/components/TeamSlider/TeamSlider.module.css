@@ -12,18 +12,24 @@
 .btn_prev,
 .btn_next {
 	position: absolute;
-	font-weight: bold;
-	font-size: 30px;
-	bottom: 0;
+	font-size: 50px;
+	display: flex;
+	align-items: center;
 	cursor: pointer;
 }
 
 .btn_prev {
-	left: 10px;
+	left: 0.2em;
 }
 
 .btn_next {
-	right: 10px;
+	right: 0.2em;
+}
+
+.btn_prev_dis,
+.btn_next_dis {
+	opacity: 0.4;
+	cursor: auto;
 }
 
 .slider_overflow {

@@ -7,6 +7,7 @@ import { selectPeople } from "@store/PeopleSlice/selectors"
 import { selectLanguage } from "@store/LanguageSlice/selectors"
 import { LoadPeopleIfNotExist } from "@store/PeopleSlice/LoadPeopleIfNotExist"
 import { Placeholder } from "../Placeholder/Placeholder"
+import { classnames } from "../../utils/classnames"
 
 export const TeamSlider = () => {
 	const dispatch = useDispatch()
@@ -92,11 +93,17 @@ export const TeamSlider = () => {
 							))}
 						</div>
 					</div>
-					<div className={styles.btn_prev} onClick={prev_slide}>
-						←
+					<div
+						className={classnames(styles.btn_prev, slide == 0 ? styles.btn_prev_dis : "")}
+						onClick={prev_slide}
+					>
+						❮
 					</div>
-					<div className={styles.btn_next} onClick={next_slide}>
-						→
+					<div
+						className={classnames(styles.btn_next, slide == 4 ? styles.btn_next_dis : "")}
+						onClick={next_slide}
+					>
+						❯
 					</div>
 				</div>
 			) : (
