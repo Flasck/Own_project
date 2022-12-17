@@ -8,13 +8,17 @@ Api.addRouteJSON("/", async q =>
 		"?lang=ru": "Use 'ru' lang",
 		"image?id": "PNG image",
 		"texts?lang": "JSON with texts",
-		"/persons": [{ id: "number", name: "string", descriptionShort: "string", description: "string", technologies: "string[]" }],
+		"/persons": [{ id: "number", name: "string", descriptionShort: "string", imageId: "string", telegram: "string", github: "string", description: "string", technologies: "string[]" }],
 		"/places": [{ person: "string", places: [{ address: "string", coods: ["number", "number"] }] }],
 		"/projects": [{ id: "number", title: "string", date: "string", imageId: "string | null", description: "string", type: "string", authors: "string[]", technologies: "string[]", }],
+		"/feedbacks": [{ id: "string", author: "string", email: "string", text: "string" }],
+		"POST /feedback": { author: "string", email: "string", text: "string" },
+		"/feedbacks/list": "Page with feedbacks list",
+		"/feedbacks/form": "Page with send feedback form",
 		"/comments": [{ id: "string", author: "string", email: "string", text: "string" }],
 		"POST /comment": { author: "string", email: "string", text: "string" },
-		"/comment/comments": "Page with comments list",
-		"/comment/form": "Page with send comment form",
+		"/comments/list": "Page with comments list",
+		"/comments/form": "Page with send comment form",
 	};
 }, true);
 
@@ -31,6 +35,9 @@ Api.addRouteSqlAll("/persons",
 			inner join TextType as tt on t.typeId = tt.id and tt.name = 'personDescriptionShort'
 			inner join Lang as l on t.langId = l.id and l.name = $1
 			where t.objId = p.id) as descriptionShort,
+		imageId,
+		telegram,
+		github,
 		(select text
 			from Text as t
 			inner join TextType as tt on t.typeId = tt.id and tt.name = 'personDescription'
@@ -128,10 +135,24 @@ Api.addRoute("GET", "/texts", "json", async q =>
 });
 
 
-Api.addRoute("GET", "/comment/form", "html", () => Api.readFile(`../data/pages/form.html`, "utf8"));
-Api.addRoute("GET", "/comment/comments", "html", () => Api.readFile(`../data/pages/comments.html`, "utf8"));
-Api.addRouteSqlAll("/comments", `select id, author, email, text from Comment`, []);
+Api.addRoute("GET", "/comments/form", "html", () => Api.readFile(`../data/pages/comments_form.html`, "utf8"));
+Api.addRoute("GET", "/comments/list", "html", () => Api.readFile(`../data/pages/comments.html`, "utf8"));
+Api.addRoute("GET", "/feedbacks/form", "html", () => Api.readFile(`../data/pages/feedbacks_form.html`, "utf8"));
+Api.addRoute("GET", "/feedbacks/list", "html", () => Api.readFile(`../data/pages/feedbacks.html`, "utf8"));
+Api.addRouteSqlAll("/comments", `select id, author, rate, text from Comment`, []);
+Api.addRouteSqlAll("/feedbacks", `select id, author, email, text from FeedBack`, []);
 Api.addRoute("POST", "/comment", "json", async function ()
+{
+	const data = await this.readBodyJSON();
+	const author = parseParam(data.author, "author");
+	const rate = parseParam(data.rate, "rate");
+	const text = parseParam(data.text, "text");
+
+	Api.db.commit(
+		`insert into Comment (author, rate, text)
+		values (?, ?, ?)`, [author, rate, text]);
+}, true);
+Api.addRoute("POST", "/feedback", "json", async function ()
 {
 	const data = await this.readBodyJSON();
 	const author = parseParam(data.author, "author");
@@ -139,13 +160,13 @@ Api.addRoute("POST", "/comment", "json", async function ()
 	const text = parseParam(data.text, "text");
 
 	Api.db.commit(
-		`insert into Comment (author, email, text)
+		`insert into FeedBack (author, email, text)
 		values (?, ?, ?)`, [author, email, text]);
 }, true);
 
 
 
-function parseParam(param: unknown, paramName: string, defaultV?: any): string
+function parseParam(param: unknown, paramName: string, defaultV?: any): any
 {
 	if (param === undefined)
 	{
@@ -153,6 +174,6 @@ function parseParam(param: unknown, paramName: string, defaultV?: any): string
 		throw new Api.RouteError(`param "${paramName}" is undefined`);
 	}
 	if (param instanceof Array) param = param[0];
-	if (typeof param != "string") throw new Api.RouteError(`Bad param "${paramName}"`);
-	return param.trim();
+	if (typeof param == "string") param = param.trim();
+	return param;
 }
