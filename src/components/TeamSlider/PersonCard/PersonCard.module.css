@@ -2,13 +2,14 @@
 	width: 350px;
 	height: 230px;
 	position: relative;
+	user-select: none;
 }
 
 .front,
 .back {
 	width: 100%;
 	height: 100%;
-	padding: 10px;
+	padding: 0.5em;
 	box-sizing: border-box;
 	position: absolute;
 	left: 0;
@@ -25,7 +26,7 @@
 
 .back {
 	transform: rotateY(180deg);
-	padding: 10px 30px;
+	padding: 0.5em 2em;
 }
 
 .front_base {
@@ -55,12 +56,15 @@
 }
 
 .photo {
+	pointer-events: none;
 	width: 3em;
 	height: 3em;
 }
 
 .name {
 	margin: 0;
+	display: flex;
+	align-items: center;
 }
 
 .links {
@@ -92,4 +96,10 @@
 
 .tech {
 	margin-right: 0.5em;
+}
+
+@media (min-width: 400px) and (max-width: 1200px) {
+	.card {
+		width: 150px;
+	}
 }

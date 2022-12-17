@@ -6,13 +6,13 @@ import Dark_gh from "./img/Dark_gh-logo.svg"
 import Light_gh from "./img/Light_gh-logo.svg"
 import TG_logo from "./img/TG-logo.svg"
 
-export const PersonCard = ({ person }) => {
+export const PersonCard = ({ refLink, gap, person }) => {
 	const [side, setSide] = useState(true)
 	const change = () => setSide((v) => !v)
 	const theme = localStorage.getItem("darkTheme")
 
 	return (
-		<div onClick={change} className={styles.card}>
+		<div onClick={change} className={styles.card} ref={refLink} style={{ margin: `0 ${gap}px` }}>
 			<div className={classnames(styles.back, side ? styles.back_base : styles.back_rev)}>
 				<div className={styles.main_info}>
 					<img className={styles.photo} src={Light_gh} alt="No img" />
@@ -22,7 +22,7 @@ export const PersonCard = ({ person }) => {
 							className={styles.link}
 							href="https://github.com/"
 							target="_blank"
-							onClick={(l) => {
+							onClick={() => {
 								change()
 							}}
 						>
@@ -32,7 +32,7 @@ export const PersonCard = ({ person }) => {
 							className={styles.link}
 							href="https://web.telegram.org/"
 							target="_blank"
-							onClick={(l) => {
+							onClick={() => {
 								change()
 							}}
 						>
