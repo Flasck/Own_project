@@ -5,7 +5,7 @@ import { ProjectCard } from "@components/ProjectCard/ProjectCard"
 import { useDispatch, useSelector } from "react-redux"
 import { selectLanguage } from "@store/LanguageSlice/selectors"
 import { LoadProjectsIfNotExist } from "@store/ProjectsSlice/LoadProjectsIfNotExist"
-import { selectProjects, selectProjectsStatus } from "@store/ProjectsSlice/selectors"
+import { selectProjectsStatus } from "@store/ProjectsSlice/selectors"
 import { Statuses } from "@utils/Statuses"
 import { Spinner } from "@components/Spinner/Spinner";
 import { useIntersectionObserver } from "@utils/useIntersectionObserver"
@@ -17,7 +17,7 @@ export const ProjectsPage = () =>
 	const curLan = useSelector(selectLanguage);
 	const status = useSelector(selectProjectsStatus)
 	useEffect(() => dispatch(LoadProjectsIfNotExist), [curLan]);
-	const projectsList = useSelector(selectProjects) || [];
+	const [projects, setProjects] = useState([]);
 
 	const [count, setCount] = useState(window.innerWidth > 700 ? 4 : 2);
 	const cbRef = useIntersectionObserver({ threshold: 1 }, (entries) =>
@@ -39,9 +39,9 @@ export const ProjectsPage = () =>
 
 
 	return <>
-		<SearchBar />
+		<SearchBar setProjects={setProjects} />
 		<section className={styles.wrapper}>
-			{projectsList.slice(0, count).map((project) => <ProjectCard key={project.id} project={project} />)}
+			{projects.slice(0, count).map((project) => <ProjectCard key={project.id} project={project} />)}
 			<div ref={cbRef} className={styles.endOfList}></div>
 		</section>
 	</>
@@ -49,7 +49,7 @@ export const ProjectsPage = () =>
 
 
 const renderPlaceholder = () => <>
-	<SearchBar />
+	<SearchBar setProjects={() => {}} />
 	<div className={styles.wrapper_spinner}>
 		<Spinner />
 	</div>

@@ -1,19 +1,26 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import styles from "./SearchBar.module.css"
 import { useSelector } from "react-redux";
 import { selectConstants } from "@store/ConstantsSlice/selectors"
+import { selectProjects } from "@store/ProjectsSlice/selectors"
+import { FramedText } from "../FramedText/FramedText";
 
 
-export const SearchBar = () =>
+export const SearchBar = ({ setProjects }) =>
 {
-	const [value, setValue] = useState("");
+	const [value, setValue] = useState({
+		text: "",
+		tags: [],
+	});
     const texts = useSelector(selectConstants);
+	const projectsAll = useSelector(selectProjects) || [];
+	useEffect(() => setProjects(projectsAll), [projectsAll]);
 
 	return <div className={styles.root}>
 		<input
 			className={styles.input}
 			placeholder={texts?.projectsPage?.searchBar}
-			id="searchBar" value={value}
+			id="searchBar" value={value.text}
 			onChange={(e) => setValue(e.target.value)}
 		/>
 
@@ -34,6 +41,16 @@ export const SearchBar = () =>
 				<Cross />
 			</button>
 		}
+		<div className={styles.filters}>
+			<button className={styles.filter}>HTML</button>
+			<button className={styles.filter}>CSS</button>
+			<button className={styles.filter}>Javascript</button>
+			<button className={styles.filter}>React</button>
+			<button className={styles.filter}>C#</button>
+			<button className={styles.filter}>Python</button>
+			<button className={styles.filter}>PyGame</button>
+			<button className={styles.filter}>Typescript</button>
+		</div>
 	</div>
 }
 
@@ -45,3 +62,9 @@ const Magnifier = () => <svg width="20" height="20" viewBox="0 0 20 20" xmlns="h
 const Cross = () => <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
 	<path d="M17 17L1 1.00003M17 1L1.00002 17" stroke="currentColor" strokeLinecap="round" />
 </svg>
+
+
+function filter(projects)
+{
+
+}
