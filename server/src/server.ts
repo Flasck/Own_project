@@ -22,10 +22,19 @@ const server = http.createServer(async (req, res) =>
 		res.writeHead(500, { ...headers, "Content-Type": "application/json" });
 		res.write(`"Server error"`);
 	}
+	if (delay) await wait(Math.random() * 500 + 2000);
 	res.end();
 });
 
-Api.PrettyPrint = process.env.DEV?.trim() == "1";
+Api.PrettyPrint = process.argv.indexOf("-dev") >= 0;
+const delay = process.argv.indexOf("-delay") >= 0;
+
 const port = 3001;
 console.log(`Start server on http://localhost:${port}`);
 server.listen(port);
+
+
+function wait(t: number)
+{
+	return new Promise(r => setTimeout(r, t));
+}

@@ -35,8 +35,19 @@
     font-family: 'Neue Machina', sans-serif;
     font-style: normal;
     z-index: 10;
+    position: relative;
 }
 
+.closeBtn {
+    position: absolute;
+    top: 20px;
+    right: 16px;
+    cursor: pointer;
+}
+
+.closeBtn__path {
+    stroke: var(--c-text);
+}
 
 .title {
     font-weight: 500;
@@ -170,21 +181,4 @@
     line-height: 15px;
     margin: 0 auto;
     margin-bottom: 16px;
-}
-
-.loadingIcon {
-    animation: spin 1s linear infinite;
-}
-
-.loadingIcon_path {
-    fill: var(--c-text);
-}
-
-@keyframes spin{
-    from {
-        transform: rotate(0);
-    }
-    to {
-        transform: rotate(360deg);
-    }
 }
