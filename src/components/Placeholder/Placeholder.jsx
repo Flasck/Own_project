@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { classnames } from "@utils/classnames"
 import styles from "./Placeholder.module.css"
 
-export function Placeholder({ className, style, width, height, widthD, heightD, unitW, unitH, disableText }) {
-
+export function Placeholder({ className, style, width, height, widthD, heightD, unitW, unitH, disableText })
+{
 	const [text, setText] = useState("");
 	const ref = useRef();
 	useEffect(() =>
@@ -23,14 +23,13 @@ export function Placeholder({ className, style, width, height, widthD, heightD, 
 		h = h || "100%";
 		ref.current.style.setProperty("--data-width", `${w}`);
 		ref.current.style.setProperty("--data-height", `${h}`);
-		if (!disableText) type(generateText(width ? width : 20 * (height || 1)), setText)
 
 		const rect = ref.current.getBoundingClientRect();
 		ref.current.style.setProperty("--data-x", `${rect.left}px`);
 		ref.current.style.setProperty("--data-y", `${rect.top}px`);
 		ref.current.style.setProperty("--data-w", `${window.innerWidth}px`);
 		ref.current.style.setProperty("--data-h", `${window.innerHeight}px`);
-
+		if (!disableText) type(generateText(width ? width : 20 * (height || 1)), setText);
 	}, [ref, width, height, widthD, heightD, unitW, unitH]);
 
 	return <span className={classnames(className, styles.root)} style={style}>
