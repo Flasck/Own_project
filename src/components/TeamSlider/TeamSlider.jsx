@@ -49,22 +49,25 @@ export const TeamSlider = () => {
 					(wrapperRefWidth.current.offsetWidth - cardRefWidth.current.offsetWidth) / 2
 			)
 			setOffset((wrapperRefWidth.current.offsetWidth - cardRefWidth.current.offsetWidth) / 2)
+			setSlide(0)
 		}
 	}, [PeopleList])
 
 	// Следим за изменениями
 	window.addEventListener("resize", () => {
-		setGap(
-			(wrapperRefWidth.current.offsetWidth - cardRefWidth.current.offsetWidth) / 4 -
-				cardRefWidth.current.offsetWidth / 6
-		)
-		setStep(
-			(cardRefWidth.current.offsetWidth * 2) / 3 +
-				(wrapperRefWidth.current.offsetWidth - cardRefWidth.current.offsetWidth) / 2
-		)
-		setOffset((wrapperRefWidth.current.offsetWidth - cardRefWidth.current.offsetWidth) / 2)
-		setSlide(0)
-		console.log("Resized") // Заходит сюда 3 раза
+		if (wrapperRefWidth.current && cardRefWidth.current) {
+			setGap(
+				(wrapperRefWidth.current.offsetWidth - cardRefWidth.current.offsetWidth) / 4 -
+					cardRefWidth.current.offsetWidth / 6
+			)
+			setStep(
+				(cardRefWidth.current.offsetWidth * 2) / 3 +
+					(wrapperRefWidth.current.offsetWidth - cardRefWidth.current.offsetWidth) / 2
+			)
+			setOffset((wrapperRefWidth.current.offsetWidth - cardRefWidth.current.offsetWidth) / 2)
+			setSlide(0)
+			console.log("Resized") // Заходит сюда 3 раза
+		}
 	})
 
 	return (
