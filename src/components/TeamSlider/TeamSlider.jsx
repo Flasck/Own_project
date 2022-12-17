@@ -6,6 +6,7 @@ import styles from "./TeamSlider.module.css"
 import { selectPeople } from "@store/PeopleSlice/selectors"
 import { selectLanguage } from "@store/LanguageSlice/selectors"
 import { LoadPeopleIfNotExist } from "@store/PeopleSlice/LoadPeopleIfNotExist"
+import { Placeholder } from "../Placeholder/Placeholder"
 
 export const TeamSlider = () => {
 	const dispatch = useDispatch()
@@ -99,7 +100,7 @@ export const TeamSlider = () => {
 					</div>
 				</div>
 			) : (
-				<div className={styles.err}>Downloading files...</div>
+				<Placeholder height={326} unitH="px" disableText={true} />
 			)}
 		</>
 	)
