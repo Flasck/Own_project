@@ -32,8 +32,8 @@
 			<input id="author" type="text" name="name"/>
 		</div>
 		<div>
-			<label>Ваш Email</label>
-			<input id="email" type="text" name="email"/>
+			<label>Оценка</label>
+			<input id="rate" type="number" min="0" max="10" step="0.5" name="rate"/>
 			</div>
 		</div>
 		<div>
@@ -51,7 +51,7 @@
 			e.preventDefault();
 			const data = {
 				author: document.getElementById("author").value,
-				email: document.getElementById("email").value,
+				rate: parseInt(document.getElementById("rate").value),
 				text: document.getElementById("text").value,
 			};
 

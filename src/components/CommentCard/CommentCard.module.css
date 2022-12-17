@@ -6,7 +6,11 @@
 	padding: 1.5em;
 	border-radius: 1em;
 	color: var(--c-text);
-	border: 3px solid var(--c-second-light);
+	background: rgba(255, 255, 255, 0.1);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	border: 1px solid rgba(255, 255, 255, 0.29);
 }
 
 .title {
@@ -22,19 +26,35 @@
 	gap: 2em;
 }
 
-.author,
-.email,
+.author {
+	display: flex;
+	padding: 0.6em;
+	border-radius: 0.5em;
+}
+.dot {
+	display: inline-flex;
+	margin-right: 0.8em;
+	align-items: center;
+}
+.dot::after {
+	content: "";
+	width: 0.5em;
+	height: 0.5em;
+	background-color: var(--c-second-light);
+	border-radius: 50%;
+}
+
+.rate {
+	text-align: end;
+}
+
 .text {
 	padding: 0.6em;
-	border: 1px solid var(--c-second-light);
+	border-left: 1px solid var(--c-second-light);
 	border-radius: 0.5em;
 }
 
-.text {
-	margin-top: 1em;
-}
-
 .author,
-.email {
+.rate {
 	flex-grow: 1;
 }
