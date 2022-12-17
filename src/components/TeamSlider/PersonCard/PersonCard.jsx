@@ -43,9 +43,7 @@ export const PersonCard = ({ refLink, gap, person }) => {
 				<p className={styles.post}>{person.descriptionShort}</p>
 				<div className={styles.techs}>
 					{person.technology.map((t) => (
-						<div key={Math.random() * Math.random()} className={styles.tech}>
-							<FramedText>{t}</FramedText>
-						</div>
+						<FramedText>{t}</FramedText>
 					))}
 				</div>
 			</div>
