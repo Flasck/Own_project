@@ -70,6 +70,16 @@ export const TeamSlider = () => {
 		}
 	})
 
+	document.onkeyup = () => {
+		var e = e || window.event
+		if (e.which == 37) {
+			prev_slide()
+		}
+		if (e.which == 39) {
+			next_slide()
+		}
+	}
+
 	return (
 		<>
 			{PeopleList ? (
