@@ -1,22 +1,23 @@
-.wrapper {
-	width: 300px;
-	height: 300px;
+.card {
+	width: 350px;
+	height: 230px;
 	position: relative;
+	user-select: none;
 }
 
 .front,
 .back {
 	width: 100%;
 	height: 100%;
-	padding: 20px;
+	padding: 0.5em;
 	box-sizing: border-box;
 	position: absolute;
 	left: 0;
 	top: 0;
 	display: flex;
-	justify-content: center;
-	align-items: center;
 	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
 	border-radius: 10px;
 	border: 1px solid;
 	transition: 0.3s ease-in;
@@ -25,6 +26,7 @@
 
 .back {
 	transform: rotateY(180deg);
+	padding: 0.5em 2em;
 }
 
 .front_base {
@@ -43,42 +45,61 @@
 	transform: perspective(700px) rotateY(180deg);
 }
 
-.person_wrapper {
-	width: 100%;
-	display: flex;
-	flex-flow: column wrap;
+.desc {
+	text-align: center;
 }
 
-.person {
+.main_info {
 	display: flex;
+	width: 100%;
 	justify-content: space-between;
-	align-items: center;
 }
 
 .photo {
-	border-radius: 100%;
-	font-size: 0.5rem;
+	pointer-events: none;
+	width: 3em;
+	height: 3em;
 }
+
 .name {
-	font-size: 1.7em;
+	margin: 0;
+	display: flex;
+	align-items: center;
 }
 
 .links {
+	justify-self: end;
 	display: flex;
-	margin: 0 -0.3em;
+	justify-content: center;
+	align-items: center;
+	margin: 0 -5px;
 }
 
-.github,
-.tg {
-	display: flex;
-	margin: 0 0.3em;
+.post {
+	font-size: 1.2rem;
 }
 
-.short {
-	margin-bottom: 0.5em;
+.link {
+	display: inline-block;
+	margin: 0 5px;
+}
+
+.link_logo {
+	width: 1.5em;
+	height: 1.5em;
+	vertical-align: middle;
 }
 
 .techs {
 	display: flex;
-	width: 100%;
+}
+
+.tech {
+	margin-right: 0.5em;
+}
+
+@media (min-width: 400px) and (max-width: 1200px) {
+	.card {
+		width: 150px;
+	}
 }
