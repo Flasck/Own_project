@@ -10,39 +10,48 @@ import { selectLanguage } from "@store/LanguageSlice/selectors"
 import { selectConstants } from "@store/ConstantsSlice/selectors"
 import { Placeholder } from "../Placeholder/Placeholder"
 
+export const Header = ({ className }) => {
+	const curLang = useSelector(selectLanguage)
+	const text = useSelector(selectConstants)
+	const dispatch = useDispatch()
 
-export const Header = ({ className }) =>
-{
-	const curLang = useSelector(selectLanguage);
-	const text = useSelector(selectConstants);
-	const dispatch = useDispatch();
+	return (
+		<header className={classnames(styles.root, className)}>
+			<div className={styles.container}>
+				<span className={styles.brand}>Turtle</span>
 
-	return <header className={classnames(styles.root, className)}>
-		<div className={styles.container}>
-			<span className={styles.brand}>Turtle</span>
-
-			<NavLink className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)} to={"/"}>
-				{text ? text.header.mainPage : <Placeholder width={12}/>}
-			</NavLink>
-			<NavLink className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)} to={"/OurCases"}>
-				{text ? text.header.projectsPage : <Placeholder width={12}/>}
-			</NavLink>
-
-			<span className={styles.switchers}>
-				<button
-					className={classnames(styles.langSwitch, styles.link, curLang === "ru" && styles.linkActive)}
-					onClick={() => dispatch(LanguageSlice.actions.changeLang("ru"))}
+				<NavLink className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)} to={"/"}>
+					{text ? text.header.mainPage : <Placeholder width={12} />}
+				</NavLink>
+				<NavLink
+					className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)}
+					to={"/OurCases"}
 				>
-					рус
-				</button>
-				<button
-					className={classnames(styles.langSwitch, styles.link, curLang === "en" && styles.linkActive)}
-					onClick={() => dispatch(LanguageSlice.actions.changeLang("en"))}
+					{text ? text.header.projectsPage : <Placeholder width={12} />}
+				</NavLink>
+				<NavLink
+					className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)}
+					to={"/CommentsPage"}
 				>
-					eng
-				</button>
-				<ThemeSwither />
-			</span>
-		</div>
-	</header>
+					{text ? text.header.commentsPage : <Placeholder width={12} />}
+				</NavLink>
+
+				<span className={styles.switchers}>
+					<button
+						className={classnames(styles.langSwitch, styles.link, curLang === "ru" && styles.linkActive)}
+						onClick={() => dispatch(LanguageSlice.actions.changeLang("ru"))}
+					>
+						рус
+					</button>
+					<button
+						className={classnames(styles.langSwitch, styles.link, curLang === "en" && styles.linkActive)}
+						onClick={() => dispatch(LanguageSlice.actions.changeLang("en"))}
+					>
+						eng
+					</button>
+					<ThemeSwither />
+				</span>
+			</div>
+		</header>
+	)
 }
