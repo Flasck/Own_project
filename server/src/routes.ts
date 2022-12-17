@@ -8,7 +8,7 @@ Api.addRouteJSON("/", async q =>
 		"?lang=ru": "Use 'ru' lang",
 		"image?id": "PNG image",
 		"texts?lang": "JSON with texts",
-		"/persons": [{ id: "number", name: "string", descriptionShort: "string", description: "string", technologies: "string[]" }],
+		"/persons": [{ id: "number", name: "string", descriptionShort: "string", imageId: "string", telegram: "string", github: "string", description: "string", technologies: "string[]" }],
 		"/places": [{ person: "string", places: [{ address: "string", coods: ["number", "number"] }] }],
 		"/projects": [{ id: "number", title: "string", date: "string", imageId: "string | null", description: "string", type: "string", authors: "string[]", technologies: "string[]", }],
 		"/feedbacks": [{ id: "string", author: "string", email: "string", text: "string" }],
@@ -35,6 +35,9 @@ Api.addRouteSqlAll("/persons",
 			inner join TextType as tt on t.typeId = tt.id and tt.name = 'personDescriptionShort'
 			inner join Lang as l on t.langId = l.id and l.name = $1
 			where t.objId = p.id) as descriptionShort,
+		imageId,
+		telegram,
+		github,
 		(select text
 			from Text as t
 			inner join TextType as tt on t.typeId = tt.id and tt.name = 'personDescription'
