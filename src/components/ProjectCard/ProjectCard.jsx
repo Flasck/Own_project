@@ -6,7 +6,7 @@ import { FramedText } from "../FramedText/FramedText"
 export const ProjectCard = ({ project }) =>
 {
 	return <article className={styles.root}>
-		<figure>
+		<figure className={styles.figure}>
 			<img className={styles.img}
 				src={project.imageId !== null ? `http://localhost:3001/image?id=${project.imageId}` : img}
 				alt="Не удалось загрузить фото" />
