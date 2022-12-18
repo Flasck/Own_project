@@ -1,20 +1,43 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import styles from "./SearchBar.module.css"
 import { useSelector } from "react-redux";
 import { selectConstants } from "@store/ConstantsSlice/selectors"
+import { selectProjects } from "@store/ProjectsSlice/selectors"
+import { classnames } from "@utils/classnames"
 
 
-export const SearchBar = () =>
+export const SearchBar = ({ setProjects }) =>
 {
 	const [value, setValue] = useState("");
+	const [tech, setTech] = useState("JavaScript");
+	const [techs, setTechs] = useState([]);
+	const [focused, setFocused] = useState(false);
     const texts = useSelector(selectConstants);
+	const projectsAll = useSelector(selectProjects) || [];
+	useEffect(() =>
+	{
+		setProjects(projectsAll)
+		setTechs(getAllTechs(projectsAll));
+	}, [projectsAll]);
+	useEffect(() =>
+	{
+		setProjects(filter(projectsAll, value, tech));
+		console.log(tech, value);
+	}, [tech, value]);
+	useEffect(() =>
+	{
+		window.addEventListener("click", () => setFocused(false));
+		setProjects(filter(projectsAll, value, tech));
+		console.log(tech, value);
+	}, []);
 
-	return <div className={styles.root}>
+	return <div className={styles.root} onClick={e => e.stopPropagation()}>
 		<input
 			className={styles.input}
 			placeholder={texts?.projectsPage?.searchBar}
 			id="searchBar" value={value}
 			onChange={(e) => setValue(e.target.value)}
+			onFocus={() => setFocused(true)}
 		/>
 
 		<div className={styles.border}></div>
@@ -26,6 +49,19 @@ export const SearchBar = () =>
 			<Magnifier />
 		</label>
 
+
+		{!tech ? null :
+			<button
+				className={styles.tech}
+				onClick={() => setTech(null)}
+			>
+				<span className={styles.tech__tag}>
+					<span>{tech}</span>
+					<span className={styles.tech__cross}><Cross /></span>
+				</span>
+			</button>
+		}
+
 		{!value ? null :
 			<button
 				className={styles.cross}
@@ -34,6 +70,19 @@ export const SearchBar = () =>
 				<Cross />
 			</button>
 		}
+		<div className={classnames(styles.filters, focused && styles.filters_visible)}>
+			{techs.map((v, i) =>
+				<button
+					key={i}
+					className={styles.filter}
+					onClick={() =>
+					{
+						setTech(v);
+						setFocused(false);
+					}}
+				>{v}</button>
+			)}
+		</div>
 	</div>
 }
 
@@ -45,3 +94,18 @@ const Magnifier = () => <svg width="20" height="20" viewBox="0 0 20 20" xmlns="h
 const Cross = () => <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
 	<path d="M17 17L1 1.00003M17 1L1.00002 17" stroke="currentColor" strokeLinecap="round" />
 </svg>
+
+
+function filter(projects, text, tech)
+{
+	text = text.toLowerCase();
+	return projects.filter(v =>
+	{
+		return (v.title.toLowerCase().indexOf(text) >= 0 || v.description.toLowerCase().indexOf(text) >= 0) && (tech === null || v.technologies.indexOf(tech) >= 0);
+	});
+}
+
+function getAllTechs(projects)
+{
+	return [...new Set(projects.reduce((prev, v) => prev.push(...v.technologies) && false || prev, []))].sort();
+}
