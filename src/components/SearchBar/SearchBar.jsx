@@ -3,25 +3,41 @@ import styles from "./SearchBar.module.css"
 import { useSelector } from "react-redux";
 import { selectConstants } from "@store/ConstantsSlice/selectors"
 import { selectProjects } from "@store/ProjectsSlice/selectors"
-import { FramedText } from "../FramedText/FramedText";
+import { classnames } from "@utils/classnames"
 
 
 export const SearchBar = ({ setProjects }) =>
 {
-	const [value, setValue] = useState({
-		text: "",
-		tags: [],
-	});
+	const [value, setValue] = useState("");
+	const [tech, setTech] = useState("JavaScript");
+	const [techs, setTechs] = useState([]);
+	const [focused, setFocused] = useState(false);
     const texts = useSelector(selectConstants);
 	const projectsAll = useSelector(selectProjects) || [];
-	useEffect(() => setProjects(projectsAll), [projectsAll]);
+	useEffect(() =>
+	{
+		setProjects(projectsAll)
+		setTechs(getAllTechs(projectsAll));
+	}, [projectsAll]);
+	useEffect(() =>
+	{
+		setProjects(filter(projectsAll, value, tech));
+		console.log(tech, value);
+	}, [tech, value]);
+	useEffect(() =>
+	{
+		window.addEventListener("click", () => setFocused(false));
+		setProjects(filter(projectsAll, value, tech));
+		console.log(tech, value);
+	}, []);
 
-	return <div className={styles.root}>
+	return <div className={styles.root} onClick={e => e.stopPropagation()}>
 		<input
 			className={styles.input}
 			placeholder={texts?.projectsPage?.searchBar}
-			id="searchBar" value={value.text}
+			id="searchBar" value={value}
 			onChange={(e) => setValue(e.target.value)}
+			onFocus={() => setFocused(true)}
 		/>
 
 		<div className={styles.border}></div>
@@ -33,6 +49,19 @@ export const SearchBar = ({ setProjects }) =>
 			<Magnifier />
 		</label>
 
+
+		{!tech ? null :
+			<button
+				className={styles.tech}
+				onClick={() => setTech(null)}
+			>
+				<span className={styles.tech__tag}>
+					<span>{tech}</span>
+					<span className={styles.tech__cross}><Cross /></span>
+				</span>
+			</button>
+		}
+
 		{!value ? null :
 			<button
 				className={styles.cross}
@@ -41,15 +70,18 @@ export const SearchBar = ({ setProjects }) =>
 				<Cross />
 			</button>
 		}
-		<div className={styles.filters}>
-			<button className={styles.filter}>HTML</button>
-			<button className={styles.filter}>CSS</button>
-			<button className={styles.filter}>Javascript</button>
-			<button className={styles.filter}>React</button>
-			<button className={styles.filter}>C#</button>
-			<button className={styles.filter}>Python</button>
-			<button className={styles.filter}>PyGame</button>
-			<button className={styles.filter}>Typescript</button>
+		<div className={classnames(styles.filters, focused && styles.filters_visible)}>
+			{techs.map((v, i) =>
+				<button
+					key={i}
+					className={styles.filter}
+					onClick={() =>
+					{
+						setTech(v);
+						setFocused(false);
+					}}
+				>{v}</button>
+			)}
 		</div>
 	</div>
 }
@@ -64,7 +96,16 @@ const Cross = () => <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http:
 </svg>
 
 
-function filter(projects)
+function filter(projects, text, tech)
 {
+	text = text.toLowerCase();
+	return projects.filter(v =>
+	{
+		return (v.title.toLowerCase().indexOf(text) >= 0 || v.description.toLowerCase().indexOf(text) >= 0) && (tech === null || v.technologies.indexOf(tech) >= 0);
+	});
+}
 
+function getAllTechs(projects)
+{
+	return [...new Set(projects.reduce((prev, v) => prev.push(...v.technologies) && false || prev, []))].sort();
 }
