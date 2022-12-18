@@ -7,7 +7,7 @@ import { Statuses } from "@utils/Statuses"
 import { classnames } from "@utils/classnames"
 import { Link } from "react-router-dom"
 
-import { FeedbackSlice } from "@store/FeedbackSlice"
+import { FeedbackSlice } from "@store/FeedbackSlice/index.js"
 import { selectModalView, selectFeedbackStatus } from "@store/FeedbackSlice/selectors"
 import { SendFeedBack } from "@store/FeedbackSlice/sendFeedBack"
 import { selectConstants } from "@store/ConstantsSlice/selectors"
@@ -132,7 +132,7 @@ export const ModalWindowContact = () => {
 						</a>
 						<label className={styles.label}>
 							{label_text?.join(" ")}&nbsp;
-							<Link to={"/personalData"}>{link_text?.join(" ")}</Link>
+							<Link onClick={(e)=>e.stopPropagation()} target='_blank' to={"/personalData"} className={styles.label__link}>{link_text?.join(" ")}</Link>
 						</label>
 					</div>
 					<div className={styles.wrapper}>

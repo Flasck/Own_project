@@ -1,6 +1,5 @@
 import { FeedbackSlice } from "./index"
 
-
 export const SendFeedBack = (data) => (dispatch, getState) =>
 {
 	dispatch(FeedbackSlice.actions.startLoading());

@@ -14,7 +14,6 @@ import {LoadMapIfNotExist} from "@store/MapSlice/LoadMapIfNotExist";
 import {selectAllPlaces, selectStatusMap} from "@store/MapSlice/selectors"
 import {selectConstants} from "@store/ConstantsSlice/selectors"
 import {selectLanguage} from "@store/LanguageSlice/selectors";
-import {Spinner} from "@components/Spinner/Spinner";
 
 export const MapBlock = () => {
     const dispatch = useDispatch();
@@ -34,7 +33,7 @@ export const MapBlock = () => {
         </div>
             {statusLoadMap === Statuses.inProgress || allPlaces === null ? (
                 <div className={styles.wrapper}>
-                    <Spinner/>
+                    <Placeholder height={300} unitH={'px'}  disableText={true}/>
                 </div>
             ) : (
                 <div className={styles.container}>

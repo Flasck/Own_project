@@ -1,52 +1,11 @@
-.modal{
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0,0,0,0.5);
-    position: fixed;
-    left: 0;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: scale(0);
-    z-index: 10;
-}
-.modal_active {
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0,0,0,0.5);
-    position: fixed;
-    left: 0;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: scale(1);
-    z-index: 10;
-}
-
 .content {
-    max-width: 420px;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 16px;
     border-radius: 12px;
-    background-color: var(--c-primary);
     font-family: 'Neue Machina', sans-serif;
     font-style: normal;
-    z-index: 10;
     position: relative;
-}
-
-.closeBtn {
-    position: absolute;
-    top: 20px;
-    right: 16px;
-    cursor: pointer;
-}
-
-.closeBtn__path {
-    stroke: var(--c-text);
 }
 
 .title {
@@ -103,7 +62,6 @@
     font-size: 12px;
     line-height: 7px;
 }
-
 .label {
     font-weight: 400;
     font-size: 14px;
@@ -114,10 +72,6 @@
 
 .label:last-child {
     margin: 0;
-}
-
-.label__link {
-    color: var(--c-text);
 }
 
 .input {
@@ -138,20 +92,6 @@
     border: 1px solid #099550;
 }
 
-.customCheckBox {
-    width: 18px;
-    height: 18px;
-    border: 1px solid var(--c-text);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 8px;
-}
-
-.customCheckBox_path {
-    stroke: var(--c-text);
-}
 
 .wrapper {
     width: 100%;
@@ -173,17 +113,13 @@
     cursor:  pointer;
 }
 
+.btn:disabled {
+    opacity: 0.5;
+}
 
 .btn_status{
-   width: max-content;
-   margin: 0 auto;
+    width: max-content;
+    margin: 0 auto;
 }
 
-.StatusText {
-    text-align: center;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 15px;
-    margin: 0 auto;
-    margin-bottom: 16px;
-}
+
