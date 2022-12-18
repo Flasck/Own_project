@@ -1,0 +1,34 @@
+.widget {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: fit-content;
+    background: transparent;
+    animation: 1s show ease;
+    display: flex;
+    align-items: center;
+    padding: 6px;
+}
+
+.success {
+    border: 3px solid var(--c-second);
+    border-radius: 12px;
+    color: var(--c-second);
+}
+
+.error {
+    border: 3px solid red;
+    border-radius: 12px;
+    color: red;
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+        top: -20px;
+    }
+    to {
+        opacity: 1;
+        top: 0;
+    }
+}

@@ -1,23 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { Statuses } from "@utils/Statuses"
+import {createSlice} from "@reduxjs/toolkit"
+import {Statuses} from "@utils/Statuses"
 
 const initialState = {
     comments: null,
-    status: Statuses.idle,
+    statusGetComments: Statuses.idle,
+    statusSendComment: Statuses.idle,
 }
 export const CommentsSlice = createSlice({
     name: "Comments",
     initialState: initialState,
     reducers: {
-        startLoading: (state, action) => {
-            state.status = Statuses.inProgress
+        changeWidgetView: (state, action) => {
+            state.statusSendComment = action.payload
         },
-        successLoading: (state, action) => {
-            state.status = Statuses.success
+        startLoadingGetComments: (state, action) => {
+            state.statusGetComments = Statuses.inProgress
+        },
+        successLoadingGetComments: (state, action) => {
+            state.statusGetComments = Statuses.success
             state.comments = action.payload
         },
-        failLoading: (state, action) => {
-            state.status = Statuses.failed
+        failLoadingGetComments: (state, action) => {
+            state.statusGetComments = Statuses.failed
+        },
+        startLoadingSendComment: (state, action) => {
+            state.statusSendComment = Statuses.inProgress
+        },
+        successLoadingSendComment: (state, action) => {
+            state.statusSendComment = Statuses.success
+            state.comments = [...state.comments, action.payload]
+        },
+        failLoadingSendComment: (state, action) => {
+            state.statusSendComment = Statuses.failed
         },
     },
 })
