@@ -7,9 +7,9 @@ import { selectPeople } from "@store/PeopleSlice/selectors"
 import { selectLanguage } from "@store/LanguageSlice/selectors"
 import { LoadPeopleIfNotExist } from "@store/PeopleSlice/LoadPeopleIfNotExist"
 import { Placeholder } from "../Placeholder/Placeholder"
-import { classnames } from "../../utils/classnames"
+import { classnames } from "@utils/classnames"
 
-var params = { gap: 0, step: 0, slide: 0, initialOffset: 0, initTouch: 0, lastTouch: 0, threshold: 0 }
+var params = { gap: 0, step: 0, slide: 0, initialOffset: 0, offset: 0, initTouch: 0, lastTouch: 0, threshold: 0 }
 
 export const TeamSlider = () => {
 	const dispatch = useDispatch()
@@ -17,61 +17,74 @@ export const TeamSlider = () => {
 	useEffect(() => dispatch(LoadPeopleIfNotExist), [curLan])
 	const PeopleList = useSelector(selectPeople)
 
-	// Состояние сдвига для рендера
+	const sliderContent = useRef();
+
 	const [moved, setMoved] = useState(false)
-	const [offset, setOffset] = useState(0)
 
 	// Ссылки для снятия ширины
 	const wrapperRefWidth = useRef(null)
 	const cardRefWidth = useRef(null)
 
 	// Функции переключения между слайдами
-	const prev_slide = () => {
-		if (params.slide > 0) {
+	const prev_slide = () =>
+	{
+		if (params.slide > 0)
+		{
 			params.slide -= 1
-			reRender()
+			setMoved(v => !v)
 		}
 	}
-	const next_slide = () => {
-		if (params.slide < PeopleList.length - 1) {
+	const next_slide = () =>
+	{
+		if (params.slide < PeopleList.length - 1)
+		{
 			params.slide += 1
-			reRender()
+			setMoved(v => !v)
+			console.log("next_slide");
 		}
 	}
 
 	// Функции свайпов пальцами
-	const touchStart = (event) => {
-		setMoved(true)
-		params.initTouch = event.touches[0].clientX
-		params.lastTouch = event.touches[0].clientX
+	function touchStart(e)
+	{
+		wrapperRefWidth.current.classList.add(styles.grab);
+		params.initTouch = e.touches[0].clientX
+		params.lastTouch = e.touches[0].clientX
 	}
-	const touchMove = (event) => {
-		params.lastTouch = event.touches[0].clientX
-		reRender(params.lastTouch - params.initTouch)
+	function touchMove(e)
+	{
+		params.lastTouch = e.touches[0].clientX
+		moveSlider(params.lastTouch - params.initTouch)
 	}
-	const touchEnd = (event) => {
-		setMoved(false)
-		params.lastTouch - params.initTouch > params.threshold ? prev_slide() : reRender()
-		params.lastTouch - params.initTouch < -params.threshold ? next_slide() : reRender()
+	function touchEnd(e)
+	{
+		wrapperRefWidth.current.classList.remove(styles.grab);
+		params.lastTouch - params.initTouch > params.threshold ? prev_slide() : moveSlider()
+		params.lastTouch - params.initTouch < -params.threshold ? next_slide() : moveSlider()
 	}
 
-	// Функции свайпов мышью
-	const clickStart = (event) => {
-		params.initTouch = event.clientX
-		params.lastTouch = event.clientX
-		setMoved(true)
+	function mouseDown(e)
+	{
+		wrapperRefWidth.current.classList.add(styles.grab);
+		params.initTouch = e.clientX;
+		params.lastTouch = e.clientX;
 	}
-	const clickMove = (event) => {
-		if (moved) {
-			params.lastTouch = event.clientX
-			reRender(params.lastTouch - params.initTouch)
+
+	function mouseMove(e)
+	{
+		if (e.buttons === 1) {
+			params.lastTouch = e.clientX
+			moveSlider(params.lastTouch - params.initTouch)
 		}
 	}
-	const clickEnd = (event) => {
-		setMoved(false)
-		params.lastTouch - params.initTouch > params.threshold ? prev_slide() : reRender()
-		params.lastTouch - params.initTouch < -params.threshold ? next_slide() : reRender()
+
+	function mouseUp(e)
+	{
+		wrapperRefWidth.current.classList.remove(styles.grab);
+		params.lastTouch - params.initTouch > params.threshold ? prev_slide() : setTimeout(moveSlider, 1);
+		params.lastTouch - params.initTouch < -params.threshold ? next_slide() : setTimeout(moveSlider, 1);
 	}
+
 
 	// Функция перерасчета параметров
 	const resize = () => {
@@ -80,14 +93,19 @@ export const TeamSlider = () => {
 			params.step = cardRefWidth.current.offsetWidth + params.gap
 			params.initialOffset = (wrapperRefWidth.current.offsetWidth - cardRefWidth.current.offsetWidth) / 2
 			params.threshold = wrapperRefWidth.current.offsetWidth / 7
-			reRender()
+			sliderContent.current.style.gap = `${params.gap}px`;
+			moveSlider()
 		}
 	}
 
 	// Функция перерендеринга
-	const reRender = (moved = 0) => {
-		setOffset(params.initialOffset - params.slide * params.step + moved)
+	const moveSlider = (moved = 0) =>
+	{
+		params.offset = params.initialOffset - params.slide * params.step + moved
+		if (sliderContent.current)
+			sliderContent.current.style.transform = `translate3d(${params.offset}px, 0, 0)`;
 	}
+
 
 	useLayoutEffect(() => {
 		if (wrapperRefWidth.current && cardRefWidth.current) {
@@ -95,35 +113,39 @@ export const TeamSlider = () => {
 			resize()
 
 			// Слушатели нажатий
-			document.getElementById("slider").addEventListener("touchstart", touchStart)
-			document.getElementById("slider").addEventListener("touchmove", touchMove)
-			document.getElementById("slider").addEventListener("touchend", touchEnd)
+			wrapperRefWidth.current.addEventListener("touchstart", touchStart)
+			wrapperRefWidth.current.addEventListener("touchmove", touchMove)
+			wrapperRefWidth.current.addEventListener("touchend", touchEnd)
 
 			// Слушатели кликов
-			document.getElementById("slider").addEventListener("mousedown", clickStart)
-			document.getElementById("slider").addEventListener("mousemove", clickMove)
-			document.getElementById("slider").addEventListener("mouseup", clickEnd)
+			wrapperRefWidth.current.addEventListener("mousedown", mouseDown)
+			wrapperRefWidth.current.addEventListener("mousemove", mouseMove)
+			wrapperRefWidth.current.addEventListener("mouseup", mouseUp)
 
 			// Слушатель изменений окна
 			window.addEventListener("resize", resize)
 
 			// Навигация по клавишам
-			document.onkeyup = () => {
+			document.addEventListener("keyup", () =>
+			{
 				var e = e || window.event
 				e.which == 37 ? prev_slide() : null
 				e.which == 39 ? next_slide() : null
-			}
+			});
 		}
 	}, [PeopleList])
 
+	setTimeout(moveSlider, 1);
+	console.log(params.offset);
 	return (
 		<>
 			{PeopleList ? (
 				<div className={styles.slider}>
-					<div className={styles.slider_overflow} id="slider" ref={wrapperRefWidth}>
+					<div className={styles.slider_overflow} ref={wrapperRefWidth}>
 						<div
 							className={classnames(styles.slides_line, moved ? styles.slider_moved : "")}
-							style={{ gap: `${params.gap}px`, transform: `translate3d(${offset}px, 0, 0)` }}
+							style={{ gap: `${params.gap}px`, left: `translate3d(${params.offset}px, 0, 0)` }}
+							ref={sliderContent}
 						>
 							{PeopleList.map((person) => (
 								<PersonCard key={person.id} person={person} refLink={cardRefWidth} />
@@ -146,7 +168,7 @@ export const TeamSlider = () => {
 								className={classnames(styles.dot, params.slide == index ? styles.dot_active : "")}
 								onClick={() => {
 									params.slide = index
-									reRender()
+									moveSlider()
 								}}
 							></div>
 						))}

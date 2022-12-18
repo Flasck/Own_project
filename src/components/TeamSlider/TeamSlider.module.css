@@ -8,6 +8,7 @@
 	position: relative;
 	user-select: none;
 	touch-action: pan-y;
+	cursor: grab;
 }
 
 .btn_prev,
@@ -47,17 +48,11 @@
 	width: fit-content;
 }
 
-.slider_moved {
-	transition: all 0.02s ease;
-}
-
-.slides_line.grab {
-	cursor: grab;
-}
-
-.slides_line.grabbing {
+.grab, .grab > * {
 	cursor: grabbing;
+	transition: none;
 }
+
 
 .dots {
 	display: flex;
