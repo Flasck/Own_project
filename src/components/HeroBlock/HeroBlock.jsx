@@ -17,11 +17,11 @@ export const HeroBlock = () =>
             <p className={styles.subTitle}>{texts?.mainPage?.heroBlock?.subtitle}</p>
         </div>
         <div className={styles.rightBlock}>
-            <Card title={"01 -------"} text={texts?.mainPage?.heroBlock?.card1} />
+            <Card title={"01"} text={texts?.mainPage?.heroBlock?.card1} />
             <Arrow/>
-            <Card title={"02 -------"} text={texts?.mainPage?.heroBlock?.card2} />
+            <Card title={"02"} text={texts?.mainPage?.heroBlock?.card2} />
             <Arrow/>
-            <Card title={"03 -------"} text={texts?.mainPage?.heroBlock?.card3} />
+            <Card title={"03"} text={texts?.mainPage?.heroBlock?.card3} />
         </div>
     </section>
 }
@@ -40,10 +40,10 @@ const renderPlaceholder = () =>
             <Placeholder className={styles.subTitle} height={3}/>
         </div>
         <div className={styles.rightBlock}>
-            <Card title={"01 -------"} text={<Placeholder height={3}/>} />
+            <Card title={"01"} text={<Placeholder height={3}/>} />
             <Arrow />
-            <Card title={"02 -------"} text={<Placeholder height={3}/>} />
+            <Card title={"02"} text={<Placeholder height={3}/>} />
             <Arrow />
-            <Card title={"03 -------"} text={<Placeholder height={4}/>} />
+            <Card title={"03"} text={<Placeholder height={4}/>} />
         </div>
     </section>

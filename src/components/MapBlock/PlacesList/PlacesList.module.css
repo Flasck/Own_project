@@ -3,3 +3,18 @@
 	flex-direction: column;
 	gap: 1em;
 }
+
+@media only screen and (min-width: 460px) and (max-width: 800px) {
+	.root{
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+
+@media only screen and (min-width: 320px) and (max-width: 459px) {
+	.root{
+		display: grid;
+		grid-template-columns: auto auto;
+		justify-content: center;
+	}	
+}
