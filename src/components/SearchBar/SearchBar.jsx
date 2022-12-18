@@ -13,21 +13,21 @@ export const SearchBar = ({ setProjects }) =>
 	const [techs, setTechs] = useState([]);
 	const [focused, setFocused] = useState(false);
     const texts = useSelector(selectConstants);
-	const projectsAll = useSelector(selectProjects) || [];
+	const projectsAll = useSelector(selectProjects);
 	useEffect(() =>
 	{
-		setProjects(projectsAll)
-		setTechs(getAllTechs(projectsAll));
+		setProjects(projectsAll || [])
+		setTechs(getAllTechs(projectsAll || []));
 	}, [projectsAll]);
 	useEffect(() =>
 	{
-		setProjects(filter(projectsAll, value, tech));
-		console.log(tech, value);
+		setProjects(filter(projectsAll || [], value, tech));
 	}, [tech, value]);
 	useEffect(() =>
 	{
 		window.addEventListener("click", () => setFocused(false));
-		setProjects(filter(projectsAll, value, tech));
+		window.addEventListener("keypress", e => e.key === "Enter" && setFocused(false));
+		setProjects(filter(projectsAll || [], value, tech));
 	}, []);
 
 	return <div className={styles.root} onClick={e => e.stopPropagation()}>
@@ -35,7 +35,11 @@ export const SearchBar = ({ setProjects }) =>
 			className={styles.input}
 			placeholder={texts?.projectsPage?.searchBar}
 			id="searchBar" value={value}
-			onChange={(e) => setValue(e.target.value)}
+			onChange={(e) =>
+			{
+				setValue(e.target.value);
+				setFocused(true);
+			}}
 			onFocus={() => setFocused(true)}
 		/>
 
