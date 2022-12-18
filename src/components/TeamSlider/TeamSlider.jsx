@@ -18,6 +18,7 @@ export const TeamSlider = () => {
 	const PeopleList = useSelector(selectPeople)
 
 	// Состояние сдвига для рендера
+	const [moved, setMoved] = useState(false)
 	const [offset, setOffset] = useState(0)
 
 	// Ссылки для снятия ширины
@@ -37,19 +38,39 @@ export const TeamSlider = () => {
 			reRender()
 		}
 	}
-	// Функции свайпов
+
+	// Функции свайпов пальцами
 	const touchStart = (event) => {
+		setMoved(true)
 		params.initTouch = event.touches[0].clientX
 		params.lastTouch = event.touches[0].clientX
 	}
-
 	const touchMove = (event) => {
 		params.lastTouch = event.touches[0].clientX
+		reRender(params.lastTouch - params.initTouch)
+	}
+	const touchEnd = (event) => {
+		setMoved(false)
+		params.lastTouch - params.initTouch > params.threshold ? prev_slide() : reRender()
+		params.lastTouch - params.initTouch < -params.threshold ? next_slide() : reRender()
 	}
 
-	const endTouch = (event) => {
-		params.lastTouch - params.initTouch > params.threshold ? prev_slide() : null
-		params.lastTouch - params.initTouch < -params.threshold ? next_slide() : null
+	// Функции свайпов мышью
+	const clickStart = (event) => {
+		params.initTouch = event.clientX
+		params.lastTouch = event.clientX
+		setMoved(true)
+	}
+	const clickMove = (event) => {
+		if (moved) {
+			params.lastTouch = event.clientX
+			reRender(params.lastTouch - params.initTouch)
+		}
+	}
+	const clickEnd = (event) => {
+		setMoved(false)
+		params.lastTouch - params.initTouch > params.threshold ? prev_slide() : reRender()
+		params.lastTouch - params.initTouch < -params.threshold ? next_slide() : reRender()
 	}
 
 	// Функция перерасчета параметров
@@ -58,13 +79,15 @@ export const TeamSlider = () => {
 			params.gap = (wrapperRefWidth.current.offsetWidth - cardRefWidth.current.offsetWidth) / 2 - cardRefWidth.current.offsetWidth / 3
 			params.step = cardRefWidth.current.offsetWidth + params.gap
 			params.initialOffset = (wrapperRefWidth.current.offsetWidth - cardRefWidth.current.offsetWidth) / 2
-			params.threshold = wrapperRefWidth.current.offsetWidth / 10
+			params.threshold = wrapperRefWidth.current.offsetWidth / 7
 			reRender()
 		}
 	}
 
 	// Функция перерендеринга
-	const reRender = () => setOffset(params.initialOffset - params.slide * params.step)
+	const reRender = (moved = 0) => {
+		setOffset(params.initialOffset - params.slide * params.step + moved)
+	}
 
 	useLayoutEffect(() => {
 		if (wrapperRefWidth.current && cardRefWidth.current) {
@@ -74,12 +97,12 @@ export const TeamSlider = () => {
 			// Слушатели нажатий
 			document.getElementById("slider").addEventListener("touchstart", touchStart)
 			document.getElementById("slider").addEventListener("touchmove", touchMove)
-			document.getElementById("slider").addEventListener("touchend", endTouch)
+			document.getElementById("slider").addEventListener("touchend", touchEnd)
 
 			// Слушатели кликов
-			document.getElementById("slider").addEventListener("mousedown", touchStart)
-			document.getElementById("slider").addEventListener("mousemove", touchMove)
-			document.getElementById("slider").addEventListener("mouseup", endTouch)
+			document.getElementById("slider").addEventListener("mousedown", clickStart)
+			document.getElementById("slider").addEventListener("mousemove", clickMove)
+			document.getElementById("slider").addEventListener("mouseup", clickEnd)
 
 			// Слушатель изменений окна
 			window.addEventListener("resize", resize)
@@ -96,9 +119,12 @@ export const TeamSlider = () => {
 	return (
 		<>
 			{PeopleList ? (
-				<div className={styles.slider} id="slider">
-					<div className={styles.slider_overflow} ref={wrapperRefWidth}>
-						<div className={styles.slides_line} style={{ gap: `${params.gap}px`, transform: `translate3d(${offset}px, 0, 0)` }}>
+				<div className={styles.slider}>
+					<div className={styles.slider_overflow} id="slider" ref={wrapperRefWidth}>
+						<div
+							className={classnames(styles.slides_line, moved ? styles.slider_moved : "")}
+							style={{ gap: `${params.gap}px`, transform: `translate3d(${offset}px, 0, 0)` }}
+						>
 							{PeopleList.map((person) => (
 								<PersonCard key={person.id} person={person} refLink={cardRefWidth} />
 							))}
