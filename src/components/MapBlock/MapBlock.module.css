@@ -17,9 +17,24 @@
 	font-size: 1.5rem;
 }
 
-
 .container {
-	display: grid;
-	grid-template-columns: 2fr 6fr;
+	display: flex;
+	flex-direction: row;
+
 }
 
+@media only screen and (min-width: 320px) and (max-width: 800px) {
+	.container{
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+	}
+}
+
+@media only screen and (min-width: 320px) and (max-width: 459px) {
+	.title {
+		flex-direction: column;
+		text-align: center;
+		gap: 0.5em;
+	}
+}

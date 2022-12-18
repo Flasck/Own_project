@@ -18,7 +18,7 @@
 .title {
 	font-size: 3rem;
 	font-weight: 800;
-	line-height: 0.95em;
+	line-height: 1em;
 	margin-bottom: 0.5rem;
 	text-transform: uppercase;
 }
@@ -41,4 +41,59 @@
 
 .arrow__path {
 	stroke: var(--c-text);
+}
+
+@media only screen and (min-width: 320px) and (max-width: 719px) {
+	.root {
+		flex-direction: column;
+	}
+	.leftBlock {
+		margin-bottom: 1em;
+	}
+}
+
+@media only screen and (min-width: 578px) and (max-width: 719px) {
+	.rightBlock {
+		flex-direction: row;
+	}
+	.arrow {
+		transform: rotate(-90deg); 
+	}
+
+}
+
+@media only screen and (min-width: 320px) and (max-width: 577px) {
+	.rightBlock {
+		flex-direction: column;
+	}
+}
+
+@media only screen and (min-width: 360px) and (max-width: 419px) {
+	.title {
+		font-size: 2.5rem;
+		font-weight: 800;
+		line-height: 1em;
+		margin-bottom: 0.5rem;
+		text-transform: uppercase;
+	}
+	.subTitle {
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 0.95em;
+	}
+}
+
+@media only screen and (min-width: 320px) and (max-width: 359px) {
+	.title {
+		font-size: 2.15rem;
+		font-weight: 800;
+		line-height: 1em;
+		margin-bottom: 0.5rem;
+		text-transform: uppercase;
+	}
+	.subTitle {
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 0.95em;
+	}
 }
