@@ -3,7 +3,8 @@
 	margin: 1em 0 2em;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
+	flex-direction: column;
 	position: relative;
 	user-select: none;
 	touch-action: pan-y;
@@ -40,7 +41,7 @@
 
 .slides_line {
 	position: relative;
-	transition: left 0.5s ease;
+	transition: all 0.5s ease;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -55,8 +56,25 @@
 	cursor: grabbing;
 }
 
-.err {
-	border: 1px solid;
-	border-radius: 12px;
-	text-align: center;
+.dots {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.6em;
+}
+
+.dot {
+	opacity: 0.4;
+	cursor: pointer;
+	width: 0.6em;
+	height: 0.6em;
+	border-radius: 100%;
+	background-color: var(--c-text);
+}
+
+.dot_active {
+	opacity: 1;
+	cursor: auto;
+	width: 0.9em;
+	height: 0.9em;
 }
