@@ -9,7 +9,7 @@ import { classnames } from "@utils/classnames"
 export const SearchBar = ({ setProjects }) =>
 {
 	const [value, setValue] = useState("");
-	const [tech, setTech] = useState("JavaScript");
+	const [tech, setTech] = useState(null);
 	const [techs, setTechs] = useState([]);
 	const [focused, setFocused] = useState(false);
     const texts = useSelector(selectConstants);
@@ -28,7 +28,6 @@ export const SearchBar = ({ setProjects }) =>
 	{
 		window.addEventListener("click", () => setFocused(false));
 		setProjects(filter(projectsAll, value, tech));
-		console.log(tech, value);
 	}, []);
 
 	return <div className={styles.root} onClick={e => e.stopPropagation()}>
