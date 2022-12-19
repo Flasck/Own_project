@@ -89,7 +89,7 @@ export const ModalWindowContact = ({ setView }) =>
 					/>
 					<div className={styles.error}>{errors?.email && <p>{errors?.email.message || "Error"}</p>}</div>
 				</div>
-				<div className={classnames(styles.form__block, styles.form__textArea)} style={{ marginBottom: "35px" }}>
+				<div className={classnames(styles.form__block, styles.form__textArea)}>
 					<label className={styles.label} htmlFor="input_text">
 						{texts?.mainPage?.modalWindowContact?.text?.text}
 					</label>

@@ -14,7 +14,7 @@ export const TeammatePlaces = ({ data }) =>
 	const activeMark = useSelector(selectCurrentActiveMark);
 
 	return <div>
-		<div className={styles.name}>{data.person}</div>
+		<p className={styles.name}>{data.person}</p>
 		<div className={styles.places}>
 			{
 				data.places.map((v, i) =>

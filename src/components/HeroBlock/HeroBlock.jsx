@@ -13,7 +13,7 @@ export const HeroBlock = () =>
 
 	return <section className={styles.root}>
 		<div className={styles.leftBlock}>
-			<h1 className={styles.title}>{texts?.mainPage?.heroBlock?.title}</h1>
+			<h2 className={styles.title}>{texts?.mainPage?.heroBlock?.title}</h2>
 			<p className={styles.subTitle}>{texts?.mainPage?.heroBlock?.subtitle}</p>
 		</div>
 		<div className={styles.rightBlock}>

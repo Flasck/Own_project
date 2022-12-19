@@ -36,7 +36,7 @@ export const CommentsSlice = createSlice({
 		successLoadingSendComment: (state, action) =>
 		{
 			state.statusSendComment = Statuses.success
-			state.comments = [...state.comments, action.payload]
+			state.comments = [action.payload, ...state.comments]
 		},
 		failLoadingSendComment: state =>
 		{

@@ -11,8 +11,8 @@ export const Footer = () =>
 
 	return <footer className={styles.root}>
 		<div className={styles.container}>
-			<div>{texts ? texts.footer.text1 : <Placeholder width={36} />}</div>
-			<div>{texts ? texts.footer.text2 : <Placeholder width={32} />}</div>
+			<p>{texts ? texts.footer.text1 : <Placeholder width={36} />}</p>
+			<p>{texts ? texts.footer.text2 : <Placeholder width={32} />}</p>
 		</div>
 	</footer>
 }

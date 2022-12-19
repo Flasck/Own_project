@@ -18,7 +18,7 @@ export const PersonalDataPage = () =>
 	}
 
 	return <div className={styles.root}>
-		<div className={styles.title}>{text?.personalDataPage.title}</div>
-		<div>{text?.personalDataPage.data.split("\n").map(p => <p>{p}</p>)}</div>
+		<h2 className={styles.title}>{text?.personalDataPage.title}</h2>
+		<section>{text?.personalDataPage.data.split("\n").map(p => <p>{p}</p>)}</section>
 	</div>
 }

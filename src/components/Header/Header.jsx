@@ -6,7 +6,7 @@ import { classnames } from "@utils/classnames"
 import { LanguageSlice } from "@store/LanguageSlice/index"
 import { selectLanguage } from "@store/LanguageSlice/selectors"
 import { selectConstants } from "@store/ConstantsSlice/selectors"
-import { ThemeSwither } from "./ThemeSwither/ThemeSwither"
+import { ThemeSwitcher } from "./ThemeSwitcher/ThemeSwitcher"
 import styles from "./Header.module.css"
 import { Placeholder } from "../Placeholder/Placeholder"
 import { MenuIcon } from "./MenuButton/MenuButton"
@@ -64,7 +64,7 @@ export const Header = ({ className }) =>
 						eng
 					</button>
 				</span>
-				<ThemeSwither />
+				<ThemeSwitcher />
 			</span>
 		</div>
 	</header>

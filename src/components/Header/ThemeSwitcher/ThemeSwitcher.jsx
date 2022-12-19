@@ -1,11 +1,11 @@
 import React from "react"
-import styles from "./ThemeSwither.module.css"
+import styles from "./ThemeSwitcher.module.css"
 import { Button } from "../../Button/Button"
 import sun from "./sun.svg"
 import moon from "./moon.svg"
 
 
-export const ThemeSwither = () =>
+export const ThemeSwitcher = () =>
 	<Button
 		onClick={() =>
 		{

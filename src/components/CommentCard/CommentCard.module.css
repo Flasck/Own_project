@@ -1,7 +1,7 @@
 .root {
 	position: relative;
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 	gap: 0.5em;
 	padding: 1.5em;
 	border-radius: 1em;
@@ -11,19 +11,6 @@
 	backdrop-filter: blur(6px);
 	-webkit-backdrop-filter: blur(6px);
 	border: 1px solid rgba(255, 255, 255, 0.29);
-}
-
-.title {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 2em;
-}
-
-.title__item {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 2em;
 }
 
 .author {
@@ -45,27 +32,12 @@
 }
 
 .rate {
-	text-align: end;
+	justify-self: end;
 }
 
 .text {
+	grid-column: 1 / span 2;
 	padding: 0.6em;
 	border-left: 1px solid var(--c-second-light);
 	border-radius: 0.5em;
-}
-
-.author,
-.rate {
-	flex-grow: 1;
-}
-
-.Star {
-	user-select: none;
-	width: 1em;
-	height: 1em;
-	display: inline-block;
-	fill: yellow;
-	flex-shrink: 0;
-	transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-	font-size: 1.5rem;
 }
