@@ -65,14 +65,12 @@ export const TeamSlider = () => {
 
 	// Функции свайпов мышью
 	function mouseDown(e) {
-		console.log(1)
 		wrapperRef.current.classList.add(styles.grab)
 		params.initTouch = e.clientX
 		params.lastTouch = e.clientX
 	}
 	function mouseMove(e) {
 		if (e.buttons === 1) {
-			console.log(2)
 			params.lastTouch = e.clientX
 			moveSlide(params.lastTouch - params.initTouch)
 		}
