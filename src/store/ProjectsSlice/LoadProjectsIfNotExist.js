@@ -2,6 +2,7 @@ import { selectLanguage } from "../LanguageSlice/selectors"
 import { ProjectsSlice } from "./index"
 import { selectProjectsIsLoaded } from "./selectors"
 
+
 export const LoadProjectsIfNotExist = (dispatch, getState) =>
 {
 	const state = getState();

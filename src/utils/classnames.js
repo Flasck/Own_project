@@ -1,4 +1,4 @@
 export function classnames(...names)
 {
-	return names.filter(v => !!v).join(' ');
+	return names.filter(v => !!v).join(" ");
 }

@@ -6,14 +6,14 @@ import moon from "./moon.svg"
 
 
 export const ThemeSwither = () =>
-    <Button
-        onClick={() =>
-        {
-            document.body.classList.toggle("darkTheme");
-            localStorage.setItem("darkTheme", document.body.classList.contains("darkTheme"));
-        }}
-        className={styles.root}
-    >
-        <img src={sun} className={styles.img_sun}></img>
-        <img src={moon} className={styles.img_moon}></img>
-    </Button>
+	<Button
+		onClick={() =>
+		{
+			document.body.classList.toggle("darkTheme");
+			localStorage.setItem("darkTheme", document.body.classList.contains("darkTheme"));
+		}}
+		className={styles.root}
+	>
+		<img src={sun} className={styles.img_sun} />
+		<img src={moon} className={styles.img_moon} />
+	</Button>

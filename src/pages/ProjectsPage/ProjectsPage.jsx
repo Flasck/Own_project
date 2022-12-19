@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
-import styles from "./ProjectsPage.module.css"
 import { SearchBar } from "@components/SearchBar/SearchBar"
-import { ProjectCard } from "@components/ProjectCard/ProjectCard"
+import { ProjectCard, ProjectCardPlaceholder } from "@components/ProjectCard/ProjectCard"
 import { useDispatch, useSelector } from "react-redux"
 import { selectLanguage } from "@store/LanguageSlice/selectors"
 import { LoadProjectsIfNotExist } from "@store/ProjectsSlice/LoadProjectsIfNotExist"
@@ -9,7 +8,8 @@ import { selectProjectsStatus } from "@store/ProjectsSlice/selectors"
 import { Statuses } from "@utils/Statuses"
 import { Spinner } from "@components/Spinner/Spinner";
 import { useIntersectionObserver } from "@utils/useIntersectionObserver"
-import { ProjectCardPlaceholder } from "../../components/ProjectCard/ProjectCard"
+import styles from "./ProjectsPage.module.css"
+
 
 
 export const ProjectsPage = () =>
@@ -28,31 +28,30 @@ export const ProjectsPage = () =>
 			const entry = entries[i];
 			if (entry.isIntersecting)
 			{
-				setCount(v => window.innerWidth > 700 ? v + 2 : v + 1);
+				setCount((v) => (window.innerWidth > 700 ? v + 2 : v + 1));
 				break
 			}
 		}
 	})
 
 
-	if (status === Statuses.inProgress)
-		return renderPlaceholder();
+	if (status === Statuses.inProgress) return renderPlaceholder();
 
 
 	return <>
 		<SearchBar setProjects={setProjects} />
 		<section className={styles.wrapper}>
 			{projects.slice(0, count).map((project) => <ProjectCard key={project.id} project={project} />)}
-			<div ref={cbRef} className={styles.endOfList}></div>
+			<div ref={cbRef} className={styles.endOfList} />
 		</section>
 	</>
 }
 
 
 const renderPlaceholder = () => <>
-	<SearchBar setProjects={() => {}} />
+	<SearchBar setProjects={() => { }} />
 	<section className={styles.wrapper}>
-			<ProjectCardPlaceholder />
-			<ProjectCardPlaceholder />
+		<ProjectCardPlaceholder />
+		<ProjectCardPlaceholder />
 	</section>
 </>

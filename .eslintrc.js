@@ -76,7 +76,7 @@ module.exports = {
 			"exports": "never",
 			"functions": "never"
 		}],
-		"semi": [2, "always", { "omitLastInOneLineBlock": true }],
+		"semi": [0, "never"],
 		"no-multiple-empty-lines": [2, { max: 3, maxEOF: 1 }],
 		"import/extensions": [2, { "jsx": "never" }],
 		"react/jsx-props-no-spreading": 0,
@@ -91,5 +91,7 @@ module.exports = {
 		"no-plusplus": 0,
 		"no-await-in-loop": 0,
 		"no-promise-executor-return": 0,
+		"linebreak-style": [2, "windows"],
+		"arrow-parens": [1, "as-needed"],
 	},
 };

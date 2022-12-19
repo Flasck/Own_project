@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { classnames } from "@utils/classnames"
 import styles from "./Placeholder.module.css"
 
-export function Placeholder({ className, style, width, height, widthD, heightD, unitW, unitH, disableText })
+
+export const Placeholder = ({ className, style, width, height, widthD, heightD, unitW, unitH, disableText }) =>
 {
 	const [text, setText] = useState("#");
 	const ref = useRef();
@@ -29,7 +30,7 @@ export function Placeholder({ className, style, width, height, widthD, heightD, 
 		ref.current.style.setProperty("--data-y", `${rect.top}px`);
 		ref.current.style.setProperty("--data-w", `${window.innerWidth}px`);
 		ref.current.style.setProperty("--data-h", `${Math.max(window.innerHeight, document.body.scrollHeight)}px`);
-		if (!disableText) type(generateText(width ? width : 20 * (height || 1)), setText);
+		if (!disableText) type(generateText(width || 20 * (height || 1)), setText);
 		else ref.current.style.color = "transparent";
 	}, [ref, width, height, widthD, heightD, unitW, unitH]);
 
@@ -60,8 +61,7 @@ function generateText(len)
 	let text = "";
 	while (text.length < len)
 	{
-		text += " " + s[Math.floor(Math.random() * s.length)];
+		text += ` ${s[Math.floor(Math.random() * s.length)]}`;
 	}
 	return text.slice(1, len - 1);
 }
-window.generateText = generateText;

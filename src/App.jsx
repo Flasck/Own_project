@@ -14,7 +14,9 @@ import { Layout } from "@components/Layout/Layout"
 import { LoadConstantsIfNotExist } from "@store/ConstantsSlice/loadConstantsIfNotExist"
 import { selectLanguage } from "@store/LanguageSlice/selectors"
 
-const Application = () => {
+
+const Application = () =>
+{
 	const dispatch = useDispatch()
 	const curLan = useSelector(selectLanguage)
 	useEffect(() => dispatch(LoadConstantsIfNotExist), [curLan])

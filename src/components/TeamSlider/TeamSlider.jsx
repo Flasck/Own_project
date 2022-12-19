@@ -1,18 +1,20 @@
 import React, { useLayoutEffect, useEffect, useRef, useState } from "react"
-import { PersonCard } from "./PersonCard/PersonCard"
 import { useDispatch, useSelector } from "react-redux"
-import styles from "./TeamSlider.module.css"
 
 import { selectPeople } from "@store/PeopleSlice/selectors"
 import { selectLanguage } from "@store/LanguageSlice/selectors"
 import { LoadPeopleIfNotExist } from "@store/PeopleSlice/LoadPeopleIfNotExist"
-import { Placeholder } from "../Placeholder/Placeholder"
 import { classnames } from "@utils/classnames"
+import { Placeholder } from "../Placeholder/Placeholder"
+import styles from "./TeamSlider.module.css"
+import { PersonCard } from "./PersonCard/PersonCard"
 
-var params = { gap: 0, step: 0, slide: 0, initialOffset: 0, initTouch: 0, lastTouch: 0, threshold: 0 }
 
-export const TeamSlider = () => {
-	//Текстовые данные
+const params = { gap: 0, step: 0, slide: 0, initialOffset: 0, initTouch: 0, lastTouch: 0, threshold: 0 }
+
+export const TeamSlider = () =>
+{
+	// Текстовые данные
 	const dispatch = useDispatch()
 	const curLan = useSelector(selectLanguage)
 	useEffect(() => dispatch(LoadPeopleIfNotExist), [curLan])
@@ -27,63 +29,77 @@ export const TeamSlider = () => {
 	const cardRef = useRef(null)
 
 	// Функции переключения между слайдами
-	const prev_slide = () => {
-		if (params.slide > 0) {
+	const prev_slide = () =>
+	{
+		if (params.slide > 0)
+		{
 			params.slide -= 1
 			moveSlide()
 			reRender()
 		}
 	}
-	const next_slide = () => {
-		if (params.slide < PeopleList.length - 1) {
+	const next_slide = () =>
+	{
+		if (params.slide < PeopleList.length - 1)
+		{
 			params.slide += 1
 			moveSlide()
 			reRender()
 		}
 	}
-	const select_slide = (slide) => {
+	const select_slide = (slide) =>
+	{
 		params.slide = slide
 		moveSlide()
 		reRender()
 	}
 
 	// Функции свайпов пальцами
-	function touchStart(e) {
+	function touchStart(e)
+	{
 		wrapperRef.current.classList.add(styles.grab)
 		params.initTouch = e.touches[0].clientX
 		params.lastTouch = e.touches[0].clientX
 	}
-	function touchMove(e) {
+	function touchMove(e)
+	{
 		params.lastTouch = e.touches[0].clientX
 		moveSlide(params.lastTouch - params.initTouch)
 	}
-	function touchEnd(e) {
+	function touchEnd(e)
+	{
 		wrapperRef.current.classList.remove(styles.grab)
 		params.lastTouch - params.initTouch > params.threshold ? prev_slide() : moveSlide()
 		params.lastTouch - params.initTouch < -params.threshold ? next_slide() : moveSlide()
 	}
 
 	// Функции свайпов мышью
-	function mouseDown(e) {
+	function mouseDown(e)
+	{
 		wrapperRef.current.classList.add(styles.grab)
 		params.initTouch = e.clientX
 		params.lastTouch = e.clientX
 	}
-	function mouseMove(e) {
-		if (e.buttons === 1) {
+	function mouseMove(e)
+	{
+		if (e.buttons === 1)
+		{
 			params.lastTouch = e.clientX
 			moveSlide(params.lastTouch - params.initTouch)
 		}
 	}
-	function mouseUp(e) {
+	function mouseUp(e)
+	{
 		wrapperRef.current.classList.remove(styles.grab)
 		params.lastTouch - params.initTouch > params.threshold ? prev_slide() : moveSlide()
 		params.lastTouch - params.initTouch < -params.threshold ? next_slide() : moveSlide()
 	}
 
 	// Функция перерасчета параметров
-	const resize = () => {
-		if (wrapperRef.current && cardRef.current) {
+	const resize = () =>
+	{
+		if (wrapperRef.current && cardRef.current)
+		{
 			params.gap = (wrapperRef.current.offsetWidth - cardRef.current.offsetWidth) / 2 - cardRef.current.offsetWidth / 3
 			params.step = cardRef.current.offsetWidth + params.gap
 			params.initialOffset = (wrapperRef.current.offsetWidth - cardRef.current.offsetWidth) / 2
@@ -100,8 +116,10 @@ export const TeamSlider = () => {
 	// Функция перерендеринга
 	const reRender = () => setState((s) => !s)
 
-	useLayoutEffect(() => {
-		if (wrapperRef.current && cardRef.current) {
+	useLayoutEffect(() =>
+	{
+		if (wrapperRef.current && cardRef.current)
+		{
 			// Получаем изначальные измерения
 			resize()
 
@@ -119,48 +137,47 @@ export const TeamSlider = () => {
 			window.addEventListener("resize", resize)
 
 			// Навигация по клавишам
-			document.addEventListener("keyup", (e) => {
+			document.addEventListener("keyup", (e) =>
+			{
 				e.which == 37 ? prev_slide() : null
 				e.which == 39 ? next_slide() : null
 			})
 		}
 	}, [PeopleList])
 
-	return (
-		<>
-			{PeopleList ? (
-				<div className={styles.slider}>
-					<div className={styles.slider_overflow} ref={wrapperRef}>
-						<div className={styles.slides_line} style={{ gap: `${params.gap}px` }} ref={sliderRef}>
-							{PeopleList.map((person) => (
-								<PersonCard key={person.id} person={person} refLink={cardRef} />
-							))}
-						</div>
-					</div>
-					<div className={classnames(styles.blur, styles.blur_left)}></div>
-					<div className={classnames(styles.blur, styles.blur_right)}></div>
-					<div className={classnames(styles.btn_prev, params.slide == 0 ? styles.btn_prev_dis : "")} onClick={prev_slide}>
-						❮
-					</div>
-					<div
-						className={classnames(styles.btn_next, params.slide == PeopleList.length - 1 ? styles.btn_next_dis : "")}
-						onClick={next_slide}
-					>
-						❯
-					</div>
-					<div className={styles.dots}>
-						{PeopleList.map((el, index) => (
-							<div
-								key={Math.random() * index}
-								className={classnames(styles.dot, params.slide == index ? styles.dot_active : "")}
-								onClick={() => select_slide(index)}
-							></div>
+	return <>
+		{PeopleList ? (
+			<div className={styles.slider}>
+				<div className={styles.slider_overflow} ref={wrapperRef}>
+					<div className={styles.slides_line} style={{ gap: `${params.gap}px` }} ref={sliderRef}>
+						{PeopleList.map((person) => (
+							<PersonCard key={person.id} person={person} refLink={cardRef} />
 						))}
 					</div>
 				</div>
-			) : (
-				<Placeholder height={326} unitH="px" disableText={true} />
-			)}
-		</>
-	)
+				<div className={classnames(styles.blur, styles.blur_left)} />
+				<div className={classnames(styles.blur, styles.blur_right)} />
+				<div className={classnames(styles.btn_prev, params.slide == 0 ? styles.btn_prev_dis : "")} onClick={prev_slide}>
+					❮
+				</div>
+				<div
+					className={classnames(styles.btn_next, params.slide == PeopleList.length - 1 ? styles.btn_next_dis : "")}
+					onClick={next_slide}
+				>
+					❯
+				</div>
+				<div className={styles.dots}>
+					{PeopleList.map((el, index) => (
+						<div
+							key={Math.random() * index}
+							className={classnames(styles.dot, params.slide == index ? styles.dot_active : "")}
+							onClick={() => select_slide(index)}
+						/>
+					))}
+				</div>
+			</div>
+		) : (
+			<Placeholder height={326} unitH="px" disableText />
+		)}
+	</>
 }
