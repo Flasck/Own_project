@@ -18,8 +18,8 @@ export const PersonalDataPage = () => {
 
 	return (
 		<div className={styles.root}>
-			<div className={styles.title}>{text?.personalDataPage.data.split(" ").slice(0, 2).join(" ")}</div>
-			<div>{text?.personalDataPage.data.split(" ").slice(2).join(" ")}</div>
+			<div className={styles.title}>{text?.personalDataPage.title}</div>
+			<div>{text?.personalDataPage.data.split("\n").map(p => <p>{p}</p>)}</div>
 		</div>
 	)
 }
