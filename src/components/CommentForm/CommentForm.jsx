@@ -8,6 +8,7 @@ import {Button} from "@components/Button/Button.jsx"
 import {selectCommentsStatusSend} from "@store/CommentsSlice/selectors";
 import {Statuses} from "@utils/Statuses";
 import {RatingStars} from "@components/RatingStars/RatingStars";
+import {Placeholder} from "@components/Placeholder/Placeholder";
 
 export const CommentForm = () => {
     const {
@@ -20,7 +21,7 @@ export const CommentForm = () => {
     const texts = useSelector(selectConstants)
     const Status = useSelector(selectCommentsStatusSend)
     const [countStars, setCountStars] = useState(0)
-    const btnIsDisabled = !isValid || Status !== Statuses.idle
+    const btnIsDisabled = !isValid || Status !== Statuses.idle || !texts
     const onSubmit = (data) => {
         dispatch(SendComment({...data, rate: countStars}));
         reset()
@@ -28,11 +29,11 @@ export const CommentForm = () => {
 
     return (
         <div className={styles.content}>
-            <h2 className={styles.title}>{texts?.commentsPage?.title}</h2>
+            <h2 className={styles.title}>{texts ? texts.commentsPage.title : <Placeholder width={20} />}</h2>
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.form__block}>
                     <label className={styles.label} htmlFor="input_author">
-                        {texts?.mainPage?.modalWindowContact?.author?.text}
+                        {texts ? texts?.mainPage?.modalWindowContact?.author?.text : <Placeholder width={15} />}
                     </label>
                     <input
                         {...register("author", {
@@ -56,7 +57,7 @@ export const CommentForm = () => {
                 </div>
                 <div className={styles.form__block} style={{marginBottom: "35px"}}>
                     <label className={styles.label} htmlFor="input_text">
-                        {texts?.mainPage?.modalWindowContact?.text?.text}
+                        {texts ? texts?.mainPage?.modalWindowContact?.text?.text : <Placeholder width={25} />}
                     </label>
                     <textarea
                         {...register("text", {
@@ -79,7 +80,7 @@ export const CommentForm = () => {
                 <RatingStars count={countStars} cb={(e)=>setCountStars(e)} isWorking={true}/>
                 <div className={styles.wrapper}>
                     <Button disabled={btnIsDisabled} type="submit" className={styles.btn}>
-                        {texts?.mainPage?.modalWindowContact?.buttonSend}
+                        {texts ? texts?.mainPage?.modalWindowContact?.buttonSend : <Placeholder width={8.5} />}
                     </Button>
                 </div>
             </form>

@@ -9,6 +9,7 @@ import { selectProjectsStatus } from "@store/ProjectsSlice/selectors"
 import { Statuses } from "@utils/Statuses"
 import { Spinner } from "@components/Spinner/Spinner";
 import { useIntersectionObserver } from "@utils/useIntersectionObserver"
+import { ProjectCardPlaceholder } from "../../components/ProjectCard/ProjectCard"
 
 
 export const ProjectsPage = () =>
@@ -50,7 +51,8 @@ export const ProjectsPage = () =>
 
 const renderPlaceholder = () => <>
 	<SearchBar setProjects={() => {}} />
-	<div className={styles.wrapper_spinner}>
-		<Spinner />
-	</div>
+	<section className={styles.wrapper}>
+			<ProjectCardPlaceholder />
+			<ProjectCardPlaceholder />
+	</section>
 </>

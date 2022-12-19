@@ -4,12 +4,13 @@ import {CommentsCard} from "@components/CommentCard/CommentsCard.jsx"
 import {useDispatch, useSelector} from "react-redux"
 import {selectComments} from "@store/CommentsSlice/selectors"
 import {Statuses} from "@utils/Statuses"
-import {Spinner} from "@components/Spinner/Spinner"
+import {Placeholder} from "@components/Placeholder/Placeholder";
 import {LoadCommentsIfNotExist} from "@store/CommentsSlice/loadCommentsIfNotExist";
 import {selectCommentsStatusGet} from "@store/CommentsSlice/selectors";
 import {CommentForm} from "@components/CommentForm/CommentForm";
 import {selectCommentsStatusSend} from "@store/CommentsSlice/selectors";
 import {WidgetComment} from "@components/WidgetComment/WidgetComment";
+import { CommentsCardPlaceholder } from "../../components/CommentCard/CommentsCard"
 
 export const CommentsPage = () => {
     const dispatch = useDispatch()
@@ -20,8 +21,11 @@ export const CommentsPage = () => {
 
     if (statusGet === Statuses.inProgress) {
         return (
-            <div className={styles.wrapper_spinner}>
-                <Spinner/>
+            <div className={styles.root}>
+                <CommentForm />
+                <CommentsCardPlaceholder />
+                <CommentsCardPlaceholder />
+                <CommentsCardPlaceholder />
             </div>
         )
     }
