@@ -18,10 +18,10 @@ export const PersonCard = ({ refLink, person }) =>
 				<h3 className={styles.name}>{person.name}</h3>
 				<div className={styles.links}>
 					<a className={styles.link} href={person.github} target="_blank" onClick={() => change()} rel="noreferrer">
-						<IconGh cn={styles.link_logo} />
+						<IconGh className={styles.link_logo} />
 					</a>
 					<a className={styles.link} href={person.telegram} target="_blank" onClick={() => change()} rel="noreferrer">
-						<IconTg cn={styles.link_logo} />
+						<IconTg className={styles.link_logo} />
 					</a>
 				</div>
 			</div>

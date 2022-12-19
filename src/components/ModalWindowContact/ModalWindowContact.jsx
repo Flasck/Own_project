@@ -115,7 +115,7 @@ export const ModalWindowContact = ({ setView }) =>
 					className={classnames(styles.form__block, styles.form__checkBox)}
 					onClick={() => setCheckBox(e => !e)}
 				>
-					<a className={styles.customCheckBox}>
+					<button className={styles.customCheckBox} type="button">
 						<svg
 							width="11"
 							height="8"
@@ -130,8 +130,8 @@ export const ModalWindowContact = ({ setView }) =>
 								strokeWidth="3"
 							/>
 						</svg>
-					</a>
-					<label className={styles.label}>
+					</button>
+					<span className={styles.label}>
 						{texts?.mainPage?.modalWindowContact?.checkBoxLabel.split(" ").slice(0, -2)?.join(" ")}
 						&nbsp;
 						<Link
@@ -142,7 +142,7 @@ export const ModalWindowContact = ({ setView }) =>
 						>
 							{texts?.mainPage?.modalWindowContact?.checkBoxLabel.split(" ").slice(-2)?.join(" ")}
 						</Link>
-					</label>
+					</span>
 				</div>
 				<div className={styles.wrapper}>
 					<Button disabled={!isValid || !CheckBox} type="submit" className={styles.btn}>

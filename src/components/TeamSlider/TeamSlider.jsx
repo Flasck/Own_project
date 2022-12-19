@@ -143,8 +143,8 @@ export const TeamSlider = () =>
 			// Навигация по клавишам
 			document.addEventListener("keyup", (e) =>
 			{
-				e.which === 37 ? toPrevSlide() : null
-				e.which === 39 ? toNextSlide() : null
+				if (e.key === "ArrowLeft") toPrevSlide();
+				if (e.key === "ArrowRight") toNextSlide();
 			})
 		}
 	}, [PeopleList])
