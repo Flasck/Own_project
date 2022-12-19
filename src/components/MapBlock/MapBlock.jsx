@@ -9,13 +9,12 @@ import {OurMap} from "./OurMap/OurMap"
 import {PlacesList} from "./PlacesList/PlacesList"
 import {Placeholder} from "@components/Placeholder/Placeholder";
 
-import {FeedbackSlice} from "@store/FeedbackSlice";
 import {LoadMapIfNotExist} from "@store/MapSlice/LoadMapIfNotExist";
 import {selectAllPlaces, selectStatusMap} from "@store/MapSlice/selectors"
 import {selectConstants} from "@store/ConstantsSlice/selectors"
 import {selectLanguage} from "@store/LanguageSlice/selectors";
 
-export const MapBlock = () => {
+export const MapBlock = ({setViewModal}) => {
     const dispatch = useDispatch();
     const allPlaces = useSelector(selectAllPlaces);
     const statusLoadMap = useSelector(selectStatusMap);
@@ -27,7 +26,7 @@ export const MapBlock = () => {
     return <section>
         <div className={styles.title}>
             <h2 className={styles.title__text}>{texts ? texts.mainPage.mapBlock.title : <Placeholder width={20}/>}</h2>
-            <ContactButton onClick={() => dispatch(FeedbackSlice.actions.changeView())}>
+            <ContactButton onClick={() => setViewModal(e => !e)}>
                 {texts ? texts.mainPage.mapBlock.contactButton : <Placeholder width={12}/>}
             </ContactButton>
         </div>
