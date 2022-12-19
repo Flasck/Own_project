@@ -9,7 +9,7 @@ import { LoadPeopleIfNotExist } from "@store/PeopleSlice/LoadPeopleIfNotExist"
 import { Placeholder } from "../Placeholder/Placeholder"
 import { classnames } from "@utils/classnames"
 
-var params = { gap: 0, step: 0, slide: 0, initialOffset: 0, offset: 0, initTouch: 0, lastTouch: 0, threshold: 0 }
+var params = { gap: 0, step: 0, slide: 0, initialOffset: 0, initTouch: 0, lastTouch: 0, threshold: 0 }
 
 export const TeamSlider = () => {
 	//Текстовые данные
@@ -22,7 +22,7 @@ export const TeamSlider = () => {
 	const [state, setState] = useState(false)
 
 	// Ссылки для присвоения стилей и снятия ширины
-	const sliderContent = useRef(null)
+	const sliderRef = useRef(null)
 	const wrapperRef = useRef(null)
 	const cardRef = useRef(null)
 
@@ -65,12 +65,14 @@ export const TeamSlider = () => {
 
 	// Функции свайпов мышью
 	function mouseDown(e) {
+		console.log(1)
 		wrapperRef.current.classList.add(styles.grab)
 		params.initTouch = e.clientX
 		params.lastTouch = e.clientX
 	}
 	function mouseMove(e) {
 		if (e.buttons === 1) {
+			console.log(2)
 			params.lastTouch = e.clientX
 			moveSlide(params.lastTouch - params.initTouch)
 		}
@@ -87,17 +89,15 @@ export const TeamSlider = () => {
 			params.gap = (wrapperRef.current.offsetWidth - cardRef.current.offsetWidth) / 2 - cardRef.current.offsetWidth / 3
 			params.step = cardRef.current.offsetWidth + params.gap
 			params.initialOffset = (wrapperRef.current.offsetWidth - cardRef.current.offsetWidth) / 2
-			params.threshold = wrapperRef.current.offsetWidth / 7
+			params.threshold = wrapperRef.current.offsetWidth / 10
 			moveSlide()
 			reRender()
 		}
 	}
 
 	// Функция сдвига слайдера
-	const moveSlide = (move = 0) => {
-		params.offset = params.initialOffset - params.slide * params.step + move
-		sliderContent.current.style.transform = `translate3d(${params.offset}px, 0, 0)`
-	}
+	const moveSlide = (move = 0) =>
+		(sliderRef.current.style.transform = `translate3d(${params.initialOffset - params.slide * params.step + move}px, 0, 0)`)
 
 	// Функция перерендеринга
 	const reRender = () => setState((s) => !s)
@@ -115,14 +115,13 @@ export const TeamSlider = () => {
 			// Слушатели кликов
 			wrapperRef.current.addEventListener("mousedown", mouseDown)
 			wrapperRef.current.addEventListener("mousemove", mouseMove)
-			wrapperRef.current.addEventListener("mouseup", mouseUp)
+			window.addEventListener("mouseup", mouseUp)
 
 			// Слушатель изменений окна
 			window.addEventListener("resize", resize)
 
 			// Навигация по клавишам
-			document.addEventListener("keyup", () => {
-				let e = e || window.event
+			document.addEventListener("keyup", (e) => {
 				e.which == 37 ? prev_slide() : null
 				e.which == 39 ? next_slide() : null
 			})
@@ -134,7 +133,7 @@ export const TeamSlider = () => {
 			{PeopleList ? (
 				<div className={styles.slider}>
 					<div className={styles.slider_overflow} ref={wrapperRef}>
-						<div className={styles.slides_line} style={{ gap: `${params.gap}px` }} ref={sliderContent}>
+						<div className={styles.slides_line} style={{ gap: `${params.gap}px` }} ref={sliderRef}>
 							{PeopleList.map((person) => (
 								<PersonCard key={person.id} person={person} refLink={cardRef} />
 							))}
