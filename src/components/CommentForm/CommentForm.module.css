@@ -35,6 +35,12 @@
     width: 100%;
     padding: 12px 8px 12px 8px;
     resize: none;
+
+	background: rgba(255, 255, 255, 0.1);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	border: 1px solid rgba(255, 255, 255, 0.29);
 }
 
 .textArea:focus {
@@ -47,10 +53,21 @@
     flex-direction: column;
     position: relative;
 }
-
-.form_block:last-child {
-    margin: 26px;
+.form__block_rating {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 1em;
 }
+
+.form__topBlock {
+    display: flex;
+    gap: 2em;
+}
+.form__topBlock > *:first-child {
+    flex-grow: 1;
+}
+
 
 .error {
     position: absolute;
@@ -86,6 +103,12 @@
     height: 36px;
     width: 100%;
     padding: 12px 8px 12px 8px;
+    
+	background: rgba(255, 255, 255, 0.1);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	border: 1px solid rgba(255, 255, 255, 0.29);
 }
 
 .input:focus {

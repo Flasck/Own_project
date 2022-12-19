@@ -1,73 +1,96 @@
 .root {
-    width: 259px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 0.75em;
-    padding: 1em;
-    background: var(--c-card);
-    color: var(--c-text);
-    box-shadow: 0 3px 0px -3px var(--c-text);
-    transition: box-shadow;
-    transition-duration: 150ms;
+	position: relative;
+	width: 259px;
+	display: flex;
+	flex-direction: column;
+	border-radius: 0.75em;
+	padding: 1em;
+	color: var(--c-text);
+	z-index: 0;
 }
 
-.root:hover {
-    box-shadow: 0 3px 7px -3px var(--c-text);
+.root::before {
+	content: "";
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	transition: box-shadow, opacity;
+	transition-duration: 150ms;
+	border-radius: 0.75em;
+
+	background: var(--c-card);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1),
+		inset -3px -3px 5px 1px rgba(128, 128, 128, 0.05),
+		inset 3px 3px 5px -1px rgba(128, 128, 128, 0.05);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	border: 1px solid rgba(255, 255, 255, 0.29);
+	opacity: 0.4;
+}
+
+.root:hover::before {
+	box-shadow: 0 3px 7px -3px var(--c-text);
+	opacity: 0.3;
 }
 
 .title {
-    margin-bottom: 8px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5em;
+	margin-bottom: 8px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.5em;
 }
 
 .title__number {
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 35px;  
+	font-weight: 500;
+	font-size: 36px;
+	line-height: 35px;
 }
 
 .title__line {
-    width: 100%;
-    border: 2px dashed var(--c-text);
+	width: 100%;
+	border: 2px dashed var(--c-text);
 }
 
 .text {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 14px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 14px;
 }
 
 @media only screen and (min-width: 696px) and (max-width: 720px) {
-    .root {
-        height: 159px;
-    }
+	.root {
+		height: 159px;
+	}
 
 }
 
 @media only screen and (min-width: 578px) and (max-width: 695px) {
-    .root {
-        height: 173px;
-    }
+	.root {
+		height: 173px;
+	}
 
 }
 
 @media only screen and (min-width: 360px) and (max-width: 577px) {
 	.root {
-        width: 300px;
-    }
+		width: 300px;
+	}
 }
 
 @media only screen and (min-width: 320px) and (max-width: 359px) {
 	.root {
-        width: 259px;
-    }
-    .text {
-        font-weight: 400;
-        font-size: 0.8rem;
-        line-height: 14px;
-    }
+		width: 259px;
+	}
+
+	.text {
+		font-weight: 400;
+		font-size: 0.8rem;
+		line-height: 14px;
+	}
 }

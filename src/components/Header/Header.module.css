@@ -1,5 +1,5 @@
 .root {
-	padding: 0.6em 2em;
+	padding: 0.6em 0em;
 	background-color: var(--c-primary);
 	display: flex;
 	justify-content: center;

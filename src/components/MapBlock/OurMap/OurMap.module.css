@@ -1,5 +1,5 @@
 .root {
-    max-width: 668px;
+    /* max-width: 668px; */
     width: 100%;
     height: 360px;
     position: relative;
@@ -13,7 +13,7 @@
     overflow: hidden;
 }
 
-@media only screen and (min-width: 1px) and (max-width: 800px) {
+@media only screen and (max-width: 800px) {
     .root {
         max-width: 100%;
         align-self: center;

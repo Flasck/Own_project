@@ -78,3 +78,29 @@
 	width: 0.9em;
 	height: 0.9em;
 }
+
+.blur {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 0;
+	/* mask-image: linear-gradient(to bottom, transparent 25%, black 75%); */
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+}
+@supports (mask-image: linear-gradient(to left, transparent 25%, black 75%)) or (-webkit-mask-image: linear-gradient(to left, transparent 25%, black 75%)) {
+	.blur {
+		width: 6em;
+	}
+	.blur_left {
+		-webkit-mask-image: linear-gradient(to left, transparent 25%, black 75%);
+		mask-image: linear-gradient(to left, transparent 25%, black 75%);
+		left: -1em;
+	}
+
+	.blur_right {
+		-webkit-mask-image: linear-gradient(to right, transparent 25%, black 75%);
+		mask-image: linear-gradient(to right, transparent 25%, black 75%);
+		right: -1em;
+	}
+}

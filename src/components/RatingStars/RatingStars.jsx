@@ -1,5 +1,6 @@
 import React, {useRef, useState} from 'react';
 import styles from "./RatingStars.module.css"
+import { classnames } from "@utils/classnames"
 
 const StarIcon = () => {
     return <svg className={styles.Star} viewBox="0 0 24 24">
@@ -13,7 +14,7 @@ const StarBorderIcon = () => {
     </svg>
 }
 
-export const RatingStars = ({count, cb = (e) => {}, isWorking, className}) => {
+export const RatingStars = ({count, cb = (e) => {}, isWorking, className, big = false}) => {
     const emptyIcon = StarBorderIcon
     const filledIcon = StarIcon
     const [activeStar, setActiveStar] = useState(count);
@@ -43,7 +44,7 @@ export const RatingStars = ({count, cb = (e) => {}, isWorking, className}) => {
     const FilledIcon = filledIcon;
 
     return (
-        <div className={className}>
+        <div className={classnames(className, big && styles.Star_big)}>
             <div
                 style={{
                     display: 'inline-flex',

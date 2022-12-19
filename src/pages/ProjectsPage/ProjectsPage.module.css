@@ -4,7 +4,7 @@
 	display: grid;
 	justify-items: center;
 	gap: 1em;
-	grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
 }
 
 .wrapper_spinner {
