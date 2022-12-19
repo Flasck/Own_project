@@ -8,7 +8,6 @@
 	position: relative;
 	user-select: none;
 	touch-action: pan-y;
-	cursor: grab;
 }
 
 .btn_prev,
@@ -37,7 +36,10 @@
 .slider_overflow {
 	width: 100%;
 	padding: 3em 0;
+	margin: 0.5em 0;
 	overflow: hidden;
+	box-sizing: border-box;
+	cursor: grab;
 }
 
 .slides_line {
@@ -48,11 +50,11 @@
 	width: fit-content;
 }
 
-.grab, .grab > * {
+.grab,
+.grab > * {
 	cursor: grabbing;
 	transition: none;
 }
-
 
 .dots {
 	display: flex;
