@@ -60,6 +60,7 @@
 	pointer-events: none;
 	width: 3em;
 	height: 3em;
+	border-radius: 0.5em;
 }
 
 .name {

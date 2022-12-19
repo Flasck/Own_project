@@ -18,12 +18,11 @@
 }
 
 .container {
-	display: flex;
-	flex-direction: row;
-
+	display: grid;
+	grid-template-columns: 1fr 4fr;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 800px) {
+@media only screen and (max-width: 800px) {
 	.container{
 		display: flex;
 		flex-direction: column;
@@ -31,8 +30,9 @@
 	}
 }
 
-@media only screen and (min-width: 320px) and (max-width: 459px) {
+@media only screen and (max-width: 459px) {
 	.title {
+		display: flex;
 		flex-direction: column;
 		text-align: center;
 		gap: 0.5em;

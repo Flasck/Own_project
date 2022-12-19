@@ -140,6 +140,8 @@ export const TeamSlider = () => {
 							))}
 						</div>
 					</div>
+					<div className={classnames(styles.blur, styles.blur_left)}></div>
+					<div className={classnames(styles.blur, styles.blur_right)}></div>
 					<div className={classnames(styles.btn_prev, params.slide == 0 ? styles.btn_prev_dis : "")} onClick={prev_slide}>
 						❮
 					</div>
