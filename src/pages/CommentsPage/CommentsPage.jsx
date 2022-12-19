@@ -20,23 +20,22 @@ export const CommentsPage = () =>
 	const statusGet = useSelector(selectCommentsStatusGet)
 	const statusSend = useSelector(selectCommentsStatusSend)
 
-	if (statusGet === Statuses.inProgress)
-	{
-		return <div className={styles.root}>
+
+	return statusGet === Statuses.inProgress ?
+		<div className={styles.root}>
 			<CommentForm />
 			<CommentsCardPlaceholder />
 			<CommentsCardPlaceholder />
 			<CommentsCardPlaceholder />
 		</div>
-	}
-
-	return <div className={styles.root}>
-		<CommentForm />
-		{comments?.map(el => (
-			<CommentsCard key={el.id} data={el} />
-		))}
-		{
-			statusSend !== Statuses.idle ? <WidgetComment /> : ""
-		}
-	</div>
+		:
+		<div className={styles.root}>
+			<CommentForm />
+			{comments?.map(el => (
+				<CommentsCard key={el.id} data={el} />
+			))}
+			{
+				statusSend !== Statuses.idle ? <WidgetComment /> : ""
+			}
+		</div>
 }
