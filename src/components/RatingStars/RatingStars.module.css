@@ -8,3 +8,8 @@
     transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     font-size: 1.5rem;
 }
+
+.Star_big .Star {
+    width: 1.25em;
+    height: 1.25em;
+}

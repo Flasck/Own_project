@@ -20,7 +20,7 @@ export const CommentForm = () => {
     const dispatch = useDispatch()
     const texts = useSelector(selectConstants)
     const Status = useSelector(selectCommentsStatusSend)
-    const [countStars, setCountStars] = useState(0)
+    const [countStars, setCountStars] = useState(4.5)
     const btnIsDisabled = !isValid || Status !== Statuses.idle || !texts
     const onSubmit = (data) => {
         dispatch(SendComment({...data, rate: countStars}));
@@ -31,28 +31,33 @@ export const CommentForm = () => {
         <div className={styles.content}>
             <h2 className={styles.title}>{texts ? texts.commentsPage.title : <Placeholder width={20} />}</h2>
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-                <div className={styles.form__block}>
-                    <label className={styles.label} htmlFor="input_author">
-                        {texts ? texts?.mainPage?.modalWindowContact?.author?.text : <Placeholder width={15} />}
-                    </label>
-                    <input
-                        {...register("author", {
-                            required: texts?.mainPage?.modalWindowContact?.author?.required,
-                            pattern: {
-                                value: /^[a-zаА-яЯё]+$/i,
-                                message: texts?.mainPage?.modalWindowContact?.author?.notPattern,
-                            },
-                            minLength: {
-                                value: 3,
-                                message: texts?.mainPage?.modalWindowContact?.author?.minLength,
-                            },
-                        })}
-                        className={styles.input}
-                        type="text"
-                        id="input_author"
-                    />
-                    <div className={styles.error}>
-                        {errors?.author && <p>{errors?.author.message || "Error"}</p>}
+                <div className={styles.form__topBlock}>
+                    <div className={styles.form__block}>
+                        <label className={styles.label} htmlFor="input_author">
+                            {texts ? texts?.mainPage?.modalWindowContact?.author?.text : <Placeholder width={15} />}
+                        </label>
+                        <input
+                            {...register("author", {
+                                required: texts?.mainPage?.modalWindowContact?.author?.required,
+                                pattern: {
+                                    value: /^[a-zаА-яЯё]+$/i,
+                                    message: texts?.mainPage?.modalWindowContact?.author?.notPattern,
+                                },
+                                minLength: {
+                                    value: 3,
+                                    message: texts?.mainPage?.modalWindowContact?.author?.minLength,
+                                },
+                            })}
+                            className={styles.input}
+                            type="text"
+                            id="input_author"
+                        />
+                        <div className={styles.error}>
+                            {errors?.author && <p>{errors?.author.message || "Error"}</p>}
+                        </div>
+                    </div>
+                    <div className={styles.form__block_rating}>
+                        <RatingStars count={countStars} cb={(e)=>setCountStars(e)} isWorking={true} big/>
                     </div>
                 </div>
                 <div className={styles.form__block} style={{marginBottom: "35px"}}>
@@ -77,7 +82,6 @@ export const CommentForm = () => {
                     />
                     <div className={styles.error}>{errors?.text && <p>{errors?.text.message || "Error"}</p>}</div>
                 </div>
-                <RatingStars count={countStars} cb={(e)=>setCountStars(e)} isWorking={true}/>
                 <div className={styles.wrapper}>
                     <Button disabled={btnIsDisabled} type="submit" className={styles.btn}>
                         {texts ? texts?.mainPage?.modalWindowContact?.buttonSend : <Placeholder width={8.5} />}
