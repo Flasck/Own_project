@@ -9,6 +9,7 @@ import { ProjectsPage } from "@pages/ProjectsPage/ProjectsPage"
 import { CommentsPage } from "@pages/CommentsPage/CommentsPage"
 import { NotFoundPage } from "@pages/NotFoundPage/NotFoundPage"
 import { PersonalDataPage } from "@pages/PersonalDataPage/PersonalDataPage"
+import { ServerErrorPage } from "./pages/ServerErrorPage/ServerErrorPage"
 import { Layout } from "@components/Layout/Layout"
 
 import { LoadConstantsIfNotExist } from "@store/ConstantsSlice/loadConstantsIfNotExist"
@@ -27,6 +28,7 @@ const Application = () => {
 					<Route path="/OurCases" element={<ProjectsPage />} />
 					<Route path="/CommentsPage" element={<CommentsPage />} />
 					<Route path="/personalData" element={<PersonalDataPage />} />
+					<Route path="/ServerError" element={<ServerErrorPage />} />
 					<Route path="*" element={<NotFoundPage />} />
 				</Routes>
 			</Layout>

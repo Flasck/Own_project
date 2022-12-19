@@ -79,15 +79,17 @@ export const TeamSlider = () => {
 		wrapperRef.current.classList.remove(styles.grab)
 		params.lastTouch - params.initTouch > params.threshold ? prev_slide() : moveSlide()
 		params.lastTouch - params.initTouch < -params.threshold ? next_slide() : moveSlide()
+		params.initTouch = 0
+		params.lastTouch = 0
 	}
 
 	// Функция перерасчета параметров
 	const resize = () => {
 		if (wrapperRef.current && cardRef.current) {
-			params.gap = (wrapperRef.current.offsetWidth - cardRef.current.offsetWidth) / 2 - cardRef.current.offsetWidth / 3
+			params.gap = (wrapperRef.current.offsetWidth - cardRef.current.offsetWidth) / 2 - cardRef.current.offsetWidth / 4
 			params.step = cardRef.current.offsetWidth + params.gap
 			params.initialOffset = (wrapperRef.current.offsetWidth - cardRef.current.offsetWidth) / 2
-			params.threshold = wrapperRef.current.offsetWidth / 10
+			params.threshold = wrapperRef.current.offsetWidth / 8
 			moveSlide()
 			reRender()
 		}

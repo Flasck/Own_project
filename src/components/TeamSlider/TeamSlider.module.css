@@ -13,18 +13,20 @@
 .btn_prev,
 .btn_next {
 	position: absolute;
-	font-size: 50px;
+	font-size: 3em;
+	width: fit-content;
+	height: fit-content;
 	display: flex;
 	align-items: center;
 	cursor: pointer;
 }
 
 .btn_prev {
-	left: 0.2em;
+	left: 0.3em;
 }
 
 .btn_next {
-	right: 0.2em;
+	right: 0.3em;
 }
 
 .btn_prev_dis,
@@ -88,7 +90,9 @@
 	backdrop-filter: blur(6px);
 	-webkit-backdrop-filter: blur(6px);
 }
-@supports (mask-image: linear-gradient(to left, transparent 25%, black 75%)) or (-webkit-mask-image: linear-gradient(to left, transparent 25%, black 75%)) {
+
+@supports (mask-image: linear-gradient(to left, transparent 25%, black 75%)) or
+	(-webkit-mask-image: linear-gradient(to left, transparent 25%, black 75%)) {
 	.blur {
 		width: 6em;
 	}
@@ -102,5 +106,21 @@
 		-webkit-mask-image: linear-gradient(to right, transparent 25%, black 75%);
 		mask-image: linear-gradient(to right, transparent 25%, black 75%);
 		right: -1em;
+	}
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+	.btn_prev,
+	.btn_next {
+		font-size: 2em;
+	}
+	.btn_prev {
+		left: 0.2em;
+	}
+	.btn_next {
+		right: 0.2em;
+	}
+	.blur {
+		width: 5em;
 	}
 }

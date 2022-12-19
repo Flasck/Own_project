@@ -23,16 +23,10 @@ export const Header = ({ className }) => {
 				<NavLink className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)} to={"/"}>
 					{text ? text.header.mainPage : <Placeholder width={11} />}
 				</NavLink>
-				<NavLink
-					className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)}
-					to={"/OurCases"}
-				>
+				<NavLink className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)} to={"/OurCases"}>
 					{text ? text.header.projectsPage : <Placeholder width={11} />}
 				</NavLink>
-				<NavLink
-					className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)}
-					to={"/CommentsPage"}
-				>
+				<NavLink className={({ isActive }) => classnames(styles.link, isActive && styles.linkActive)} to={"/CommentsPage"}>
 					{text ? text.header.commentsPage : <Placeholder width={8} />}
 				</NavLink>
 

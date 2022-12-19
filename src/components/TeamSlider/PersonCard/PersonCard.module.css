@@ -27,6 +27,7 @@
 	backdrop-filter: blur(6px);
 	-webkit-backdrop-filter: blur(6px);
 	border: 1px solid rgba(255, 255, 255, 0.29);
+	text-overflow: ellipsis;
 }
 
 .back {
@@ -80,7 +81,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 0 -5px;
+	gap: 0.6em;
 }
 
 .post {
@@ -89,7 +90,6 @@
 
 .link {
 	display: inline-block;
-	margin: 0 5px;
 }
 
 .link_logo {
@@ -105,8 +105,68 @@
 	gap: 5px 5px;
 }
 
-@media (min-width: 400px) and (max-width: 1200px) {
+@media (min-width: 500px) and (max-width: 700px) {
 	.card {
-		width: 150px;
+		width: 260px;
+		height: 170px;
+	}
+	.desc {
+		font-size: 0.75em;
+	}
+	.front {
+		padding: 0.35em;
+	}
+	.links {
+		gap: 0.4em;
+	}
+	.back {
+		padding: 0.3em 1.2em;
+	}
+	.name {
+		font-size: 1.3rem;
+	}
+	.post {
+		font-size: 0.9rem;
+	}
+	.photo {
+		width: 2.5em;
+		height: 2.5em;
+	}
+	.link_logo {
+		width: 1.2em;
+		height: 1.2em;
+	}
+}
+
+@media (min-width: 320px) and (max-width: 500px) {
+	.card {
+		width: 180px;
+		height: 140px;
+	}
+	.desc {
+		font-size: 0.55em;
+	}
+	.front {
+		padding: 0.2em;
+	}
+	.links {
+		gap: 0.2em;
+	}
+	.back {
+		padding: 0.2em 0.7em;
+	}
+	.name {
+		font-size: 1rem;
+	}
+	.post {
+		font-size: 0.7rem;
+	}
+	.photo {
+		width: 1.7em;
+		height: 1.7em;
+	}
+	.link_logo {
+		width: 0.8em;
+		height: 0.8em;
 	}
 }
