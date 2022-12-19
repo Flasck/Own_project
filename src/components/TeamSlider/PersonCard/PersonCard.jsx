@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { classnames } from "@utils/classnames"
+import { classNames } from "@utils/classNames"
 import { FramedText } from "@components/FramedText/FramedText"
 import styles from "./PersonCard.module.css"
 import { IconGh } from "./LogoComponents/IconGh"
@@ -12,7 +12,7 @@ export const PersonCard = ({ refLink, person }) =>
 	const change = () => setSide(v => !v)
 
 	return <div onClick={change} className={styles.card} ref={refLink}>
-		<div className={classnames(styles.back, side ? styles.back_base : styles.back_rev)}>
+		<div className={classNames(styles.back, side ? styles.back_base : styles.back_rev)}>
 			<div className={styles.main_info}>
 				<img className={styles.photo} src={`http://localhost:3001/image?id=${person.imageId}`} alt="No img" />
 				<h3 className={styles.name}>{person.name}</h3>
@@ -32,7 +32,7 @@ export const PersonCard = ({ refLink, person }) =>
 				))}
 			</div>
 		</div>
-		<div className={classnames(styles.front, side ? styles.front_base : styles.front_rev)}>
+		<div className={classNames(styles.front, side ? styles.front_base : styles.front_rev)}>
 			<p className={styles.desc}>{person.description}</p>
 		</div>
 	</div>

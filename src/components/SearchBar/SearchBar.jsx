@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
 import { selectConstants } from "@store/ConstantsSlice/selectors"
 import { selectProjects } from "@store/ProjectsSlice/selectors"
-import { classnames } from "@utils/classnames"
+import { classNames } from "@utils/classNames"
 import styles from "./SearchBar.module.css"
 
 
@@ -72,7 +72,7 @@ export const SearchBar = ({ setProjects }) =>
 			>
 				<Cross />
 			</button>}
-		<div className={classnames(styles.filters, focused && styles.filters_visible)}>
+		<div className={classNames(styles.filters, focused && styles.filters_visible)}>
 			{techs.map((v, i) =>
 				<button
 					key={i}

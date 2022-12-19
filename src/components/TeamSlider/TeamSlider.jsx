@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { selectPeople } from "@store/PeopleSlice/selectors"
 import { selectLanguage } from "@store/LanguageSlice/selectors"
 import { LoadPeopleIfNotExist } from "@store/PeopleSlice/LoadPeopleIfNotExist"
-import { classnames } from "@utils/classnames"
+import { classNames } from "@utils/classNames"
 import { Placeholder } from "../Placeholder/Placeholder"
 import styles from "./TeamSlider.module.css"
 import { PersonCard } from "./PersonCard/PersonCard"
@@ -115,7 +115,10 @@ export const TeamSlider = () =>
 
 	// Функция сдвига слайдера
 	const moveSlide = (move = 0) =>
-		(sliderRef.current.style.transform = `translate3d(${params.initialOffset - params.slide * params.step + move}px, 0, 0)`)
+	{
+		if (sliderRef.current)
+			sliderRef.current.style.transform = `translate3d(${params.initialOffset - params.slide * params.step + move}px, 0, 0)`;
+	}
 
 	// Функция перерендеринга
 	const reRender = () => setState(s => !s)
@@ -159,13 +162,13 @@ export const TeamSlider = () =>
 						))}
 					</div>
 				</div>
-				<div className={classnames(styles.blur, styles.blur_left)} />
-				<div className={classnames(styles.blur, styles.blur_right)} />
-				<div className={classnames(styles.btn_prev, params.slide === 0 ? styles.btn_prev_dis : "")} onClick={toPrevSlide}>
+				<div className={classNames(styles.blur, styles.blur_left)} />
+				<div className={classNames(styles.blur, styles.blur_right)} />
+				<div className={classNames(styles.btn_prev, params.slide === 0 ? styles.btn_prev_dis : "")} onClick={toPrevSlide}>
 					❮
 				</div>
 				<div
-					className={classnames(styles.btn_next, params.slide === PeopleList.length - 1 ? styles.btn_next_dis : "")}
+					className={classNames(styles.btn_next, params.slide === PeopleList.length - 1 ? styles.btn_next_dis : "")}
 					onClick={toNextSlide}
 				>
 					❯
@@ -174,7 +177,7 @@ export const TeamSlider = () =>
 					{PeopleList.map((_, index) => (
 						<div
 							key={Math.random() * index}
-							className={classnames(styles.dot, params.slide === index ? styles.dot_active : "")}
+							className={classNames(styles.dot, params.slide === index ? styles.dot_active : "")}
 							onClick={() => select_slide(index)}
 						/>
 					))}

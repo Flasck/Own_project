@@ -3,7 +3,7 @@ import styles from "@components/ModalWindowContact/ModalWindowContact.module.css
 import { FeedbackSlice } from "@store/FeedbackSlice";
 import { Statuses } from "@utils/Statuses";
 import { Button } from "@components/Button/Button";
-import { classnames } from "@utils/classnames";
+import { classNames } from "@utils/classNames";
 import { useDispatch, useSelector } from "react-redux";
 import { selectConstants } from "@store/ConstantsSlice/selectors";
 
@@ -29,7 +29,7 @@ export const FailModal = ({ setView }) =>
 					dispatch(FeedbackSlice.actions.changeStatus(Statuses.idle))
 					setView(e => !e)
 				}}
-				className={classnames(styles.btn, styles.btn_status)}
+				className={classNames(styles.btn, styles.btn_status)}
 			>
 				{texts?.mainPage?.modalWindowContact?.buttonOk}
 			</Button>

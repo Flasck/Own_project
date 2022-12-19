@@ -7,7 +7,7 @@ import styles from "./WidgetComment.module.css";
 import { Spinner } from "../Spinner/Spinner";
 import SuccessIcon from "./success.svg";
 import ErrorIcon from "./error.svg";
-import { classnames } from "../../utils/classnames";
+import { classNames } from "../../utils/classNames";
 
 
 export const WidgetComment = () =>
@@ -19,7 +19,7 @@ export const WidgetComment = () =>
 	{
 		setTimeout(() => dispatch(CommentsSlice.actions.changeWidgetView(Statuses.idle)), 3000)
 
-		return <div className={classnames(styles.widget, styles.success)}>
+		return <div className={classNames(styles.widget, styles.success)}>
 			<img style={{ marginRight: "10px" }} src={SuccessIcon} alt="success" />
 			{" "}
 			Успешно отправлен запрос
@@ -30,7 +30,7 @@ export const WidgetComment = () =>
 	{
 		setTimeout(() => dispatch(CommentsSlice.actions.changeWidgetView(Statuses.idle)), 3000)
 
-		return <div className={classnames(styles.widget, styles.error)}>
+		return <div className={classNames(styles.widget, styles.error)}>
 			<img style={{ marginRight: "10px" }} src={ErrorIcon} alt="error" />
 			{" "}
 			Произошла ошибка

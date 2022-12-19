@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { classnames } from "@utils/classnames"
+import { classNames } from "@utils/classNames"
 import styles from "./RatingStars.module.css"
 
 
@@ -51,7 +51,7 @@ export const RatingStars = ({ count, cb = () => { }, isWorking, className, big =
 	const EmptyIcon = emptyIcon;
 	const FilledIcon = filledIcon;
 
-	return <div className={classnames(className, big && styles.Star_big)}>
+	return <div className={classNames(className, big && styles.Star_big)}>
 		<div
 			style={{
 				display: "inline-flex",

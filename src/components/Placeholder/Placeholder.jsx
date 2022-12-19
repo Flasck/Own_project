@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { classnames } from "@utils/classnames"
+import { classNames } from "@utils/classNames"
 import styles from "./Placeholder.module.css"
 
 
@@ -34,8 +34,8 @@ export const Placeholder = ({ className, style, width, height, widthD, heightD, 
 		else ref.current.style.color = "transparent";
 	}, [ref, width, height, widthD, heightD, unitW, unitH]);
 
-	return <span className={classnames(className, styles.root)} style={style}>
-		<span className={classnames(styles.inner)} ref={ref}>{text}</span>
+	return <span className={classNames(className, styles.root)} style={style}>
+		<span className={classNames(styles.inner)} ref={ref}>{text}</span>
 	</span>
 }
 

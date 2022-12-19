@@ -5,7 +5,7 @@ import { Button } from "@components/Button/Button"
 import { Link } from "react-router-dom"
 import { SendFeedBack } from "@store/FeedbackSlice/sendFeedBack"
 import { selectConstants } from "@store/ConstantsSlice/selectors"
-import { classnames } from "@utils/classnames";
+import { classNames } from "@utils/classNames";
 import { selectIsFeedBackSuccess } from "@store/FeedbackSlice/selectors";
 import styles from "./ModalWindowContact.module.css"
 
@@ -89,7 +89,7 @@ export const ModalWindowContact = ({ setView }) =>
 					/>
 					<div className={styles.error}>{errors?.email && <p>{errors?.email.message || "Error"}</p>}</div>
 				</div>
-				<div className={classnames(styles.form__block, styles.form__textArea)}>
+				<div className={classNames(styles.form__block, styles.form__textArea)}>
 					<label className={styles.label} htmlFor="input_text">
 						{texts?.mainPage?.modalWindowContact?.text?.text}
 					</label>
@@ -112,7 +112,7 @@ export const ModalWindowContact = ({ setView }) =>
 					<div className={styles.error}>{errors?.text && <p>{errors?.text.message || "Error"}</p>}</div>
 				</div>
 				<div
-					className={classnames(styles.form__block, styles.form__checkBox)}
+					className={classNames(styles.form__block, styles.form__checkBox)}
 					onClick={() => setCheckBox(e => !e)}
 				>
 					<button className={styles.customCheckBox} type="button">
