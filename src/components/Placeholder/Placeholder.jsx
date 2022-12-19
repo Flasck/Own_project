@@ -28,7 +28,7 @@ export function Placeholder({ className, style, width, height, widthD, heightD, 
 		ref.current.style.setProperty("--data-x", `${rect.left}px`);
 		ref.current.style.setProperty("--data-y", `${rect.top}px`);
 		ref.current.style.setProperty("--data-w", `${window.innerWidth}px`);
-		ref.current.style.setProperty("--data-h", `${window.innerHeight}px`);
+		ref.current.style.setProperty("--data-h", `${Math.max(window.innerHeight, document.body.scrollHeight)}px`);
 		if (!disableText) type(generateText(width ? width : 20 * (height || 1)), setText);
 		else ref.current.style.color = "transparent";
 	}, [ref, width, height, widthD, heightD, unitW, unitH]);
