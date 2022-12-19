@@ -14,32 +14,30 @@ export const OurMap = () => {
     const allPlaces = useSelector(selectAllPlaces);
     const dispatch = useDispatch();
 
-    return <div className={styles.root}>
-            <Map
-                className={styles.img}
-                state={{
-                    center: activeMark.coords != null
-                        ? activeMark.coords : [53.751574, 44.573856],
-                    zoom: activeMark.coords != null ? 12 : 5,
-                }}
-                options={{
-                    type: "yandex#satellite"
-                }}
-            >
-                {allPlaces.map(places =>
-                    places.places.map((el, i) =>
-                        <Placemark
-                            onClick={() => dispatch(MapSlice.actions.changeCurrentActive(el))}
-                            key={i}
-                            geometry={el.coords}
-                            options={{
-                                iconLayout: "default#image",
-                                iconImageHref: activeMark.coords === el.coords ? iconMarkActive : iconMark,
-                                iconImageSize: [40, 40],
-                            }}
-                        />
-                    )
-                )}
-            </Map>
-    </div>
+    return <Map
+        className={styles.img}
+        state={{
+            center: activeMark.coords != null
+                ? activeMark.coords : [53.751574, 44.573856],
+            zoom: activeMark.coords != null ? 12 : 5,
+        }}
+        options={{
+            type: "yandex#satellite"
+        }}
+    >
+        {allPlaces.map(places =>
+            places.places.map((el, i) =>
+                <Placemark
+                    onClick={() => dispatch(MapSlice.actions.changeCurrentActive(el))}
+                    key={i}
+                    geometry={el.coords}
+                    options={{
+                        iconLayout: "default#image",
+                        iconImageHref: activeMark.coords === el.coords ? iconMarkActive : iconMark,
+                        iconImageSize: [40, 40],
+                    }}
+                />
+            )
+        )}
+    </Map>
 }
