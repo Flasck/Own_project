@@ -9,9 +9,9 @@ export const NotFoundPage = () => {
     if (!texts) return renderPlaceholder();
 
     return <div className={styles.wrapper}>
-        <h1 className={styles.title}>
+        <h3 className={styles.title}>
             {texts?.notFoundPage?.title}
-        </h1>
+        </h3>
     </div>
 
 }
