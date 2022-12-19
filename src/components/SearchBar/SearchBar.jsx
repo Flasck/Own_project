@@ -36,7 +36,7 @@ export const SearchBar = ({ setProjects }) =>
 			placeholder={texts?.projectsPage?.searchBar}
 			id="searchBar"
 			value={value}
-			onChange={(e) =>
+			onChange={e =>
 			{
 				setValue(e.target.value);
 				setFocused(true);
@@ -104,7 +104,7 @@ const Cross = () =>
 function filter(projects, text, tech)
 {
 	text = text.toLowerCase();
-	return projects.filter((v) =>
+	return projects.filter(v =>
 		(v.title.toLowerCase().indexOf(text) >= 0 || v.description.toLowerCase().indexOf(text) >= 0) && (tech === null || v.technologies.indexOf(tech) >= 0));
 }
 

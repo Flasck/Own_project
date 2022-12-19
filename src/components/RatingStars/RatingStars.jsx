@@ -15,7 +15,7 @@ const StarBorderIcon = () =>
 		/>
 	</svg>
 
-export const RatingStars = ({ count, cb = (e) => { }, isWorking, className, big = false }) =>
+export const RatingStars = ({ count, cb = () => { }, isWorking, className, big = false }) =>
 {
 	const emptyIcon = StarBorderIcon;
 	const filledIcon = StarIcon;

@@ -2,14 +2,14 @@ import React, { useState } from "react"
 import { classnames } from "@utils/classnames"
 import { FramedText } from "@components/FramedText/FramedText"
 import styles from "./PersonCard.module.css"
-import { Icon_Gh } from "./LogoComponents/Icon_Gh"
-import { Icon_Tg } from "./LogoComponents/Icon_Tg"
+import { IconGh } from "./LogoComponents/IconGh"
+import { IconTg } from "./LogoComponents/IconTg"
 
 
 export const PersonCard = ({ refLink, person }) =>
 {
 	const [side, setSide] = useState(true)
-	const change = () => setSide((v) => !v)
+	const change = () => setSide(v => !v)
 
 	return <div onClick={change} className={styles.card} ref={refLink}>
 		<div className={classnames(styles.back, side ? styles.back_base : styles.back_rev)}>
@@ -18,16 +18,16 @@ export const PersonCard = ({ refLink, person }) =>
 				<h3 className={styles.name}>{person.name}</h3>
 				<div className={styles.links}>
 					<a className={styles.link} href={person.github} target="_blank" onClick={() => change()} rel="noreferrer">
-						<Icon_Gh cn={styles.link_logo} />
+						<IconGh cn={styles.link_logo} />
 					</a>
 					<a className={styles.link} href={person.telegram} target="_blank" onClick={() => change()} rel="noreferrer">
-						<Icon_Tg cn={styles.link_logo} />
+						<IconTg cn={styles.link_logo} />
 					</a>
 				</div>
 			</div>
 			<p className={styles.post}>{person.descriptionShort}</p>
 			<div className={styles.techs}>
-				{person.technology.map((t) => (
+				{person.technology.map(t => (
 					<FramedText key={Math.random()}>{t}</FramedText>
 				))}
 			</div>

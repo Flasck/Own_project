@@ -21,7 +21,7 @@ export const TeamSlider = () =>
 	const PeopleList = useSelector(selectPeople)
 
 	// Стейт для ручного рендера
-	const [state, setState] = useState(false)
+	const [_, setState] = useState(false)
 
 	// Ссылки для присвоения стилей и снятия ширины
 	const sliderRef = useRef(null)
@@ -29,7 +29,7 @@ export const TeamSlider = () =>
 	const cardRef = useRef(null)
 
 	// Функции переключения между слайдами
-	const prev_slide = () =>
+	const toPrevSlide = () =>
 	{
 		if (params.slide > 0)
 		{
@@ -38,7 +38,7 @@ export const TeamSlider = () =>
 			reRender()
 		}
 	}
-	const next_slide = () =>
+	const toNextSlide = () =>
 	{
 		if (params.slide < PeopleList.length - 1)
 		{
@@ -57,7 +57,8 @@ export const TeamSlider = () =>
 	// Функции свайпов пальцами
 	function touchStart(e)
 	{
-		wrapperRef.current.classList.add(styles.grab)
+		if (wrapperRef.current)
+			wrapperRef.current.classList.add(styles.grab)
 		params.initTouch = e.touches[0].clientX
 		params.lastTouch = e.touches[0].clientX
 	}
@@ -66,17 +67,19 @@ export const TeamSlider = () =>
 		params.lastTouch = e.touches[0].clientX
 		moveSlide(params.lastTouch - params.initTouch)
 	}
-	function touchEnd(e)
+	function touchEnd()
 	{
-		wrapperRef.current.classList.remove(styles.grab)
-		params.lastTouch - params.initTouch > params.threshold ? prev_slide() : moveSlide()
-		params.lastTouch - params.initTouch < -params.threshold ? next_slide() : moveSlide()
+		if (wrapperRef.current)
+			wrapperRef.current.classList.remove(styles.grab)
+		params.lastTouch - params.initTouch > params.threshold ? toPrevSlide() : moveSlide();
+		params.lastTouch - params.initTouch < -params.threshold ? toNextSlide() : moveSlide();
 	}
 
 	// Функции свайпов мышью
 	function mouseDown(e)
 	{
-		wrapperRef.current.classList.add(styles.grab)
+		if (wrapperRef.current)
+			wrapperRef.current.classList.add(styles.grab)
 		params.initTouch = e.clientX
 		params.lastTouch = e.clientX
 	}
@@ -88,11 +91,12 @@ export const TeamSlider = () =>
 			moveSlide(params.lastTouch - params.initTouch)
 		}
 	}
-	function mouseUp(e)
+	function mouseUp()
 	{
-		wrapperRef.current.classList.remove(styles.grab)
-		params.lastTouch - params.initTouch > params.threshold ? prev_slide() : moveSlide()
-		params.lastTouch - params.initTouch < -params.threshold ? next_slide() : moveSlide()
+		if (wrapperRef.current)
+			wrapperRef.current.classList.remove(styles.grab)
+		params.lastTouch - params.initTouch > params.threshold ? toPrevSlide() : moveSlide();
+		params.lastTouch - params.initTouch < -params.threshold ? toNextSlide() : moveSlide();
 	}
 
 	// Функция перерасчета параметров
@@ -114,7 +118,7 @@ export const TeamSlider = () =>
 		(sliderRef.current.style.transform = `translate3d(${params.initialOffset - params.slide * params.step + move}px, 0, 0)`)
 
 	// Функция перерендеринга
-	const reRender = () => setState((s) => !s)
+	const reRender = () => setState(s => !s)
 
 	useLayoutEffect(() =>
 	{
@@ -139,8 +143,8 @@ export const TeamSlider = () =>
 			// Навигация по клавишам
 			document.addEventListener("keyup", (e) =>
 			{
-				e.which == 37 ? prev_slide() : null
-				e.which == 39 ? next_slide() : null
+				e.which === 37 ? toPrevSlide() : null
+				e.which === 39 ? toNextSlide() : null
 			})
 		}
 	}, [PeopleList])
@@ -157,20 +161,20 @@ export const TeamSlider = () =>
 				</div>
 				<div className={classnames(styles.blur, styles.blur_left)} />
 				<div className={classnames(styles.blur, styles.blur_right)} />
-				<div className={classnames(styles.btn_prev, params.slide == 0 ? styles.btn_prev_dis : "")} onClick={prev_slide}>
+				<div className={classnames(styles.btn_prev, params.slide === 0 ? styles.btn_prev_dis : "")} onClick={toPrevSlide}>
 					❮
 				</div>
 				<div
-					className={classnames(styles.btn_next, params.slide == PeopleList.length - 1 ? styles.btn_next_dis : "")}
-					onClick={next_slide}
+					className={classnames(styles.btn_next, params.slide === PeopleList.length - 1 ? styles.btn_next_dis : "")}
+					onClick={toNextSlide}
 				>
 					❯
 				</div>
 				<div className={styles.dots}>
-					{PeopleList.map((el, index) => (
+					{PeopleList.map((_, index) => (
 						<div
 							key={Math.random() * index}
-							className={classnames(styles.dot, params.slide == index ? styles.dot_active : "")}
+							className={classnames(styles.dot, params.slide === index ? styles.dot_active : "")}
 							onClick={() => select_slide(index)}
 						/>
 					))}

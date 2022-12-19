@@ -14,6 +14,6 @@ export const ThemeSwither = () =>
 		}}
 		className={styles.root}
 	>
-		<img src={sun} className={styles.img_sun} />
-		<img src={moon} className={styles.img_moon} />
+		<img src={sun} alt="Sun" className={styles.img_sun} />
+		<img src={moon} alt="Moon" className={styles.img_moon} />
 	</Button>

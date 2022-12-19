@@ -13,6 +13,7 @@ const initialState = {
 	},
 	status: Statuses.idle,
 }
+
 export const MapSlice = createSlice({
 	name: "Map",
 	initialState,
@@ -21,7 +22,7 @@ export const MapSlice = createSlice({
 		{
 			state.currentActiveMark = action.payload
 		},
-		startLoading: (state, action) =>
+		startLoading: state =>
 		{
 			state.status = Statuses.inProgress
 		},
@@ -30,7 +31,7 @@ export const MapSlice = createSlice({
 			state.status = Statuses.success
 			state.allPlaces[action.payload.lang] = action.payload.data
 		},
-		failLoading: (state, action) =>
+		failLoading: state =>
 		{
 			state.status = Statuses.failed
 		},

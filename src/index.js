@@ -12,8 +12,8 @@ const Application = React.lazy(() => import("./App"))
 
 // Enable dark theme
 const darkTheme = localStorage.getItem("darkTheme");
-if (darkTheme == "true" || darkTheme == null && window.matchMedia?.("(prefers-color-scheme: dark)")?.matches)
-    document.body.classList.add("darkTheme");
+if (darkTheme === "true" || darkTheme === null && window.matchMedia?.("(prefers-color-scheme: dark)")?.matches)
+	document.body.classList.add("darkTheme");
 
 root.render(
 	<Suspense fallback={<Preloader />}>

@@ -5,7 +5,7 @@ export function useIntersectionObserver(options, cb)
 {
 	const observer = useRef(null);
 
-	return useCallback((node) =>
+	return useCallback(node =>
 	{
 		if (!node)
 		{

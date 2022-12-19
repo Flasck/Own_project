@@ -2,7 +2,7 @@ import React from "react"
 import { useSelector } from "react-redux"
 import { selectConstants } from "@store/ConstantsSlice/selectors"
 import { Placeholder } from "@components/Placeholder/Placeholder"
-import { Card } from "./Card/Card.jsx"
+import { Card } from "./Card/Card"
 import styles from "./HeroBlock.module.css"
 
 
@@ -24,7 +24,6 @@ export const HeroBlock = () =>
 			<Card title="03" text={texts?.mainPage?.heroBlock?.card3} />
 		</div>
 	</section>
-
 }
 
 const Arrow = () =>

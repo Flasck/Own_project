@@ -8,15 +8,15 @@ export const FeedbackSlice = createSlice({
 	name: "FeedbackSlice",
 	initialState,
 	reducers: {
-		startLoading: (state, action) =>
+		startLoading: state =>
 		{
 			state.status = Statuses.inProgress;
 		},
-		successLoading: (state, action) =>
+		successLoading: state =>
 		{
 			state.status = Statuses.success;
 		},
-		failLoading: (state, action) =>
+		failLoading: state =>
 		{
 			state.status = Statuses.failed;
 		},

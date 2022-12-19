@@ -6,9 +6,9 @@ import { Spinner } from "@components/Spinner/Spinner";
 export const InProgressModal = ({ setView }) =>
 	<div
 		className={styles.modal}
-		onClick={() => setView((e) => !e)}
+		onClick={() => setView(e => !e)}
 	>
-		<div className={styles.content} onClick={(e) => e.stopPropagation()}>
+		<div className={styles.content} onClick={e => e.stopPropagation()}>
 			<Spinner />
 		</div>
 	</div>

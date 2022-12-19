@@ -22,7 +22,12 @@ export const ModalWindowContact = ({ setView }) =>
 	const isFeedBackSuccess = useSelector(selectIsFeedBackSuccess)
 	const [CheckBox, setCheckBox] = useState(false)
 	const texts = useSelector(selectConstants)
-	const onSubmit = (data) => { dispatch(SendFeedBack(data)); setCheckBox((e) => !e); setView((e) => !e) }
+	const onSubmit = (data) =>
+	{
+		dispatch(SendFeedBack(data));
+		setCheckBox(e => !e);
+		setView(e => !e);
+	}
 
 	useEffect(() =>
 	{
@@ -31,10 +36,10 @@ export const ModalWindowContact = ({ setView }) =>
 
 	return <div
 		className={styles.modal}
-		onClick={() => setView((e) => !e)}
+		onClick={() => setView(e => !e)}
 	>
-		<div className={styles.content} onClick={(e) => e.stopPropagation()}>
-			<button onClick={() => setView((e) => !e)} className={styles.closeBtn}>
+		<div className={styles.content} onClick={e => e.stopPropagation()}>
+			<button onClick={() => setView(e => !e)} className={styles.closeBtn}>
 				<svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M2 22L22 2" className={styles.closeBtn__path} strokeWidth="3" />
 					<path d="M22 22L2 2" className={styles.closeBtn__path} strokeWidth="3" />
@@ -108,7 +113,7 @@ export const ModalWindowContact = ({ setView }) =>
 				</div>
 				<div
 					className={classnames(styles.form__block, styles.form__checkBox)}
-					onClick={() => setCheckBox((e) => !e)}
+					onClick={() => setCheckBox(e => !e)}
 				>
 					<a className={styles.customCheckBox}>
 						<svg
@@ -130,7 +135,7 @@ export const ModalWindowContact = ({ setView }) =>
 						{texts?.mainPage?.modalWindowContact?.checkBoxLabel.split(" ").slice(0, -2)?.join(" ")}
 						&nbsp;
 						<Link
-							onClick={(e) => e.stopPropagation()}
+							onClick={e => e.stopPropagation()}
 							target="_blank"
 							to="/personalData"
 							className={styles.label__link}

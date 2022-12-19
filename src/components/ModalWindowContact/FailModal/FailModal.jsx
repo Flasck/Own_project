@@ -17,17 +17,17 @@ export const FailModal = ({ setView }) =>
 		className={styles.modal}
 		onClick={() =>
 		{
-			setView((e) => !e)
+			setView(e => !e)
 			dispatch(FeedbackSlice.actions.changeStatus(Statuses.idle))
 		}}
 	>
-		<div className={styles.content} onClick={(e) => e.stopPropagation()}>
+		<div className={styles.content} onClick={e => e.stopPropagation()}>
 			<p className={styles.StatusText}>{texts?.mainPage?.modalWindowContact?.onFailed}</p>
 			<Button
 				onClick={() =>
 				{
 					dispatch(FeedbackSlice.actions.changeStatus(Statuses.idle))
-					setView((e) => !e)
+					setView(e => !e)
 				}}
 				className={classnames(styles.btn, styles.btn_status)}
 			>
@@ -35,5 +35,4 @@ export const FailModal = ({ setView }) =>
 			</Button>
 		</div>
 	</div>
-
 }

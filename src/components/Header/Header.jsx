@@ -20,7 +20,7 @@ export const Header = ({ className }) =>
 	const linksRef = useRef();
 	useEffect(() =>
 	{
-		linksRef.current?.addEventListener?.("click", (e) =>
+		linksRef.current?.addEventListener?.("click", () =>
 		{
 			linksRef.current.classList.remove(styles.links_active);
 		})

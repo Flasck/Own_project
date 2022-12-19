@@ -1,7 +1,7 @@
 import { FeedbackSlice } from "./index"
 
 
-export const SendFeedBack = (data) => (dispatch, getState) =>
+export const SendFeedBack = data => dispatch =>
 {
 	dispatch(FeedbackSlice.actions.startLoading());
 	fetch("http://localhost:3001/feedback", {

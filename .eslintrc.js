@@ -44,8 +44,8 @@ module.exports = {
 		"no-tabs": 0,
 		"react/prop-types": 0,
 		"react/jsx-indent": [2, "tab"],
-		"react/jsx-indent-props": [2, "tab"],
-		"react/jsx-closing-tag-location": 1,
+		"react/jsx-indent-props": [1, "tab"],
+		"react/jsx-closing-tag-location": 0,
 
 		"no-shadow": "off",
 		"react/button-has-type": "off",
@@ -93,5 +93,7 @@ module.exports = {
 		"no-promise-executor-return": 0,
 		"linebreak-style": [2, "windows"],
 		"arrow-parens": [1, "as-needed"],
+		"nonblock-statement-body-position": [0, "any"],
+		"curly": [1, "multi-or-nest"],
 	},
 };

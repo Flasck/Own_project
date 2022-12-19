@@ -28,7 +28,7 @@ export const MapBlock = ({ setViewModal }) =>
 	return <section>
 		<div className={styles.title}>
 			<h2 className={styles.title__text}>{texts ? texts.mainPage.mapBlock.title : <Placeholder width={20} />}</h2>
-			<ContactButton onClick={() => setViewModal((e) => !e)}>
+			<ContactButton onClick={() => setViewModal(e => !e)}>
 				{texts ? texts.mainPage.mapBlock.contactButton : <Placeholder width={12} />}
 			</ContactButton>
 		</div>

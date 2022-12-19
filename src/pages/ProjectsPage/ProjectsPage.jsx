@@ -6,7 +6,6 @@ import { selectLanguage } from "@store/LanguageSlice/selectors"
 import { LoadProjectsIfNotExist } from "@store/ProjectsSlice/LoadProjectsIfNotExist"
 import { selectProjectsStatus } from "@store/ProjectsSlice/selectors"
 import { Statuses } from "@utils/Statuses"
-import { Spinner } from "@components/Spinner/Spinner";
 import { useIntersectionObserver } from "@utils/useIntersectionObserver"
 import styles from "./ProjectsPage.module.css"
 
@@ -21,14 +20,14 @@ export const ProjectsPage = () =>
 	const [projects, setProjects] = useState([]);
 
 	const [count, setCount] = useState(window.innerWidth > 700 ? 4 : 2);
-	const cbRef = useIntersectionObserver({ threshold: 1 }, (entries) =>
+	const cbRef = useIntersectionObserver({ threshold: 1 }, entries =>
 	{
 		for (let i = 0; i < entries.length; i++)
 		{
 			const entry = entries[i];
 			if (entry.isIntersecting)
 			{
-				setCount((v) => (window.innerWidth > 700 ? v + 2 : v + 1));
+				setCount(v => (window.innerWidth > 700 ? v + 2 : v + 1));
 				break
 			}
 		}
@@ -41,7 +40,7 @@ export const ProjectsPage = () =>
 	return <>
 		<SearchBar setProjects={setProjects} />
 		<section className={styles.wrapper}>
-			{projects.slice(0, count).map((project) => <ProjectCard key={project.id} project={project} />)}
+			{projects.slice(0, count).map(project => <ProjectCard key={project.id} project={project} />)}
 			<div ref={cbRef} className={styles.endOfList} />
 		</section>
 	</>

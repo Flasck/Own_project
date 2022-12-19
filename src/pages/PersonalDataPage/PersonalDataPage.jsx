@@ -15,11 +15,10 @@ export const PersonalDataPage = () =>
 		return <div className={styles.wrapper_spinner}>
 			<Spinner />
 		</div>
-
 	}
 
 	return <div className={styles.root}>
 		<div className={styles.title}>{text?.personalDataPage.title}</div>
-		<div>{text?.personalDataPage.data.split("\n").map((p) => <p>{p}</p>)}</div>
+		<div>{text?.personalDataPage.data.split("\n").map(p => <p>{p}</p>)}</div>
 	</div>
 }

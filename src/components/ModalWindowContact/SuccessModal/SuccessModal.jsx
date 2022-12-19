@@ -21,7 +21,7 @@ export const SuccessModal = ({ setView }) =>
 			dispatch(FeedbackSlice.actions.changeStatus(Statuses.idle))
 		}}
 	>
-		<div className={styles.content} onClick={(e) => e.stopPropagation()}>
+		<div className={styles.content} onClick={e => e.stopPropagation()}>
 			<p className={styles.StatusText}>{texts?.mainPage?.modalWindowContact?.onSuccess}</p>
 			<Button
 				onClick={() =>

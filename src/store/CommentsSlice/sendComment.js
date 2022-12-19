@@ -1,7 +1,7 @@
 import { CommentsSlice } from "./index"
 
 
-export const SendComment = (data) => (dispatch, getState) =>
+export const SendComment = data => dispatch =>
 {
 	dispatch(CommentsSlice.actions.startLoadingSendComment());
 	fetch("http://localhost:3001/comment", {

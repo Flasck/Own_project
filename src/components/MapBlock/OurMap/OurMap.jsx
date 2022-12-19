@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { useDispatch, useSelector } from "react-redux";
 
 import { Map, Placemark } from "@pbe/react-yandex-maps";
@@ -25,7 +25,7 @@ export const OurMap = () =>
 		}}
 		options={{ type: "yandex#satellite" }}
 	>
-		{allPlaces.map((places) =>
+		{allPlaces.map(places =>
 			places.places.map((el, i) =>
 				<Placemark
 					onClick={() => dispatch(MapSlice.actions.changeCurrentActive(el))}

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { selectConstants } from "@store/ConstantsSlice/selectors";
 import { SendComment } from "@store/CommentsSlice/sendComment";
-import { Button } from "@components/Button/Button.jsx"
+import { Button } from "@components/Button/Button"
 import { selectCommentsStatusSend } from "@store/CommentsSlice/selectors";
 import { Statuses } from "@utils/Statuses";
 import { RatingStars } from "@components/RatingStars/RatingStars";
@@ -59,7 +59,7 @@ export const CommentForm = () =>
 					</div>
 				</div>
 				<div className={styles.form__block_rating}>
-					<RatingStars count={countStars} cb={(e) => setCountStars(e)} isWorking big />
+					<RatingStars count={countStars} cb={e => setCountStars(e)} isWorking big />
 				</div>
 			</div>
 			<div className={styles.form__block} style={{ marginBottom: "35px" }}>

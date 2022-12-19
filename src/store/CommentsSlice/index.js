@@ -16,7 +16,7 @@ export const CommentsSlice = createSlice({
 		{
 			state.statusSendComment = action.payload
 		},
-		startLoadingGetComments: (state, action) =>
+		startLoadingGetComments: state =>
 		{
 			state.statusGetComments = Statuses.inProgress
 		},
@@ -25,11 +25,11 @@ export const CommentsSlice = createSlice({
 			state.statusGetComments = Statuses.success
 			state.comments = action.payload
 		},
-		failLoadingGetComments: (state, action) =>
+		failLoadingGetComments: state =>
 		{
 			state.statusGetComments = Statuses.failed
 		},
-		startLoadingSendComment: (state, action) =>
+		startLoadingSendComment: state =>
 		{
 			state.statusSendComment = Statuses.inProgress
 		},
@@ -38,7 +38,7 @@ export const CommentsSlice = createSlice({
 			state.statusSendComment = Statuses.success
 			state.comments = [...state.comments, action.payload]
 		},
-		failLoadingSendComment: (state, action) =>
+		failLoadingSendComment: state =>
 		{
 			state.statusSendComment = Statuses.failed
 		},

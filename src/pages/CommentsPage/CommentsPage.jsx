@@ -1,9 +1,8 @@
 import React, { useEffect } from "react"
-import { CommentsCard, CommentsCardPlaceholder } from "@components/CommentCard/CommentsCard.jsx"
+import { CommentsCard, CommentsCardPlaceholder } from "@components/CommentCard/CommentsCard"
 import { useDispatch, useSelector } from "react-redux"
 import { selectComments, selectCommentsStatusGet, selectCommentsStatusSend } from "@store/CommentsSlice/selectors"
 import { Statuses } from "@utils/Statuses"
-import { Placeholder } from "@components/Placeholder/Placeholder";
 import { LoadCommentsIfNotExist } from "@store/CommentsSlice/loadCommentsIfNotExist";
 
 import { CommentForm } from "@components/CommentForm/CommentForm";
@@ -29,17 +28,15 @@ export const CommentsPage = () =>
 			<CommentsCardPlaceholder />
 			<CommentsCardPlaceholder />
 		</div>
-
 	}
 
 	return <div className={styles.root}>
 		<CommentForm />
-		{comments?.map((el) => (
+		{comments?.map(el => (
 			<CommentsCard key={el.id} data={el} />
 		))}
 		{
 			statusSend !== Statuses.idle ? <WidgetComment /> : ""
 		}
 	</div>
-
 }
