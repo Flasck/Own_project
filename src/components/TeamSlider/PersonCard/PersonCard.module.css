@@ -107,11 +107,11 @@
 
 @media (min-width: 500px) and (max-width: 700px) {
 	.card {
-		width: 260px;
-		height: 170px;
+		width: 270px;
+		height: 180px;
 	}
 	.desc {
-		font-size: 0.75em;
+		font-size: 0.8em;
 	}
 	.front {
 		padding: 0.35em;
@@ -123,10 +123,10 @@
 		padding: 0.3em 1.2em;
 	}
 	.name {
-		font-size: 1.3rem;
+		font-size: 1.35rem;
 	}
 	.post {
-		font-size: 0.9rem;
+		font-size: 1rem;
 	}
 	.photo {
 		width: 2.5em;
@@ -140,11 +140,11 @@
 
 @media (min-width: 320px) and (max-width: 500px) {
 	.card {
-		width: 180px;
-		height: 140px;
+		width: 220px;
+		height: 150px;
 	}
 	.desc {
-		font-size: 0.55em;
+		font-size: 0.63em;
 	}
 	.front {
 		padding: 0.2em;
@@ -153,20 +153,20 @@
 		gap: 0.2em;
 	}
 	.back {
-		padding: 0.2em 0.7em;
+		padding: 0.2em 0.8em;
 	}
 	.name {
-		font-size: 1rem;
+		font-size: 1.25rem;
 	}
 	.post {
-		font-size: 0.7rem;
+		font-size: 0.9rem;
 	}
 	.photo {
 		width: 1.7em;
 		height: 1.7em;
 	}
 	.link_logo {
-		width: 0.8em;
-		height: 0.8em;
+		width: 0.9em;
+		height: 0.9em;
 	}
 }

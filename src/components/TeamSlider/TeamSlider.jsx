@@ -86,7 +86,10 @@ export const TeamSlider = () => {
 	// Функция перерасчета параметров
 	const resize = () => {
 		if (wrapperRef.current && cardRef.current) {
-			params.gap = (wrapperRef.current.offsetWidth - cardRef.current.offsetWidth) / 2 - cardRef.current.offsetWidth / 4
+			params.gap =
+				(wrapperRef.current.offsetWidth - cardRef.current.offsetWidth) / 2 - cardRef.current.offsetWidth / 4 < 50
+					? 100
+					: (wrapperRef.current.offsetWidth - cardRef.current.offsetWidth) / 2 - cardRef.current.offsetWidth / 4
 			params.step = cardRef.current.offsetWidth + params.gap
 			params.initialOffset = (wrapperRef.current.offsetWidth - cardRef.current.offsetWidth) / 2
 			params.threshold = wrapperRef.current.offsetWidth / 8

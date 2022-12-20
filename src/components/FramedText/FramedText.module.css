@@ -11,13 +11,13 @@
 @media (min-width: 500px) and (max-width: 800px) {
 	.root {
 		font-size: 0.675rem;
-		padding: 0.12em 0.5em;
+		padding: 0.1em 0.4em;
 	}
 }
 
 @media (min-width: 320px) and (max-width: 500px) {
 	.root {
-		font-size: 0.55rem;
+		font-size: 0.65rem;
 		padding: 0.04em 0.2em;
 	}
 }
