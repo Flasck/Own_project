@@ -109,16 +109,32 @@
 	}
 }
 
-@media (min-width: 320px) and (max-width: 600px) {
+@media (min-width: 420px) and (max-width: 500px) {
 	.btn_prev,
 	.btn_next {
-		font-size: 2em;
+		font-size: 2.5em;
 	}
 	.btn_prev {
 		left: 0.2em;
 	}
 	.btn_next {
 		right: 0.2em;
+	}
+	.blur {
+		width: 5em;
+	}
+}
+
+@media (min-width: 320px) and (max-width: 419px) {
+	.btn_prev,
+	.btn_next {
+		font-size: 2em;
+	}
+	.btn_prev {
+		left: 0.1em;
+	}
+	.btn_next {
+		right: 0.1em;
 	}
 	.blur {
 		width: 5em;
