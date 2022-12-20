@@ -1,5 +1,5 @@
 .root {
-	padding: 3em 2em;
+	padding: 3em 0em;
 	background-color: var(--c-primary);
 	display: flex;
 	justify-content: center;
@@ -8,6 +8,7 @@
 
 .container {
 	width: 100%;
+	padding: 0 1em;
 	max-width: var(--max-width);
 	display: flex;
 	flex-direction: column;

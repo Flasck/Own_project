@@ -9,17 +9,20 @@ const initialState = {
 
 export const ProjectsSlice = createSlice({
 	name: "ProjectsSlice",
-	initialState: initialState,
+	initialState,
 	reducers: {
-		startLoading: (state) => {
+		startLoading: state =>
+		{
 			state.status = Statuses.inProgress;
 		},
-		successLoading: (state, action) => {
+		successLoading: (state, action) =>
+		{
 			if (action.payload.lang === "ru") state.text.ru = action.payload.data;
 			else if (action.payload.lang === "en") state.text.en = action.payload.data;
 			state.status = Statuses.success;
 		},
-		failLoading: (state) => {
+		failLoading: state =>
+		{
 			state.status = Statuses.failed;
 		},
 	},

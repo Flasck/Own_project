@@ -139,8 +139,8 @@ Api.addRoute("GET", "/comments/form", "html", () => Api.readFile(`../data/pages/
 Api.addRoute("GET", "/comments/list", "html", () => Api.readFile(`../data/pages/comments.html`, "utf8"));
 Api.addRoute("GET", "/feedbacks/form", "html", () => Api.readFile(`../data/pages/feedbacks_form.html`, "utf8"));
 Api.addRoute("GET", "/feedbacks/list", "html", () => Api.readFile(`../data/pages/feedbacks.html`, "utf8"));
-Api.addRouteSqlAll("/comments", `select id, author, rate, text from Comment`, []);
-Api.addRouteSqlAll("/feedbacks", `select id, author, email, text from FeedBack`, []);
+Api.addRouteSqlAll("/comments", `select id, author, rate, text from Comment order by id desc`, []);
+Api.addRouteSqlAll("/feedbacks", `select id, author, email, text from FeedBack order by id desc`, []);
 Api.addRoute("POST", "/comment", "json", async function ()
 {
 	const data = await this.readBodyJSON();

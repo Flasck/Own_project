@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack serve --mode development --config ./webpack.config.js ",
     "build": "webpack --mode production --config ./webpack.config.js",
-    "lint:js": "npx eslint src --ext .js,.jsx --fix",
+    "lint:js": "npx eslint src --ext .js,.jsx",
+    "lint:js-fix": "npx eslint src --ext .js,.jsx --fix",
     "lint:css": "npx stylelint src/**/*.css --fix",
     "startServerDev": "cd server && npm run startDEV",
     "startServerDevWithDelay": "cd server && npm run startDEVDelay"
@@ -56,7 +57,6 @@
     "react-hook-form": "^7.40.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.5",
-    "@pbe/react-yandex-maps": "^1.2.2",
-    "swiper": "^8.4.5"
+    "@pbe/react-yandex-maps": "^1.2.2"
   }
 }
