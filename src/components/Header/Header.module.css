@@ -16,10 +16,33 @@
 	padding: 0 1em;
 }
 
+.menu {
+	background-color: transparent;
+	border: none;
+	color: var(--c-text);
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-right: 1em;
+	display: none;
+}
+.menu > svg {
+	width: 2em;
+	height: 2em;
+}
+
 .brand {
 	font-family: "Neue Machina";
 	font-weight: 800;
 	text-transform: uppercase;
+}
+
+.links {
+	flex-grow: 1;
+	display: flex;
+	justify-content: space-between;
+	margin: 0 5%;
 }
 
 .link {
@@ -42,12 +65,70 @@
 .switchers {
 	display: flex;
 }
+.switchers__lang {
+	display: flex;
+	align-items: center;
+	margin-right: 1.2em;
+}
 
 .langSwitch {
 	background: none;
 	border: none;
 	margin-right: 0.5em;
 }
-.langSwitch:nth-child(2) {
-	margin-right: 1.2em;
+
+@media screen and (max-width: 625px) {
+	.switchers__lang {
+		flex-direction: column;
+	}
+	.langSwitch {
+		margin-right: 0em;
+	}
+	.switchers__lang {
+		margin-right: 0.8em;
+	}
+}
+
+@media screen and (max-width: 540px) {
+	.brand {
+		flex-grow: 1;
+		text-align: center;
+	}
+	.links {
+		position: fixed;
+		flex-direction: column;
+		top: 0;
+		left: 0;
+		width: 60%;
+		min-width: 250px;
+		height: 100%;
+		margin: 0;
+		z-index: 10;
+		padding: 2em;
+		justify-content: flex-start;
+		background-color: var(--c-primary);
+		border-radius: 0 1em 1em 0;
+		box-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
+		left: -110%;
+		transition: left 300ms ease;
+	}
+	.links .link {
+		padding: 1em 0;
+	}
+	.links::before {
+		content: "";
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		bottom: 0;
+		z-index: -1;
+		left: -110%;
+	}
+	.links_active, .links_active::before {
+		left: 0%;
+	}
+	.menu {
+		display: flex;
+	}
 }

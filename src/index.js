@@ -1,3 +1,4 @@
+
 import "./index.css"
 import React, { Suspense } from "react"
 import ReactDOM from "react-dom/client"
@@ -8,9 +9,11 @@ import { BrowserRouter } from "react-router-dom"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 
+
 const Application = React.lazy(() => import("./App"))
 
 // Enable dark theme
+
 const darkTheme = localStorage.getItem("darkTheme")
 if (darkTheme == "true" || (darkTheme == null && window.matchMedia?.("(prefers-color-scheme: dark)")?.matches))
 	document.body.classList.add("darkTheme")
@@ -26,3 +29,4 @@ root.render(
 		</Suspense>
 	</React.Fragment>
 )
+

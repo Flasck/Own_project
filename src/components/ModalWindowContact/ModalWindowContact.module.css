@@ -141,6 +141,7 @@
     width: 18px;
     height: 18px;
     border: 1px solid var(--c-text);
+    background-color: transparent;
     cursor: pointer;
     display: flex;
     align-items: center;

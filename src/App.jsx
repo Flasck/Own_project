@@ -16,7 +16,9 @@ import { LoadConstantsIfNotExist } from "@store/ConstantsSlice/loadConstantsIfNo
 import { selectLanguage } from "@store/LanguageSlice/selectors"
 import { selectConstantsState } from "./store/ConstantsSlice/selectors"
 
-const Application = () => {
+
+const Application = () =>
+{
 	const dispatch = useDispatch()
 	const curLan = useSelector(selectLanguage)
 	const state = useSelector(selectConstantsState)

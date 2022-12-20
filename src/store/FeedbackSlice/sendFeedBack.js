@@ -1,20 +1,19 @@
 import { FeedbackSlice } from "./index"
 
-export const SendFeedBack = (data) => (dispatch, getState) =>
+
+export const SendFeedBack = data => dispatch =>
 {
 	dispatch(FeedbackSlice.actions.startLoading());
-	fetch(`http://localhost:3001/feedback`, {
+	fetch("http://localhost:3001/feedback", {
 		method: "POST",
-		headers: {
-			'Content-Type': 'application/json',
-		},
+		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(data),
 	})
-		.then((req) => {
-			if(req.status !== 200) {
-				return dispatch(FeedbackSlice.actions.failLoading())
-			}
-			return dispatch(FeedbackSlice.actions.successLoading())
+		.then((req) =>
+		{
+			if (req.status !== 200)
+				return dispatch(FeedbackSlice.actions.failLoading());
+			return dispatch(FeedbackSlice.actions.successLoading());
 		})
-		.catch(() => dispatch(FeedbackSlice.actions.failLoading()))
+		.catch(() => dispatch(FeedbackSlice.actions.failLoading()));
 }
