@@ -125,7 +125,7 @@
 	}
 }
 
-@media (min-width: 320px) and (max-width: 419px) {
+@media (max-width: 419px) {
 	.btn_prev,
 	.btn_next {
 		font-size: 2em;
