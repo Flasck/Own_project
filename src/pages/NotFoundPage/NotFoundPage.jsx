@@ -1,25 +1,18 @@
-import React from "react"
-import { useSelector } from "react-redux";
-import { selectConstants } from "@store/ConstantsSlice/selectors";
-import { Placeholder } from "@components/Placeholder/Placeholder";
-import styles from "./NotFoundPage.module.css"
+import React from 'react'
+import styles from './NotFoundPage.module.css'
+import {useSelector} from "react-redux";
+import { selectLanguage } from '../../store/LanguageSlice/selectors';
 
+export const NotFoundPage = () => {
 
-export const NotFoundPage = () =>
-{
-	const texts = useSelector(selectConstants);
-	if (!texts) return renderPlaceholder();
+    const lang = useSelector(selectLanguage);
 
-	return <div className={styles.wrapper}>
-		<h3 className={styles.title}>
-			{texts?.notFoundPage?.title}
-		</h3>
-	</div>
+    if (lang === 'ru') return <div className={styles.wrapper}>
+        <h3 className={styles.title}>Данной страницы не существует</h3>
+    </div>
+
+    if (lang === 'en') return <div className={styles.wrapper}>
+        <h3 className={styles.title}>This page Not Found</h3>
+    </div>
+
 }
-
-const renderPlaceholder = () =>
-	<div className={styles.wrapper}>
-		<h3 className={styles.title}>
-			<Placeholder height={1} />
-		</h3>
-	</div>
