@@ -105,10 +105,10 @@
 	gap: 5px 5px;
 }
 
-@media (min-width: 500px) and (max-width: 700px) {
+@media (min-width: 420px) and (max-width: 700px) {
 	.card {
-		width: 270px;
-		height: 180px;
+		width: 300px;
+		height: 210px;
 	}
 	.desc {
 		font-size: 0.8em;
@@ -138,14 +138,7 @@
 	}
 }
 
-@media (min-width: 320px) and (max-width: 500px) {
-	.card {
-		width: 220px;
-		height: 150px;
-	}
-	.desc {
-		font-size: 0.63em;
-	}
+@media (max-width: 420px) {
 	.front {
 		padding: 0.2em;
 	}
@@ -162,11 +155,31 @@
 		font-size: 0.9rem;
 	}
 	.photo {
-		width: 1.7em;
-		height: 1.7em;
+		width: 2em;
+		height: 2em;
 	}
 	.link_logo {
-		width: 0.9em;
-		height: 0.9em;
+		width: 1em;
+		height: 1em;
+	}
+}
+
+@media (min-width: 360px) and (max-width: 420px) {
+	.card {
+		width: 260px;
+		height: 170px;
+	}
+	.desc {
+		font-size: 0.7em;
+	}
+}
+
+@media (max-width: 359px) {
+	.card {
+		width: 240px;
+		height: 150px;
+	}
+	.desc {
+		font-size: 0.68em;
 	}
 }
