@@ -11,13 +11,11 @@ import { FailModal } from "@components/ModalWindowContact/FailModal/FailModal"
 import { useSelector } from "react-redux"
 import { selectIsFeedBackFailed, selectIsFeedBackLoading, selectIsFeedBackSuccess } from "@store/FeedbackSlice/selectors"
 
-
-export const MainPage = (props) => {
+export const MainPage = () => {
 	const isFeedBackLoading = useSelector(selectIsFeedBackLoading)
 	const isFeedBackSuccess = useSelector(selectIsFeedBackSuccess)
 	const isFeedBackFailed = useSelector(selectIsFeedBackFailed)
 	const [viewModal, setViewModal] = useState(false)
-
 
 	return (
 		<>
@@ -30,5 +28,4 @@ export const MainPage = (props) => {
 			<MapBlock setViewModal={setViewModal} />
 		</>
 	)
-
 }
