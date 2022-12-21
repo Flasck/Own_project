@@ -17,7 +17,7 @@ export const OurMap = () =>
 	const dispatch = useDispatch();
 
 	return <Map
-		className={styles.img}
+		className={styles.map}
 		state={{
 			center: activeMark.coords != null
 				? activeMark.coords : [53.751574, 44.573856],
