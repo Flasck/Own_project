@@ -1,9 +1,9 @@
 .container {
 	display: flex;
 	flex-direction: column;
+	margin-top: 2em;
 	gap: 2em;
 	position: relative;
-	margin-top: 2em;
 }
 
 .wrapper {
