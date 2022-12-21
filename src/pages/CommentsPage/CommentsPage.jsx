@@ -8,7 +8,8 @@ import { CommentForm } from "@components/CommentForm/CommentForm"
 import { WidgetComment } from "@components/WidgetComment/WidgetComment"
 import styles from "./CommentsPage.module.css"
 
-export const CommentsPage = () => {
+export const CommentsPage = () =>
+{
 	const dispatch = useDispatch()
 	useEffect(() => dispatch(LoadCommentsIfNotExist), [])
 	const comments = useSelector(selectComments)
@@ -16,19 +17,23 @@ export const CommentsPage = () => {
 	const statusSend = useSelector(selectCommentsStatusSend)
 
 	return statusGet === Statuses.inProgress ? (
-		<div className={styles.root}>
+		<>
 			<CommentForm />
-			<CommentsCardPlaceholder />
-			<CommentsCardPlaceholder />
-			<CommentsCardPlaceholder />
-		</div>
+			<section className={styles.container}>
+				<CommentsCardPlaceholder />
+				<CommentsCardPlaceholder />
+				<CommentsCardPlaceholder />
+			</section>
+		</>
 	) : (
-		<div className={styles.root}>
+		<>
 			<CommentForm />
-			{comments?.map((el) => (
-				<CommentsCard key={"CP" + el.id} data={el} />
-			))}
-			{statusSend !== Statuses.idle ? <WidgetComment /> : ""}
-		</div>
+			<section className={styles.container}>
+				{comments?.map((el) => (
+					<CommentsCard key={"CP" + el.id} data={el} />
+				))}
+				{statusSend !== Statuses.idle ? <WidgetComment /> : ""}
+			</section>
+		</>
 	)
 }

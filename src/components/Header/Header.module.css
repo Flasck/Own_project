@@ -113,7 +113,7 @@
 		left: -110%;
 		transition: left 300ms ease;
 	}
-	.links .link {
+	.linkContainer {
 		padding: 1em 0;
 	}
 	.links::before {

@@ -18,7 +18,7 @@ export const ProjectCard = ({ project }) => (
 				<time className={styles.time}>{project.date}</time>
 			</figcaption>
 		</figure>
-		<h2 className={styles.title}>{project.title}</h2>
+		<h3 className={styles.title}>{project.title}</h3>
 		<div className={styles.subTitle}>
 			<span className={styles.authors}>{project.authors.join(", ")}</span>
 			<div className={styles.dot} />
