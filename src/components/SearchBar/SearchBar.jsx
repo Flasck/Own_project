@@ -30,7 +30,7 @@ export const SearchBar = ({ setProjects }) =>
 		setProjects(filter(projectsAll || [], value, tech));
 	}, []);
 
-	return <div className={styles.root} onClick={e => e.stopPropagation()}>
+	return <section className={styles.root} onClick={e => e.stopPropagation()}>
 		<input
 			className={styles.input}
 			placeholder={texts?.projectsPage?.searchBar}
@@ -86,7 +86,7 @@ export const SearchBar = ({ setProjects }) =>
 					{v}
 				</button>)}
 		</div>
-	</div>
+	</section>
 }
 
 

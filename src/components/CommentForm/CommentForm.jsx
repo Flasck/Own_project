@@ -30,7 +30,7 @@ export const CommentForm = () =>
 		reset()
 	}
 
-	return <div className={styles.content}>
+	return <section className={styles.content}>
 		<h2 className={styles.title}>{texts ? texts.commentsPage.title : <Placeholder width={20} />}</h2>
 		<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 			<div className={styles.form__topBlock}>
@@ -90,6 +90,6 @@ export const CommentForm = () =>
 				</Button>
 			</div>
 		</form>
-	</div>
+	</section>
 }
 

@@ -29,17 +29,17 @@ export const Header = ({ className }) => {
 				<span className={styles.brand}>Turtle</span>
 
 				<ul className={styles.links} ref={linksRef}>
-					<li>
+					<li className={styles.linkContainer}>
 						<NavLink className={({ isActive }) => classNames(styles.link, isActive && styles.linkActive)} to="/">
 							{text ? text.header.mainPage : <Placeholder width={11} />}
 						</NavLink>
 					</li>
-					<li>
+					<li className={styles.linkContainer}>
 						<NavLink className={({ isActive }) => classNames(styles.link, isActive && styles.linkActive)} to="/OurCases">
 							{text ? text.header.projectsPage : <Placeholder width={11} />}
 						</NavLink>
 					</li>
-					<li>
+					<li className={styles.linkContainer}>
 						<NavLink className={({ isActive }) => classNames(styles.link, isActive && styles.linkActive)} to="/CommentsPage">
 							{text ? text.header.commentsPage : <Placeholder width={8} />}
 						</NavLink>

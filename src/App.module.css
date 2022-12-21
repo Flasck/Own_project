@@ -10,6 +10,7 @@ html {
 }
 
 body {
+	min-width: 320px;
 	min-height: 100%;
 	background: right top no-repeat radial-gradient(circle, rgba(252, 76, 249, 0.3) 0%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0) 100%),
 		left top linear-gradient(130deg, rgba(0, 234, 122, 0.3) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%),

@@ -3,14 +3,10 @@ import { CommentsCard, CommentsCardPlaceholder } from "@components/CommentCard/C
 import { useDispatch, useSelector } from "react-redux"
 import { selectComments, selectCommentsStatusGet, selectCommentsStatusSend } from "@store/CommentsSlice/selectors"
 import { Statuses } from "@utils/Statuses"
-import { LoadCommentsIfNotExist } from "@store/CommentsSlice/loadCommentsIfNotExist";
-
-import { CommentForm } from "@components/CommentForm/CommentForm";
-
-import { WidgetComment } from "@components/WidgetComment/WidgetComment";
+import { LoadCommentsIfNotExist } from "@store/CommentsSlice/loadCommentsIfNotExist"
+import { CommentForm } from "@components/CommentForm/CommentForm"
+import { WidgetComment } from "@components/WidgetComment/WidgetComment"
 import styles from "./CommentsPage.module.css"
-
-
 
 export const CommentsPage = () =>
 {
@@ -20,22 +16,24 @@ export const CommentsPage = () =>
 	const statusGet = useSelector(selectCommentsStatusGet)
 	const statusSend = useSelector(selectCommentsStatusSend)
 
-
-	return statusGet === Statuses.inProgress ?
-		<div className={styles.root}>
+	return statusGet === Statuses.inProgress ? (
+		<>
 			<CommentForm />
-			<CommentsCardPlaceholder />
-			<CommentsCardPlaceholder />
-			<CommentsCardPlaceholder />
-		</div>
-		:
-		<div className={styles.root}>
+			<section className={styles.container}>
+				<CommentsCardPlaceholder />
+				<CommentsCardPlaceholder />
+				<CommentsCardPlaceholder />
+			</section>
+		</>
+	) : (
+		<>
 			<CommentForm />
-			{comments?.map(el => (
-				<CommentsCard key={el.id} data={el} />
-			))}
-			{
-				statusSend !== Statuses.idle ? <WidgetComment /> : ""
-			}
-		</div>
+			<section className={styles.container}>
+				{comments?.map((el) => (
+					<CommentsCard key={"CP" + el.id} data={el} />
+				))}
+				{statusSend !== Statuses.idle ? <WidgetComment /> : ""}
+			</section>
+		</>
+	)
 }
