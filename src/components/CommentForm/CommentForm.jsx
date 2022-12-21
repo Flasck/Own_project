@@ -58,7 +58,7 @@ export const CommentForm = () =>
 						{errors?.author && <p>{errors?.author.message || "Error"}</p>}
 					</div>
 				</div>
-				<div className={styles.form__block_rating}>
+				<div className={styles.form__block__rating}>
 					<RatingStars count={countStars} cb={e => setCountStars(e)} isWorking big />
 				</div>
 			</div>

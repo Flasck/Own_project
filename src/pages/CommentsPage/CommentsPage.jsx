@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
-import { CommentsCard, CommentsCardPlaceholder } from "@components/CommentCard/CommentsCard"
+import { CommentsCard } from "@components/CommentCard/CommentsCard"
+import { CommentsCardPlaceholder } from "@components/CommentCard/CommentsCardPlaceholder"
 import { useDispatch, useSelector } from "react-redux"
 import { selectComments, selectCommentsStatusGet, selectCommentsStatusSend } from "@store/CommentsSlice/selectors"
 import { Statuses } from "@utils/Statuses"

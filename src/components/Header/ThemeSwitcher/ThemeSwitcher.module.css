@@ -5,8 +5,8 @@
 	border-radius: 50%;
 }
 
-.img_sun,
-.img_moon {
+.img__sun,
+.img__moon {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -17,16 +17,16 @@
 	transition-duration: 300ms;
 }
 
-.img_sun {
+.img__sun {
 	transform: translate(-50%, -50%) scale(0) rotate(180deg);
 }
-.img_moon {
+.img__moon {
 	transform: translate(-50%, -50%) scale(1) rotate(0deg);
 }
 
-:global(.darkTheme) .img_sun {
+:global(.darkTheme) .img__sun {
 	transform: translate(-50%, -50%) scale(1) rotate(0deg);
 }
-:global(.darkTheme) .img_moon {
+:global(.darkTheme) .img__moon {
 	transform: translate(-50%, -50%) scale(0) rotate(180deg);
 }
