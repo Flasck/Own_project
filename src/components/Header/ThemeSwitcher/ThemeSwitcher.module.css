@@ -5,8 +5,8 @@
 	border-radius: 50%;
 }
 
-.img_sun,
-.img_moon {
+.sun,
+.moon {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -17,16 +17,16 @@
 	transition-duration: 300ms;
 }
 
-.img_sun {
+.sun {
 	transform: translate(-50%, -50%) scale(0) rotate(180deg);
 }
-.img_moon {
+.moon {
 	transform: translate(-50%, -50%) scale(1) rotate(0deg);
 }
 
-:global(.darkTheme) .img_sun {
+:global(.darkTheme) .sun {
 	transform: translate(-50%, -50%) scale(1) rotate(0deg);
 }
-:global(.darkTheme) .img_moon {
+:global(.darkTheme) .moon {
 	transform: translate(-50%, -50%) scale(0) rotate(180deg);
 }

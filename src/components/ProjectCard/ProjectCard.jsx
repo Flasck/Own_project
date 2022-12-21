@@ -11,7 +11,7 @@ export const ProjectCard = ({ project }) => (
 				<img
 					className={styles.img}
 					src={project.imageId !== null ? `http://localhost:3001/image?id=${project.imageId}` : img}
-					alt="Не удалось загрузить фото"
+					alt={project.title}
 				/>
 			</a>
 			<figcaption>

@@ -149,7 +149,7 @@
     margin-right: 8px;
 }
 
-.customCheckBox_path {
+.customCheckBox__path {
     stroke: var(--c-text);
 }
 

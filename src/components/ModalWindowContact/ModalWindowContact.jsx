@@ -107,7 +107,7 @@ export const ModalWindowContact = ({ setView }) => {
 						<button className={styles.customCheckBox} type="button">
 							<svg width="11" height="8" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
-									className={styles.customCheckBox_path}
+									className={styles.customCheckBox__path}
 									d="M2 9.89474L9.07143 17L24 2"
 									display={CheckBox ? "block" : "none"}
 									strokeWidth="3"
