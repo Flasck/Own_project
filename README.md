@@ -1,5 +1,4 @@
 # Turtle
-<hr/>
 
 ### Это учебный проект, который был создан в рамках трехмесячного интенсива от академии яндекса по фронтенд рзработке.
 ### Он разрабатывался в период с 7.12.2022 - 22.12.2022 года. В его реалзиации принили участие следующие люди:
@@ -10,7 +9,6 @@
 - [Михаил Теткин](https://github.com/MixelTe) (разработчик)
 
 ## Технологии и библиотеки, котораые использовались на проекте:
-<hr/>
 
 - React
 - React-dom
@@ -25,7 +23,6 @@
 - Eslint
 
 ## Для работы с даннмым проектом есть следующие команды:
-<hr/>
 
 Для запуска проекта в development режиме
 ```
@@ -52,7 +49,6 @@ npm run startServerDev
 npm run startServerDevWithDelay
 ```
 ## Общая структура проекта
-<hr/>
 
     ├─ public/              
     ├─ server/ 
@@ -76,7 +72,6 @@ npm run startServerDevWithDelay
     ├─ babel.config.js
     ├─ eslintrc.js
 
-<hr/>
 
 ## [макет](https://www.figma.com/file/mQUwCKwMvcJVOqo3Ep21OU/%D0%A1%D0%B0%D0%B9%D1%82-%D0%B2%D0%B8%D0%B7%D0%B8%D1%82%D0%BA%D0%B0-%D0%B2%D0%B5%D0%B1-%D1%81%D1%82%D1%83%D0%B4%D0%B8%D0%B8-(%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82-%D0%B4%D0%BB%D1%8F-%D0%AF%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%D0%B0)?node-id=0%3A1&t=LE1KF4u7OULHTjxM-1)
 
