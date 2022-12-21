@@ -10,7 +10,7 @@ export const ProjectCard = ({ project }) => (
 			<a href={project.link} target="_blank">
 				<img
 					className={styles.img}
-					src={project.imageId !== null ? `http://localhost:3001/image?id=${project.imageId}` : img}
+					src={project.imageId !== null ? `${SERVERURL}/image?id=${project.imageId}` : img}
 					alt={project.title}
 				/>
 			</a>
@@ -37,7 +37,7 @@ export const ProjectCard = ({ project }) => (
 export const ProjectCardPlaceholder = () => (
 	<article className={styles.root}>
 		<figure className={styles.figure}>
-			<Placeholder className={styles.img} disableText />
+			<Placeholder className={styles.imgPlaceholder} disableText />
 			<figcaption>
 				<time className={styles.time}>
 					<Placeholder width={10} disableText />
