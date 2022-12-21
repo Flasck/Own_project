@@ -139,7 +139,7 @@ export const TeamSlider = () => {
 	return (
 		<>
 			{PeopleList ? (
-				<div className={styles.slider}>
+				<section className={styles.slider}>
 					<div className={styles.slider_overflow} ref={wrapperRef}>
 						<div className={styles.slides_line} style={{ gap: `${params.gap}px` }} ref={sliderRef}>
 							{PeopleList.map((person) => (
@@ -150,13 +150,13 @@ export const TeamSlider = () => {
 					<div className={classNames(styles.blur, styles.blur_left)} />
 					<div className={classNames(styles.blur, styles.blur_right)} />
 					<div className={classNames(styles.btn_prev, params.slide === 0 ? styles.btn_prev_dis : "")} onClick={toPrevSlide}>
-						❮
+						<span>❮</span>
 					</div>
 					<div
 						className={classNames(styles.btn_next, params.slide === PeopleList.length - 1 ? styles.btn_next_dis : "")}
 						onClick={toNextSlide}
 					>
-						❯
+						<span>❯</span>
 					</div>
 					<div className={styles.dots}>
 						{PeopleList.map((_, index) => (
@@ -167,7 +167,7 @@ export const TeamSlider = () => {
 							/>
 						))}
 					</div>
-				</div>
+				</section>
 			) : (
 				<Placeholder height={326} unitH="px" disableText />
 			)}

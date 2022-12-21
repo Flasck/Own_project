@@ -39,6 +39,7 @@
 }
 
 .links {
+	list-style-type: none;
 	flex-grow: 1;
 	display: flex;
 	justify-content: space-between;
@@ -89,7 +90,7 @@
 	}
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 576px) {
 	.brand {
 		flex-grow: 1;
 		text-align: center;
@@ -125,7 +126,8 @@
 		z-index: -1;
 		left: -110%;
 	}
-	.links_active, .links_active::before {
+	.links_active,
+	.links_active::before {
 		left: 0%;
 	}
 	.menu {
