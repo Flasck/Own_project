@@ -14,6 +14,6 @@ export const ThemeSwitcher = () =>
 		}}
 		className={styles.root}
 	>
-		<img src={sun} alt="Sun" className={styles.img__sun} />
-		<img src={moon} alt="Moon" className={styles.img__moon} />
+		<img src={sun} alt="Sun" className={styles.sun} />
+		<img src={moon} alt="Moon" className={styles.moon} />
 	</Button>
