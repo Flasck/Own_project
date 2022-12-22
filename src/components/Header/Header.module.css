@@ -81,12 +81,14 @@
 @media screen and (max-width: 625px) {
 	.switchers__lang {
 		flex-direction: column;
+		margin-right: 0.6em;
 	}
 	.langSwitch {
 		margin-right: 0em;
+		flex-grow: 1;
 	}
-	.switchers__lang {
-		margin-right: 0.8em;
+	.langSwitch.linkActive {
+		display: none;
 	}
 }
 

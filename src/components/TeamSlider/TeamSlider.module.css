@@ -18,14 +18,17 @@
 	display: flex;
 	align-items: center;
 	cursor: pointer;
+	padding: 1em 0.5em;
 }
 
 .btnArrow_type_prev {
 	left: 0.3em;
+	padding-left: 0em;
 }
 
 .btnArrow_type_next {
 	right: 0.3em;
+	padding-right: 0em;
 }
 
 .btnArrow_disabled {
@@ -127,12 +130,12 @@
 		font-size: 2em;
 	}
 	.btnArrow_type_prev {
-		left: 0.1em;
+		left: -0.25em;
 	}
 	.btnArrow_type_next {
-		right: 0.1em;
+		right: -0.25em;
 	}
 	.blur {
-		width: 5em;
+		width: 3em;
 	}
 }

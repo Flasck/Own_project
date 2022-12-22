@@ -42,7 +42,7 @@ export const CommentForm = () =>
 						{...register("author", {
 							required: texts?.mainPage?.modalWindowContact?.author?.required,
 							pattern: {
-								value: /^[a-zаА-яЯё]+$/i,
+								value: /^[a-zаА-яЯё _]+$/i,
 								message: texts?.mainPage?.modalWindowContact?.author?.notPattern,
 							},
 							minLength: {
