@@ -29,7 +29,7 @@ const server = http.createServer(async (req, res) =>
 Api.PrettyPrint = process.argv.indexOf("-dev") >= 0;
 const delay = process.argv.indexOf("-delay") >= 0;
 
-const port = 3001;
+const port = process.env.PORT || 3001;
 console.log(`Start server on http://localhost:${port}`);
 server.listen(port);
 
