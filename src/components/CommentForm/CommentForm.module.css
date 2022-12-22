@@ -1,0 +1,148 @@
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    font-family: 'Neue Machina', sans-serif;
+    font-style: normal;
+    position: relative;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 23px;
+    color: var(--c-text);
+}
+
+.form {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.textArea {
+    background: var(--c-card);
+    border: 1px solid var(--c-text);
+    border-radius: 6px;
+    outline: none;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--c-text);
+    height: 140px;
+    width: 100%;
+    padding: 12px 8px 12px 8px;
+    resize: none;
+
+	background: rgba(255, 255, 255, 0.1);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	border: 1px solid rgba(255, 255, 255, 0.29);
+}
+
+.textArea:focus {
+    border: 1px solid #099550;
+}
+
+.form__block {
+    margin-bottom: 19px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.form__block__rating {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 1em;
+}
+
+.form__topBlock {
+    display: flex;
+    gap: 2em;
+}
+.form__topBlock > *:first-child {
+    flex-grow: 1;
+}
+
+
+.error {
+    position: absolute;
+    bottom: -18px;
+    right: 0;
+    display: flex;
+    color: #FF4343;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 7px;
+}
+.label {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--c-text);
+    margin-bottom: 4px;
+}
+
+.label:last-child {
+    margin: 0;
+}
+
+.input {
+    background: var(--c-card);
+    border: 1px solid var(--c-text);
+    border-radius: 6px;
+    outline: none;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--c-text);
+    height: 36px;
+    width: 100%;
+    padding: 12px 8px 12px 8px;
+
+	background: rgba(255, 255, 255, 0.1);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	border: 1px solid rgba(255, 255, 255, 0.29);
+}
+
+.input:focus {
+    border: 1px solid #099550;
+}
+
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.btn {
+    background: #00EA7A;
+    border-radius: 12px;
+    padding: 12px 22px;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 15px;
+    color: #000000;
+    cursor:  pointer;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+}
+
+.btn_status{
+    width: max-content;
+    margin: 0 auto;
+}
+
+

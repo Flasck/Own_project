@@ -1,0 +1,20 @@
+.name {
+	font-weight: 500;
+}
+
+.places {
+	padding-left: 0.9em;
+	padding-right: 0.9em;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+	margin-top: 8px;
+}
+
+.place {
+	display: flex;
+	gap: 0.5em;
+	align-items: center;
+	cursor: pointer;
+	font-size: 0.9rem;
+}

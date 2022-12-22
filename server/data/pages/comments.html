@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Comments</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT Sans">
+	<style>
+	body {
+		display: flex;
+		justify-content: center;
+		margin: 0;
+		background-color: #1e1e1e;
+		color: #d4d4d4;
+		font-family: "PT Sans", Arial, Helvetica, sans-serif;
+	}
+	#content {
+		width: 100%;
+		max-width: 800px;
+		padding: 2em;
+		display: flex;
+		flex-direction: column;
+		gap: 2em;
+	}
+	.row {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5em;
+		padding: 1em;
+		background-color: #0c7e2c;
+		border-radius: 1em;
+	}
+	.row__title {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2em;
+	}
+	.title__item {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2em;
+	}
+	.author, .rate, .text {
+		padding: 0.5em;
+		background-color: #1e1e1e;
+		border-radius: 0.5em;
+	}
+	.author, .rate {
+		/* padding-right: 2em; */
+		/* padding-left: 1em; */
+		flex-grow: 1;
+	}
+	.id {
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 2em;
+		height: 2em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #0e9a36;
+		border-radius: 50%;
+		transform: translate(40%, -40%);
+	}
+	</style>
+</head>
+<body>
+	<template id="row">
+		<div class="row">
+			<div class="row__title">
+				<div class="title__item">
+					<div>Author: </div>
+					<div class="author">Иван Иванов</div>
+				</div>
+				<div class="title__item">
+					<div>Rate: </div>
+					<div class="rate">1</div>
+				</div>
+			</div>
+			<div class="text">клтжклоптэфтпэк лк тпэл тэл экл фкэлэфлк лф ткэл тпфэл кл пфэл ткэл фэ лэ лкфэ лф лтклтплк тлфт кл тфп</div>
+			<div class="id">1</div>
+		</div>
+	</template>
+	<div id="content">
+	</div>
+	<script>
+		const template = document.getElementById("row");
+		const content = document.getElementById("content");
+		fetch("/comments")
+		.then(v => v.json())
+		.then(data => {
+			data.forEach(comment => {
+				const row = template.content.cloneNode(true);
+				row.querySelector(".id").innerText = comment.id;
+				row.querySelector(".author").innerText = comment.author;
+				row.querySelector(".rate").innerText = comment.rate;
+				row.querySelector(".text").innerText = comment.text;
+				content.appendChild(row);
+			});
+		})
+		.catch(e => {
+			console.error(e);
+			alert("Error!");
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+.root {
+	position: relative;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+.sun,
+.moon {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 65%;
+	height: 65%;
+	transform: translate(-50%, -50%);
+	transition: transform;
+	transition-duration: 300ms;
+}
+
+.sun {
+	transform: translate(-50%, -50%) scale(0) rotate(180deg);
+}
+.moon {
+	transform: translate(-50%, -50%) scale(1) rotate(0deg);
+}
+
+:global(.darkTheme) .sun {
+	transform: translate(-50%, -50%) scale(1) rotate(0deg);
+}
+:global(.darkTheme) .moon {
+	transform: translate(-50%, -50%) scale(0) rotate(180deg);
+}

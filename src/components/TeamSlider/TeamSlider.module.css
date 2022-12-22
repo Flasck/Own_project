@@ -1,0 +1,138 @@
+.slider {
+	width: 100%;
+	margin: 1em 0 2em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	position: relative;
+	user-select: none;
+	touch-action: pan-y;
+}
+
+.btnArrow {
+	position: absolute;
+	font-size: 3em;
+	width: fit-content;
+	height: fit-content;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.btnArrow_type_prev {
+	left: 0.3em;
+}
+
+.btnArrow_type_next {
+	right: 0.3em;
+}
+
+.btnArrow_disabled {
+	opacity: 0.4;
+	cursor: auto;
+}
+
+.slider__overflow {
+	width: 100%;
+	padding: 3em 0;
+	margin: 0.5em 0;
+	overflow: hidden;
+	box-sizing: border-box;
+	cursor: grab;
+}
+
+.slides__line {
+	transition: all 0.5s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: fit-content;
+}
+
+.grab,
+.grab > * {
+	cursor: grabbing;
+	transition: none;
+}
+
+.dots {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.6em;
+}
+
+.dot {
+	opacity: 0.4;
+	cursor: pointer;
+	width: 0.6em;
+	height: 0.6em;
+	border-radius: 100%;
+	background-color: var(--c-text);
+}
+
+.dot_active {
+	opacity: 1;
+	cursor: auto;
+	width: 0.9em;
+	height: 0.9em;
+}
+
+.blur {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 0;
+	/* mask-image: linear-gradient(to bottom, transparent 25%, black 75%); */
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+}
+
+@supports (mask-image: linear-gradient(to left, transparent 25%, black 75%)) or
+	(-webkit-mask-image: linear-gradient(to left, transparent 25%, black 75%)) {
+	.blur {
+		width: 6em;
+	}
+	.blur_side_left {
+		-webkit-mask-image: linear-gradient(to left, transparent 25%, black 75%);
+		mask-image: linear-gradient(to left, transparent 25%, black 75%);
+		left: -1em;
+	}
+
+	.blur_side_right {
+		-webkit-mask-image: linear-gradient(to right, transparent 25%, black 75%);
+		mask-image: linear-gradient(to right, transparent 25%, black 75%);
+		right: -1em;
+	}
+}
+
+@media (min-width: 420px) and (max-width: 500px) {
+	.btnArrow {
+		font-size: 2.5em;
+	}
+	.btnArrow_type_prev {
+		left: 0.2em;
+	}
+	.btnArrow_type_next {
+		right: 0.2em;
+	}
+	.blur {
+		width: 5em;
+	}
+}
+
+@media (max-width: 419px) {
+	.btnArrow {
+		font-size: 2em;
+	}
+	.btnArrow_type_prev {
+		left: 0.1em;
+	}
+	.btnArrow_type_next {
+		right: 0.1em;
+	}
+	.blur {
+		width: 5em;
+	}
+}

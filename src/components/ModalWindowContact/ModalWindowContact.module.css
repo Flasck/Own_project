@@ -1,0 +1,189 @@
+.modal {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.content {
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: var(--c-primary);
+    font-family: 'Neue Machina', sans-serif;
+    font-style: normal;
+    z-index: 10;
+    position: relative;
+}
+
+.closeBtn {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    background: transparent;
+    outline: none;
+    top: 20px;
+    right: 16px;
+    cursor: pointer;
+    border: none;
+}
+
+.closeBtn__path {
+    stroke: var(--c-text);
+}
+
+.title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 23px;
+    color: var(--c-text);
+}
+
+.form {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.textArea {
+    background: var(--c-card);
+    border: 1px solid var(--c-text);
+    border-radius: 6px;
+    outline: none;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--c-text);
+    height: 140px;
+    width: 100%;
+    padding: 12px 8px 12px 8px;
+    resize: none;
+}
+
+.textArea:focus {
+    border: 1px solid #099550;
+}
+
+.form__block {
+    margin-bottom: 19px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.form__checkBox {
+    flex-direction: row;
+}
+
+.form__textArea {
+    margin-bottom: 35px;
+}
+
+.form_block:last-child {
+    margin: 26px;
+}
+
+.error {
+    position: absolute;
+    bottom: -18px;
+    right: 0;
+    display: flex;
+    color: #FF4343;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 7px;
+}
+
+.label {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--c-text);
+    margin-bottom: 4px;
+}
+
+.label:last-child {
+    margin: 0;
+}
+
+.label__link {
+    color: var(--c-text);
+}
+
+.input {
+    background: var(--c-card);
+    border: 1px solid var(--c-text);
+    border-radius: 6px;
+    outline: none;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--c-text);
+    height: 36px;
+    width: 100%;
+    padding: 12px 8px 12px 8px;
+}
+
+.input:focus {
+    border: 1px solid #099550;
+}
+
+.customCheckBox {
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--c-text);
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+}
+
+.customCheckBox__path {
+    stroke: var(--c-text);
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.btn {
+    background: #00EA7A;
+    border-radius: 12px;
+    padding: 12px 22px;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 15px;
+    color: #000000;
+    cursor:  pointer;
+}
+
+
+.btn_status{
+   width: max-content;
+   margin: 0 auto;
+}
+
+.StatusText {
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 15px;
+    margin: 0 auto;
+    margin-bottom: 16px;
+}
