@@ -3,44 +3,38 @@ module.exports = {
 		browser: true,
 		es2021: true,
 	},
-	extends: [
-		'plugin:react/recommended',
-		'airbnb',
-	],
-	overrides: [
-	],
+	extends: ["plugin:react/recommended", "airbnb"],
+	overrides: [],
 	parserOptions: {
-		ecmaVersion: 'latest',
-		sourceType: 'module',
+		ecmaVersion: "latest",
+		sourceType: "module",
 	},
-	plugins: [
-		'react',
-	],
+	plugins: ["react"],
 	settings: {
-		'import/resolver': {
+		"import/resolver": {
 			alias: {
 				map: [
-					['@images', './public/images'],
-					['@fonts', './public/fonts'],
-					['@pages', './src/pages'],
-					['@components', './src/components'],
-					['@store', './src/store'],
-					['@utils', './src/utils'],
+					["@images", "./public/images"],
+					["@fonts", "./src/vendor/fonts"],
+					["@pages", "./src/pages"],
+					["@components", "./src/components"],
+					["@store", "./src/store"],
+					["@utils", "./src/utils"],
 				],
-				extensions: ['.js', '.jsx']
-			}
-		}
+				extensions: [".js", ".jsx"],
+			},
+		},
 	},
 	rules: {
 		"react/react-in-jsx-scope": "off",
-		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+		"react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
 		"import/prefer-default-export": "off",
-		"semi": ["off"],
-		"quotes": [1, "double"],
-		"import/newline-after-import": ["error", { "count": 2 }],
+		semi: ["off"],
+		quotes: [1, "double"],
+		"import/newline-after-import": ["error", { count: 2 }],
 
-		"indent": ["error", "tab"],
-		"indent": [2, "tab", { "SwitchCase": 1, "VariableDeclarator": 1 }],
+		indent: ["error", "tab"],
+		indent: [2, "tab", { SwitchCase: 1, VariableDeclarator: 1 }],
 		"no-tabs": 0,
 		"react/prop-types": 0,
 		"react/jsx-indent": [2, "tab"],
@@ -53,12 +47,15 @@ module.exports = {
 		"no-extra-parens": 2,
 		"react/jsx-wrap-multilines": 0,
 
-		"object-curly-newline": ["error", {
-			"ObjectExpression": { "multiline": true },
-			"ObjectPattern": { "multiline": true },
-			"ImportDeclaration": "never",
-			"ExportDeclaration": { "multiline": true, "minProperties": 3 }
-		}],
+		"object-curly-newline": [
+			"error",
+			{
+				ObjectExpression: { multiline: true },
+				ObjectPattern: { multiline: true },
+				ImportDeclaration: "never",
+				ExportDeclaration: { multiline: true, minProperties: 3 },
+			},
+		],
 
 		"react/function-component-definition": [
 			2,
@@ -67,18 +64,21 @@ module.exports = {
 				unnamedComponents: "arrow-function",
 			},
 		],
-		"brace-style": [2, "allman", { "allowSingleLine": true }],
+		"brace-style": [2, "allman", { allowSingleLine: true }],
 		"implicit-arrow-linebreak": 0,
-		"comma-dangle": [2, {
-			"arrays": "never",
-			"objects": "always-multiline",
-			"imports": "never",
-			"exports": "never",
-			"functions": "never"
-		}],
-		"semi": [0, "never"],
+		"comma-dangle": [
+			2,
+			{
+				arrays: "never",
+				objects: "always-multiline",
+				imports: "never",
+				exports: "never",
+				functions: "never",
+			},
+		],
+		semi: [0, "never"],
 		"no-multiple-empty-lines": [2, { max: 3, maxEOF: 1 }],
-		"import/extensions": [2, { "jsx": "never" }],
+		"import/extensions": [2, { jsx: "never" }],
 		"react/jsx-props-no-spreading": 0,
 		"no-use-before-define": 0,
 		"react/no-array-index-key": 0,
@@ -94,6 +94,6 @@ module.exports = {
 		"linebreak-style": [2, "windows"],
 		"arrow-parens": [1, "as-needed"],
 		"nonblock-statement-body-position": [0, "any"],
-		"curly": [1, "multi-or-nest"],
+		curly: [1, "multi-or-nest"],
 	},
-};
+}
