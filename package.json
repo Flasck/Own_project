@@ -25,7 +25,7 @@
   "bugs": {
     "url": "https://github.com/Flasck/Own_project/issues"
   },
-  "homepage": "https://github.com/Flasck/Own_project#readme",
+  "homepage": "https://flasck.github.io/Own_project/",
   "devDependencies": {
     "@babel/core": "^7.20.5",
     "@babel/preset-env": "^7.20.2",

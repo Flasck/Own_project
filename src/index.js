@@ -19,7 +19,7 @@ if (darkTheme === "true" || (darkTheme == null && window.matchMedia?.("(prefers-
 root.render(
 	<Suspense fallback={<Preloader />}>
 		<Provider store={store}>
-			<BrowserRouter>
+			<BrowserRouter basename={'/Own_project'}>
 				<Application />
 			</BrowserRouter>
 		</Provider>
