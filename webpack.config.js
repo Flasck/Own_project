@@ -2,6 +2,7 @@ const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const CopyWebpackPlugin = require("copy-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
+const { DefinePlugin } = require("webpack")
 
 const mode = process.env.NODE_ENV
 
@@ -25,7 +26,7 @@ module.exports = (env) => {
 			extensions: [".js", ".jsx", "json"],
 			alias: {
 				"@images": path.resolve(__dirname, "public/images"),
-				"@fonts": path.resolve(__dirname, "src/vendor/fonts"),
+				"@fonts": path.resolve(__dirname, "public/fonts"),
 				"@pages": path.resolve(__dirname, "src/pages"),
 				"@components": path.resolve(__dirname, "src/components"),
 				"@store": path.resolve(__dirname, "src/store"),
