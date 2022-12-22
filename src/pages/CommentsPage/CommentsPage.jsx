@@ -6,7 +6,6 @@ import { selectComments, selectCommentsStatusGet, selectCommentsStatusSend } fro
 import { Statuses } from "@utils/Statuses"
 import { LoadCommentsIfNotExist } from "@store/CommentsSlice/loadCommentsIfNotExist"
 import { CommentForm } from "@components/CommentForm/CommentForm"
-import { WidgetComment } from "@components/WidgetComment/WidgetComment"
 import styles from "./CommentsPage.module.css"
 
 export const CommentsPage = () =>
@@ -15,7 +14,6 @@ export const CommentsPage = () =>
 	useEffect(() => dispatch(LoadCommentsIfNotExist), [])
 	const comments = useSelector(selectComments)
 	const statusGet = useSelector(selectCommentsStatusGet)
-	const statusSend = useSelector(selectCommentsStatusSend)
 
 	return statusGet === Statuses.inProgress ? (
 		<>
@@ -33,7 +31,6 @@ export const CommentsPage = () =>
 				{comments?.map(el => (
 					<CommentsCard key={`CP${el.id}`} data={el} />
 				))}
-				{statusSend !== Statuses.idle ? <WidgetComment /> : ""}
 			</section>
 		</>
 	)

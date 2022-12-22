@@ -4,7 +4,7 @@ export const SendComment = data => dispatch =>
 {
 	dispatch(CommentsSlice.actions.startLoadingSendComment());
 	// eslint-disable-next-line no-undef
-	fetch(`http://${SERVERURL}/comment`, {
+	fetch(`${SERVERURL}/comment`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(data),

@@ -8,6 +8,7 @@ import { selectCommentsStatusSend } from "@store/CommentsSlice/selectors";
 import { Statuses } from "@utils/Statuses";
 import { RatingStars } from "@components/RatingStars/RatingStars";
 import { Placeholder } from "@components/Placeholder/Placeholder";
+import { WidgetComment } from "@components/WidgetComment/WidgetComment"
 import styles from "./CommentForm.module.css";
 
 export const CommentForm = () =>
@@ -20,9 +21,9 @@ export const CommentForm = () =>
 	} = useForm({ mode: "onBlur" })
 	const dispatch = useDispatch()
 	const texts = useSelector(selectConstants)
-	const Status = useSelector(selectCommentsStatusSend)
+	const status = useSelector(selectCommentsStatusSend)
 	const [countStars, setCountStars] = useState(4.5)
-	const btnIsDisabled = !isValid || Status !== Statuses.idle || !texts
+	const btnIsDisabled = !isValid || status !== Statuses.idle || !texts
 	const onSubmit = data =>
 	{
 		dispatch(SendComment({ ...data, rate: countStars }));
@@ -84,6 +85,7 @@ export const CommentForm = () =>
 				<div className={styles.error}>{errors?.text && <p>{errors?.text.message || "Error"}</p>}</div>
 			</div>
 			<div className={styles.wrapper}>
+				{status !== Statuses.idle ? <WidgetComment /> : ""}
 				<Button disabled={btnIsDisabled} type="submit" className={styles.btn}>
 					{texts ? texts?.mainPage?.modalWindowContact?.buttonSend : <Placeholder width={8.5} />}
 				</Button>
