@@ -19,7 +19,8 @@ if (darkTheme === "true" || (darkTheme == null && window.matchMedia?.("(prefers-
 root.render(
 	<Suspense fallback={<Preloader />}>
 		<Provider store={store}>
-			<BrowserRouter basename={'/Own_project'}>
+			{/* eslint-disable-next-line no-undef */}
+			<BrowserRouter basename={BASENAME}>
 				<Application />
 			</BrowserRouter>
 		</Provider>

@@ -78,9 +78,12 @@ module.exports = (env) => {
 				SERVERURL: (() => {
 					const serverUrl = env.serverUrl?.trim()?.trimEnd("/")
 					if (typeof serverUrl != "string" || serverUrl == "") return '"http://localhost:3001"'
-					if (serverUrl[0] != "'")
-						return `'${serverUrl}'`
-					return `${serverUrl}`
+					return `"${serverUrl}"`
+				})(),
+				BASENAME: (() =>
+				{
+					const baseName = env.baseName?.trim()?.trimStart("/")
+					return baseName ? `"/${baseName}"` : `"/"`
 				})(),
 			}),
 		],
