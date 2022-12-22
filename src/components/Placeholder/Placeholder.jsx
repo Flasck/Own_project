@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { classNames } from "@utils/classNames"
 import styles from "./Placeholder.module.css"
 
-
 export const Placeholder = ({ className, style, width, height, widthD, heightD, unitW, unitH, disableText }) =>
 {
 	const [text, setText] = useState("#");
@@ -39,7 +38,6 @@ export const Placeholder = ({ className, style, width, height, widthD, heightD, 
 	</span>
 }
 
-
 async function type(text, setText)
 {
 	for (let i = 0; i < text.length; i++)
@@ -53,6 +51,7 @@ async function wait(t)
 	return new Promise(r => setTimeout(r, t));
 }
 
+/* eslint-disable-next-line max-len */
 const s = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo volutpat tempor. Mauris bibendum urna eu diam ornare convallis. Suspendisse potenti. Sed tristique auctor enim, quis gravida ante viverra id. Sed a suscipit justo. Vestibulum leo dui, pulvinar tempor suscipit id, lobortis vitae quam. Vivamus orci lectus, sagittis in tellus."
 	.split(" ");
 
@@ -60,8 +59,8 @@ function generateText(len)
 {
 	let text = "";
 	while (text.length < len)
-	{
+
 		text += ` ${s[Math.floor(Math.random() * s.length)]}`;
-	}
+
 	return text.slice(1, len - 1);
 }

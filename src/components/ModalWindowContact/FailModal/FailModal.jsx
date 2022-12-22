@@ -7,7 +7,6 @@ import { classNames } from "@utils/classNames";
 import { useDispatch, useSelector } from "react-redux";
 import { selectConstants } from "@store/ConstantsSlice/selectors";
 
-
 export const FailModal = ({ setView }) =>
 {
 	const dispatch = useDispatch()

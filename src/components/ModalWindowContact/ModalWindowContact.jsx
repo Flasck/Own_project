@@ -9,7 +9,8 @@ import { classNames } from "@utils/classNames"
 import { selectIsFeedBackSuccess } from "@store/FeedbackSlice/selectors"
 import styles from "./ModalWindowContact.module.css"
 
-export const ModalWindowContact = ({ setView }) => {
+export const ModalWindowContact = ({ setView }) =>
+{
 	const {
 		register,
 		formState: { errors, isValid },
@@ -20,20 +21,22 @@ export const ModalWindowContact = ({ setView }) => {
 	const isFeedBackSuccess = useSelector(selectIsFeedBackSuccess)
 	const [CheckBox, setCheckBox] = useState(false)
 	const texts = useSelector(selectConstants)
-	const onSubmit = (data) => {
+	const onSubmit = data =>
+	{
 		dispatch(SendFeedBack(data))
-		setCheckBox((e) => !e)
-		setView((e) => !e)
+		setCheckBox(e => !e)
+		setView(e => !e)
 	}
 
-	useEffect(() => {
+	useEffect(() =>
+	{
 		reset()
 	}, [isFeedBackSuccess])
 
 	return (
-		<div className={styles.modal} onClick={() => setView((e) => !e)}>
-			<div className={styles.content} onClick={(e) => e.stopPropagation()}>
-				<button onClick={() => setView((e) => !e)} className={styles.closeBtn}>
+		<div className={styles.modal} onClick={() => setView(e => !e)}>
+			<div className={styles.content} onClick={e => e.stopPropagation()}>
+				<button onClick={() => setView(e => !e)} className={styles.closeBtn}>
 					<svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M2 22L22 2" className={styles.closeBtn__path} strokeWidth="3" />
 						<path d="M22 22L2 2" className={styles.closeBtn__path} strokeWidth="3" />
@@ -103,7 +106,7 @@ export const ModalWindowContact = ({ setView }) => {
 						/>
 						<div className={styles.error}>{errors?.text && <p>{errors?.text.message || "Error"}</p>}</div>
 					</div>
-					<div className={classNames(styles.form__block, styles.form__checkBox)} onClick={() => setCheckBox((e) => !e)}>
+					<div className={classNames(styles.form__block, styles.form__checkBox)} onClick={() => setCheckBox(e => !e)}>
 						<button className={styles.customCheckBox} type="button">
 							<svg width="11" height="8" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
@@ -117,7 +120,7 @@ export const ModalWindowContact = ({ setView }) => {
 						<span className={styles.label}>
 							{texts?.mainPage?.modalWindowContact?.checkBoxLabel.split(" ").slice(0, -2)?.join(" ")}
 							&nbsp;
-							<Link onClick={(e) => e.stopPropagation()} target="_blank" to="/personalData" className={styles.label__link}>
+							<Link onClick={e => e.stopPropagation()} target="_blank" to="/personalData" className={styles.label__link}>
 								{texts?.mainPage?.modalWindowContact?.checkBoxLabel.split(" ").slice(-2)?.join(" ")}
 							</Link>
 						</span>

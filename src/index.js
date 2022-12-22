@@ -13,17 +13,15 @@ const Application = React.lazy(() => import("./App"))
 
 // Enable dark theme
 const darkTheme = localStorage.getItem("darkTheme")
-if (darkTheme == "true" || (darkTheme == null && window.matchMedia?.("(prefers-color-scheme: dark)")?.matches))
+if (darkTheme === "true" || (darkTheme == null && window.matchMedia?.("(prefers-color-scheme: dark)")?.matches))
 	document.body.classList.add("darkTheme")
 
 root.render(
-	<React.Fragment>
-		<Suspense fallback={<Preloader />}>
-			<Provider store={store}>
-				<BrowserRouter>
-					<Application />
-				</BrowserRouter>
-			</Provider>
-		</Suspense>
-	</React.Fragment>
+	<Suspense fallback={<Preloader />}>
+		<Provider store={store}>
+			<BrowserRouter>
+				<Application />
+			</BrowserRouter>
+		</Provider>
+	</Suspense>
 )

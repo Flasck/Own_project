@@ -11,13 +11,16 @@ import styles from "./Header.module.css"
 import { Placeholder } from "../Placeholder/Placeholder"
 import { MenuIcon } from "./MenuButton/MenuButton"
 
-export const Header = ({ className }) => {
+export const Header = ({ className }) =>
+{
 	const curLang = useSelector(selectLanguage)
 	const text = useSelector(selectConstants)
 	const dispatch = useDispatch()
 	const linksRef = useRef()
-	useEffect(() => {
-		linksRef.current?.addEventListener?.("click", () => {
+	useEffect(() =>
+	{
+		linksRef.current?.addEventListener?.("click", () =>
+		{
 			linksRef.current.classList.remove(styles.links_active)
 		})
 	}, [linksRef])

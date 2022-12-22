@@ -10,8 +10,7 @@
 	touch-action: pan-y;
 }
 
-.btn_prev,
-.btn_next {
+.btnArrow {
 	position: absolute;
 	font-size: 3em;
 	width: fit-content;
@@ -21,21 +20,20 @@
 	cursor: pointer;
 }
 
-.btn_prev {
+.btnArrow_type_prev {
 	left: 0.3em;
 }
 
-.btn_next {
+.btnArrow_type_next {
 	right: 0.3em;
 }
 
-.btn_prev_dis,
-.btn_next_dis {
+.btnArrow_disabled {
 	opacity: 0.4;
 	cursor: auto;
 }
 
-.slider_overflow {
+.slider__overflow {
 	width: 100%;
 	padding: 3em 0;
 	margin: 0.5em 0;
@@ -44,7 +42,7 @@
 	cursor: grab;
 }
 
-.slides_line {
+.slides__line {
 	transition: all 0.5s ease;
 	display: flex;
 	align-items: center;
@@ -96,13 +94,13 @@
 	.blur {
 		width: 6em;
 	}
-	.blur_left {
+	.blur_side_left {
 		-webkit-mask-image: linear-gradient(to left, transparent 25%, black 75%);
 		mask-image: linear-gradient(to left, transparent 25%, black 75%);
 		left: -1em;
 	}
 
-	.blur_right {
+	.blur_side_right {
 		-webkit-mask-image: linear-gradient(to right, transparent 25%, black 75%);
 		mask-image: linear-gradient(to right, transparent 25%, black 75%);
 		right: -1em;
@@ -110,14 +108,13 @@
 }
 
 @media (min-width: 420px) and (max-width: 500px) {
-	.btn_prev,
-	.btn_next {
+	.btnArrow {
 		font-size: 2.5em;
 	}
-	.btn_prev {
+	.btnArrow_type_prev {
 		left: 0.2em;
 	}
-	.btn_next {
+	.btnArrow_type_next {
 		right: 0.2em;
 	}
 	.blur {
@@ -126,14 +123,13 @@
 }
 
 @media (max-width: 419px) {
-	.btn_prev,
-	.btn_next {
+	.btnArrow {
 		font-size: 2em;
 	}
-	.btn_prev {
+	.btnArrow_type_prev {
 		left: 0.1em;
 	}
-	.btn_next {
+	.btnArrow_type_next {
 		right: 0.1em;
 	}
 	.blur {

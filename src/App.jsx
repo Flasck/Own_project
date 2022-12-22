@@ -8,14 +8,15 @@ import { ProjectsPage } from "@pages/ProjectsPage/ProjectsPage"
 import { CommentsPage } from "@pages/CommentsPage/CommentsPage"
 import { NotFoundPage } from "@pages/NotFoundPage/NotFoundPage"
 import { PersonalDataPage } from "@pages/PersonalDataPage/PersonalDataPage"
-import { ServerErrorPage } from "./pages/ServerErrorPage/ServerErrorPage"
 import { Layout } from "@components/Layout/Layout"
 
 import { LoadConstantsIfNotExist } from "@store/ConstantsSlice/loadConstantsIfNotExist"
 import { selectLanguage } from "@store/LanguageSlice/selectors"
+import { ServerErrorPage } from "./pages/ServerErrorPage/ServerErrorPage"
 import { selectConstantsState } from "./store/ConstantsSlice/selectors"
 
-const Application = () => {
+const Application = () =>
+{
 	const dispatch = useDispatch()
 	const curLan = useSelector(selectLanguage)
 	const state = useSelector(selectConstantsState)
@@ -23,7 +24,7 @@ const Application = () => {
 
 	return (
 		<>
-			{state.status == "failed" && <ServerErrorPage />}
+			{state.status === "failed" && <ServerErrorPage />}
 			{state.status !== "failed" && (
 				<Layout>
 					<Routes>

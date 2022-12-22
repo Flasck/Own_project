@@ -9,7 +9,6 @@ import iconMarkActive from "../IconMarkActive.svg"
 
 import styles from "./OurMap.module.css"
 
-
 export const OurMap = () =>
 {
 	const activeMark = useSelector(selectCurrentActiveMark);
@@ -25,7 +24,7 @@ export const OurMap = () =>
 		}}
 		options={{ type: "yandex#satellite" }}
 	>
-		{allPlaces.map(places =>
+		{allPlaces?.map(places =>
 			places.places.map((el, i) =>
 				<Placemark
 					onClick={() => dispatch(MapSlice.actions.changeCurrentActive(el))}

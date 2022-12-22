@@ -2,7 +2,6 @@ import React from "react";
 import styles from "@components/ModalWindowContact/ModalWindowContact.module.css";
 import { Spinner } from "@components/Spinner/Spinner";
 
-
 export const InProgressModal = ({ setView }) =>
 	<div
 		className={styles.modal}
@@ -12,4 +11,3 @@ export const InProgressModal = ({ setView }) =>
 			<Spinner />
 		</div>
 	</div>
-

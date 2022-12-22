@@ -14,7 +14,8 @@ import { OurMap } from "./OurMap/OurMap"
 import { ContactButton } from "./ContactButton/ContactButton"
 import styles from "./MapBlock.module.css"
 
-export const MapBlock = ({ setViewModal }) => {
+export const MapBlock = ({ setViewModal }) =>
+{
 	const dispatch = useDispatch()
 	const allPlaces = useSelector(selectAllPlaces)
 	const statusLoadMap = useSelector(selectStatusMap)
@@ -27,7 +28,7 @@ export const MapBlock = ({ setViewModal }) => {
 		<section>
 			<div className={styles.title}>
 				<h3 className={styles.title__text}>{texts ? texts.mainPage.mapBlock.title : <Placeholder width={20} />}</h3>
-				<ContactButton onClick={() => setViewModal((e) => !e)}>
+				<ContactButton onClick={() => setViewModal(e => !e)}>
 					{texts ? texts.mainPage.mapBlock.contactButton : <Placeholder width={12} />}
 				</ContactButton>
 			</div>

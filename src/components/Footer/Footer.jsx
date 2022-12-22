@@ -4,7 +4,6 @@ import { selectConstants } from "@store/ConstantsSlice/selectors"
 import { Placeholder } from "@components/Placeholder/Placeholder";
 import styles from "./Footer.module.css"
 
-
 export const Footer = () =>
 {
 	const texts = useSelector(selectConstants);

@@ -30,8 +30,8 @@ export const CommentsPage = () =>
 		<>
 			<CommentForm />
 			<section className={styles.container}>
-				{comments?.map((el) => (
-					<CommentsCard key={"CP" + el.id} data={el} />
+				{comments?.map(el => (
+					<CommentsCard key={`CP${el.id}`} data={el} />
 				))}
 				{statusSend !== Statuses.idle ? <WidgetComment /> : ""}
 			</section>

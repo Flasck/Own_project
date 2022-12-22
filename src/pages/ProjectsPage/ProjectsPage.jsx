@@ -8,9 +8,10 @@ import { selectProjectsStatus } from "@store/ProjectsSlice/selectors"
 import { Statuses } from "@utils/Statuses"
 import { useIntersectionObserver } from "@utils/useIntersectionObserver"
 import styles from "./ProjectsPage.module.css"
-import { renderPlaceholder } from "./renderPlaceholder"
+import { ProjectPagePlaceholder } from "./ProjectPagePlaceholder"
 
-export const ProjectsPage = () => {
+export const ProjectsPage = () =>
+{
 	const dispatch = useDispatch()
 	const curLan = useSelector(selectLanguage)
 	const status = useSelector(selectProjectsStatus)
@@ -18,27 +19,28 @@ export const ProjectsPage = () => {
 	const [projects, setProjects] = useState([])
 
 	const [count, setCount] = useState(window.innerWidth > 700 ? 4 : 2)
-	const cbRef = useIntersectionObserver({ threshold: 1 }, (entries) => {
-		for (let i = 0; i < entries.length; i++) {
+	const cbRef = useIntersectionObserver({ threshold: 1 }, entries =>
+	{
+		for (let i = 0; i < entries.length; i++)
+		{
 			const entry = entries[i]
-			if (entry.isIntersecting) {
-				setCount((v) => (window.innerWidth > 700 ? v + 2 : v + 1))
+			if (entry.isIntersecting)
+			{
+				setCount(v => (window.innerWidth > 700 ? v + 2 : v + 1))
 				break
 			}
 		}
 	})
 
-	if (status === Statuses.inProgress) return renderPlaceholder(styles.wrapper)
-
-	return (
-		<>
+	return status === Statuses.inProgress
+		? <ProjectPagePlaceholder />
+		:		<>
 			<SearchBar setProjects={setProjects} />
 			<section className={styles.wrapper}>
-				{projects.slice(0, count).map((project) => (
-					<ProjectCard key={"PP" + project.id} project={project} />
+				{projects.slice(0, count).map(project => (
+					<ProjectCard key={`PP${project.id}`} project={project} />
 				))}
 				<div ref={cbRef} className={styles.endOfList} />
 			</section>
 		</>
-	)
 }

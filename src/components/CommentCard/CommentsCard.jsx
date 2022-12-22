@@ -2,7 +2,6 @@ import React from "react"
 import styles from "./CommentCard.module.css"
 import { RatingStars } from "../RatingStars/RatingStars";
 
-
 export const CommentsCard = ({ data }) =>
 	<article className={styles.root}>
 		<div className={styles.author}>
@@ -14,5 +13,3 @@ export const CommentsCard = ({ data }) =>
 		</div>
 		<div className={styles.text}>{data.text}</div>
 	</article>
-
-

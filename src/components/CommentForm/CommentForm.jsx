@@ -10,7 +10,6 @@ import { RatingStars } from "@components/RatingStars/RatingStars";
 import { Placeholder } from "@components/Placeholder/Placeholder";
 import styles from "./CommentForm.module.css";
 
-
 export const CommentForm = () =>
 {
 	const {
@@ -24,7 +23,7 @@ export const CommentForm = () =>
 	const Status = useSelector(selectCommentsStatusSend)
 	const [countStars, setCountStars] = useState(4.5)
 	const btnIsDisabled = !isValid || Status !== Statuses.idle || !texts
-	const onSubmit = (data) =>
+	const onSubmit = data =>
 	{
 		dispatch(SendComment({ ...data, rate: countStars }));
 		reset()
@@ -92,4 +91,3 @@ export const CommentForm = () =>
 		</form>
 	</section>
 }
-

@@ -1,7 +1,6 @@
 import { CommentsSlice } from "./index"
 import { selectCommentsIsLoaded } from "./selectors"
 
-
 export const LoadCommentsIfNotExist = (dispatch, getState) =>
 {
 	const state = getState();
@@ -9,6 +8,7 @@ export const LoadCommentsIfNotExist = (dispatch, getState) =>
 
 	dispatch(CommentsSlice.actions.startLoadingGetComments());
 
+	// eslint-disable-next-line no-undef
 	fetch(`${SERVERURL}/comments`)
 		.then(v => v.json())
 		.then(data => dispatch(CommentsSlice.actions.successLoadingGetComments(data)))

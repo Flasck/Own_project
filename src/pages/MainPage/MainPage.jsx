@@ -11,7 +11,8 @@ import { FailModal } from "@components/ModalWindowContact/FailModal/FailModal"
 import { useSelector } from "react-redux"
 import { selectIsFeedBackFailed, selectIsFeedBackLoading, selectIsFeedBackSuccess } from "@store/FeedbackSlice/selectors"
 
-export const MainPage = () => {
+export const MainPage = () =>
+{
 	const isFeedBackLoading = useSelector(selectIsFeedBackLoading)
 	const isFeedBackSuccess = useSelector(selectIsFeedBackSuccess)
 	const isFeedBackFailed = useSelector(selectIsFeedBackFailed)

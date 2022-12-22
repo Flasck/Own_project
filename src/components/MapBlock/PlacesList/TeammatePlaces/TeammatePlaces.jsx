@@ -7,7 +7,6 @@ import styles from "./TeammatePlaces.module.css";
 import iconMark from "../../IconMark.svg";
 import iconMarkActive from "../../IconMarkActive.svg";
 
-
 export const TeammatePlaces = ({ data }) =>
 {
 	const dispatch = useDispatch();

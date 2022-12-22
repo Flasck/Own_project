@@ -4,7 +4,6 @@ import { Button } from "../../Button/Button"
 import sun from "./sun.svg"
 import moon from "./moon.svg"
 
-
 export const ThemeSwitcher = () =>
 	<Button
 		onClick={() =>

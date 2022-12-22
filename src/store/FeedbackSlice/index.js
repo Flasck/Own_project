@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { Statuses } from "@utils/Statuses"
 
-
 const initialState = { status: Statuses.idle }
 
 export const FeedbackSlice = createSlice({

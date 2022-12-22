@@ -1,1 +1,1 @@
-export const selectLanguage = (state) => state.Language.value;
+export const selectLanguage = state => state.Language.value;

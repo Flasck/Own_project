@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { Statuses } from "@utils/Statuses"
 
-
 const initialState = {
 	allPlaces: {
 		ru: null,

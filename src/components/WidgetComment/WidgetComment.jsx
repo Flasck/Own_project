@@ -9,7 +9,6 @@ import SuccessIcon from "./success.svg";
 import ErrorIcon from "./error.svg";
 import { classNames } from "../../utils/classNames";
 
-
 export const WidgetComment = () =>
 {
 	const dispatch = useDispatch()

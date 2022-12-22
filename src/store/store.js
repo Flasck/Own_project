@@ -7,7 +7,6 @@ import { MapSlice } from "./MapSlice"
 import { ProjectsSlice } from "./ProjectsSlice"
 import { CommentsSlice } from "./CommentsSlice"
 
-
 export const store = configureStore({
 	reducer: combineReducers({
 		Feedback: FeedbackSlice.reducer,

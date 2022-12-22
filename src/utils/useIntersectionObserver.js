@@ -1,6 +1,5 @@
 import { useCallback, useRef } from "react";
 
-
 export function useIntersectionObserver(options, cb)
 {
 	const observer = useRef(null);

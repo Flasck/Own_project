@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./Card.module.css";
 
-
 export const Card = ({ title, text }) =>
 	<div className={styles.root}>
 		<div className={styles.title}>
