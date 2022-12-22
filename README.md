@@ -22,24 +22,6 @@
     <img src="https://github.com/devicons/devicon/blob/master/icons/figma/figma-original.svg" title="Figma" alt="Figma" width="70" height="70"/>&nbsp;
 </div>
 
-## Для работы с данным проектом есть следующие команды:
-
-Для запуска проекта в development режиме
-```
-npm run start
-```
-Для сборки сервера
-```
-npm run build
-```
-Для запуска сервера
-```
-npm run startServerDev
-```
-Для запуска сервера с задержкой
-```
-npm run startServerDevWithDelay
-```
 ## Инструкция для запуска проекта локально
 Сначала склонируйте себе проект на компьютер
 ```
@@ -63,7 +45,7 @@ npm run build
 ```
 И запускам его
 ```
-npm run start
+npm run startDEV
 ```
 Потом переходим в корень проекта и там тоже запускем проект
 ```
