@@ -21,7 +21,7 @@ jobs:
     - name: Deploy with gh-pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: build
+        folder: dist
 
   deploy:
     runs-on: ubuntu-latest
