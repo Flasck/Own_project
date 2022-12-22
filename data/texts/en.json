@@ -1,0 +1,62 @@
+{
+	"header": {
+		"mainPage": "Our team",
+		"projectsPage": "Our projects",
+		"commentsPage": "Reviews"
+	},
+	"footer": {
+		"text1": "Project as part of the Yandex Academy Intensive",
+		"text2": "Start of work on the project: 7/12/2022"
+	},
+	"mainPage": {
+		"heroBlock": {
+			"title": "Development of turnkey sites",
+			"subtitle": "We will develop a website based on your market, geography, client portrait and internal business processes",
+			"card1": "Analytics and marketing as the basis for making a decision when creating a website",
+			"card2": "SEO site design with coverage up to 99% of the target audience",
+			"card3": "The conversion rate is 2-3.5 times higher than the market average (But here it will be more beautiful in length)"
+		},
+		"mapBlock": {
+			"title": "Contact Information",
+			"contactButton": "Connect with us"
+		},
+		"modalWindowContact": {
+			"title": "Contact us",
+			"author": {
+				"text": "What is your name",
+				"required": "Name must be entered!",
+				"minLength": "Minimum 3 characters!",
+				"notPattern": "The name was not obtained by special characters and numbers!"
+			},
+			"email": {
+				"text": "Your Email",
+				"required": "Email must be entered!",
+				"notPattern": "Email is incorrect!"
+			},
+			"text": {
+				"text": "Your message",
+				"required": "The message must be entered!",
+				"minLength": "Minimum 6 characters!",
+				"maxLength": "Maximum 1000 characters!"
+			},
+			"checkBoxLabel": "I agree to the processing of personal data",
+			"onSuccess": "Form sent successfully!",
+			"onFailed": "Failed to submit form :(",
+			"buttonSend": "Send",
+			"buttonOk": "Ok"
+		}
+	},
+	"projectsPage": {
+		"searchBar": "Search by projects..."
+	},
+	"notFoundPage": {
+		"title": "This page Not Found"
+	},
+	"personalDataPage": {
+		"title": "User Agreement",
+		"data": "This User Agreement (hereinafter referred to as the Agreement) regulates the relationship between the owner turtle.ru (hereinafter referred to as Turtle or Administration) on the one hand and the site user on the other. The Turtle website is not a media outlet. By using the site, you agree to the terms of this agreement. If you do not agree to the terms of this agreement, do not use the Turtle website! Rights and obligations of the parties The User has the right: - to search for information on the site - to receive information on the site - to use the site information for personal non-commercial purposes, the administration has the right: - at its discretion and if necessary, to create, modify, cancel the rules - to restrict access to any information on the site, the user undertakes: - not to disrupt the functionality of the site - not to use scripts (programs) for automated collection of information and/or interaction with the Site and its Services, the Administration undertakes: - to maintain the functionality of the site, except in cases when it is impossible for reasons beyond the control of the Administration. Responsibility of the parties - the Administration does not bear any responsibility for the services provided by third parties - in the event of a force majeure situation (hostilities, state of emergency, natural disaster, etc.), the Administration does not guarantee the safety of the information posted by the User, as well as the uninterrupted operation of the information resource Terms of the Agreement This Agreement comes into force at any use of this website. The Agreement ceases to be valid when a new version of it appears. The Administration reserves the right to unilaterally change this agreement at its discretion. The Administration does not notify users about changes in the Agreement. The User is solely responsible for the compliance of the content posted by the User with the requirements of current legislation, including liability to third parties in cases when the User's posting of a particular content or content content violates the rights and legitimate interests of third parties, including the personal non-property rights of authors, other intellectual rights of third parties, and/or encroaches on the they have intangible benefits. The agreement is developed on the basis of legal documents of the service Rules."
+	},
+	"commentsPage": {
+		"title": "Leave a comment about us"
+	}
+}

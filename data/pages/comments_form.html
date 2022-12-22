@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body {
+			display: flex;
+			justify-content: center;
+			margin-top: 10em;
+			background-color: #1e1e1e;
+			color: #d4d4d4;
+		}
+		form {
+			background-color: #0c7e2c;
+			border-radius: 1em;
+		}
+		div {
+			margin: 1em;
+			display: flex;
+			justify-content: space-between;
+			gap: 1em;
+		}
+	</style>
+</head>
+<body>
+	<form action="">
+		<div>
+			<label>Как Вас зовут</label>
+			<input id="author" type="text" name="name"/>
+		</div>
+		<div>
+			<label>Оценка</label>
+			<input id="rate" type="number" min="0" max="10" step="0.5" name="rate"/>
+			</div>
+		</div>
+		<div>
+			<label>Ваше сообщение</label>
+			<textarea id="text" name="text"></textarea>
+		</div>
+		<div>
+			<span></span>
+			<button id="btn">Отправить</button>
+		</div>
+	</form>
+	<script>
+		document.getElementById("btn").addEventListener('click', e =>
+		{
+			e.preventDefault();
+			const data = {
+				author: document.getElementById("author").value,
+				rate: parseInt(document.getElementById("rate").value),
+				text: document.getElementById("text").value,
+			};
+
+			fetch('/comment', {
+				method: "POST",
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			})
+			.then(r => r.json())
+			.then(d => { console.log(d); alert(d) })
+			.catch(e => { console.error(e); alert(e) });
+		});
+	</script>
+</body>
+</html>
