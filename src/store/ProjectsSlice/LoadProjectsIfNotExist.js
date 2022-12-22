@@ -11,7 +11,7 @@ export const LoadProjectsIfNotExist = (dispatch, getState) =>
 	dispatch(ProjectsSlice.actions.startLoading());
 	const lang = selectLanguage(state);
 
-	fetch(`http://localhost:3001/projects?lang=${lang}`)
+	fetch(`${SERVERURL}/projects?lang=${lang}`)
 		.then(v => v.json())
 		.then(data => dispatch(ProjectsSlice.actions.successLoading({ data, lang })))
 		.catch(() => dispatch(ProjectsSlice.actions.failLoading()))

@@ -9,7 +9,7 @@ export const LoadConstantsIfNotExist = (dispatch, getState) => {
 	dispatch(ConstantsSlice.actions.startLoading())
 	const lang = selectLanguage(state)
 
-	fetch(`http://localhost:3001/texts?lang=${lang}`)
+	fetch(`${SERVERURL}/texts?lang=${lang}`)
 		.then((v) => v.json())
 		.then((data) => {
 			dispatch(ConstantsSlice.actions.successLoading({ data, lang }))

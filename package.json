@@ -4,8 +4,8 @@
   "description": "own_project for yandex-intensive",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --mode development --config ./webpack.config.js ",
-    "build": "webpack --mode production --config ./webpack.config.js",
+    "start": "webpack serve --mode development --config ./webpack.config.js",
+    "build": "webpack --mode production --config ./webpack.config.js --env serverUrl=''",
     "lint:js": "npx eslint src --ext .js,.jsx",
     "lint:js-fix": "npx eslint src --ext .js,.jsx --fix",
     "lint:css": "npx stylelint src/**/*.css --fix",

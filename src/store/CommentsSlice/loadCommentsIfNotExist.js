@@ -9,7 +9,7 @@ export const LoadCommentsIfNotExist = (dispatch, getState) =>
 
 	dispatch(CommentsSlice.actions.startLoadingGetComments());
 
-	fetch("http://localhost:3001/comments")
+	fetch(`${SERVERURL}/comments`)
 		.then(v => v.json())
 		.then(data => dispatch(CommentsSlice.actions.successLoadingGetComments(data)))
 		.catch(() => dispatch(CommentsSlice.actions.failLoadingGetComments()))

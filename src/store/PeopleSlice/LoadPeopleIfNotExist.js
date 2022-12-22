@@ -11,7 +11,7 @@ export const LoadPeopleIfNotExist = (dispatch, getState) =>
 	dispatch(PeopleSlice.actions.startLoading());
 	const lang = selectLanguage(state);
 
-	fetch(`http://localhost:3001/persons?lang=${lang}`)
+	fetch(`${SERVERURL}/persons?lang=${lang}`)
 		.then(v => v.json())
 		.then(data => dispatch(PeopleSlice.actions.successLoading({ data, lang })))
 		.catch(() => dispatch(PeopleSlice.actions.failLoading()))

@@ -11,7 +11,7 @@ export const LoadMapIfNotExist = () => (dispatch, getState) =>
 	if (!allPlaces[lang])
 	{
 		dispatch(MapSlice.actions.startLoading())
-		fetch(`http://localhost:3001/places?lang=${lang}`)
+		fetch(`${SERVERURL}/places?lang=${lang}`)
 			.then(d => d.json())
 			.then(data => dispatch(MapSlice.actions.successLoading({ data, lang })))
 			.catch(() =>

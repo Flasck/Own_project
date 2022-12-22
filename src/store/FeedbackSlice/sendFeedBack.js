@@ -4,7 +4,7 @@ import { FeedbackSlice } from "./index"
 export const SendFeedBack = data => dispatch =>
 {
 	dispatch(FeedbackSlice.actions.startLoading());
-	fetch("http://localhost:3001/feedback", {
+	fetch(`${SERVERURL}/feedback`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(data),
