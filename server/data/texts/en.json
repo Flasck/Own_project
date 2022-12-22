@@ -47,7 +47,8 @@
 		}
 	},
 	"projectsPage": {
-		"searchBar": "Search by projects..."
+		"searchBar": "Search by projects...",
+		"showMore": "Show more"
 	},
 	"notFoundPage": {
 		"title": "This page Not Found"
