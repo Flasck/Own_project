@@ -1,0 +1,51 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14.x'
+    - name: Install dependencies
+      run: npm ci
+    - name: Build
+      run: npm run build --if-present
+    - name: Deploy with gh-pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: build
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Install Dependencies
+        run: cd server && npm ci
+      - name: Buid
+        run: cd server && npm run build
+        
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: server-build
+          FOLDER: server
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy Hook 📦 🚚
+        uses: JamesIves/fetch-api-data-action@v2
+        with:
+          endpoint: '${{ secrets.deployHook }}'
