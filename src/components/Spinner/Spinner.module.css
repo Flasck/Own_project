@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
   }
-  
+
   .turtle {
     width: 1em;
     height: .75em;
@@ -13,13 +13,14 @@
     position: relative;
     transform-style: preserve-3d;
     animation: go 1s infinite;
+    margin: 0.7em 0.7em;
   }
-  
+
   .head, .tail, .foot {
     position: absolute;
     transform-style: preserve-3d;
   }
-  
+
   .head {
     width: .25em;
     height: .25em;
@@ -29,7 +30,7 @@
     transform: translateZ(-1em) translate(.7em, .35em);
     animation: look-out 1s infinite;
   }
-  
+
   .tail {
     width: .15em;
     height: .15em;
@@ -38,7 +39,7 @@
     transform: translateZ(-1em) translate(0,.45em);
     animation: tail-out 1s infinite;
   }
-  
+
   .foot {
     width: .1em;
     height: .15em;
@@ -47,36 +48,36 @@
     top: .65em;
     animation: feet-out 1s infinite;
   }
-  
+
   .front {
     left: .7em;
   }
-  
+
   .back {
     left: .2em;
   }
-  
-  
+
+
   @keyframes tail-out {
     0% {transform: translateZ(-1em) translate(0,.45em);}
     50% {transform: translateZ(-1em) translate(-0.15em,.45em);}
   }
-  
+
   @keyframes feet-out {
-  0% {transform: rotate(-70deg);} 
+  0% {transform: rotate(-70deg);}
   30% {transform: rotate(0);}
-  50% {transform: rotate(30deg);} 
+  50% {transform: rotate(30deg);}
   }
-  
+
   @keyframes look-out {
    0% {
      transform: translateZ(-1em) translate(.7em,.35em);
-   }  
+   }
    50% {
      transform: translateZ(-1em) translate(1em,.35em);
-   } 
+   }
   }
-  
+
   @keyframes go {
     30% {
       transform: translateX(.5em);

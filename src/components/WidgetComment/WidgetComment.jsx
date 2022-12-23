@@ -36,7 +36,7 @@ export const WidgetComment = () =>
 		</div>
 	}
 
-	return <div className={styles.widget}>
+	return <div className={classNames(styles.widget, styles.center)}>
 		<Spinner />
 	</div>
 }
