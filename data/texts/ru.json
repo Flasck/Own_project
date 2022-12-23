@@ -47,7 +47,8 @@
 		}
 	},
 	"projectsPage": {
-		"searchBar": "Поиск по проектам..."
+		"searchBar": "Поиск по проектам...",
+		"showMore": "Показать ещё"
 	},
 	"notFoundPage": {
 		"title": "Данной страницы не существует"
