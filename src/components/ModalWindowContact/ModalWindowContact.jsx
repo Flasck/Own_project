@@ -52,7 +52,7 @@ export const ModalWindowContact = ({ setView }) =>
 							{...register("author", {
 								required: texts?.mainPage?.modalWindowContact?.author?.required,
 								pattern: {
-									value: /^[a-zа-яё]+$/i,
+									value: /^[a-zа-яё\s]+$/i,
 									message: texts?.mainPage?.modalWindowContact?.author?.notPattern,
 								},
 								minLength: {

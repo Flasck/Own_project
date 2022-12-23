@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux";
 import { selectConstants } from "@store/ConstantsSlice/selectors"
 import { selectProjects } from "@store/ProjectsSlice/selectors"
@@ -13,6 +13,8 @@ export const SearchBar = ({ setProjects }) =>
 	const [focused, setFocused] = useState(false);
 	const texts = useSelector(selectConstants);
 	const projectsAll = useSelector(selectProjects);
+	const inputRef = useRef();
+
 	useEffect(() =>
 	{
 		setProjects(projectsAll || [])
@@ -35,6 +37,7 @@ export const SearchBar = ({ setProjects }) =>
 			placeholder={texts?.projectsPage?.searchBar}
 			id="searchBar"
 			value={value}
+			ref={inputRef}
 			onChange={e =>
 			{
 				setValue(e.target.value);
@@ -45,12 +48,18 @@ export const SearchBar = ({ setProjects }) =>
 
 		<div className={styles.border} />
 
-		<label
+		<span
 			className={styles.magnifier}
-			htmlFor="searchBar"
+			onClick={() =>
+			{
+				if (focused)
+					setFocused(false)
+				else
+					inputRef.current?.focus()
+			}}
 		>
 			<Magnifier />
-		</label>
+		</span>
 
 		{!tech ? null
 			: <button

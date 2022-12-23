@@ -17,6 +17,7 @@
 	display: flex;
 	padding: 0.6em;
 	border-radius: 0.5em;
+	word-break: break-word;
 }
 .dot {
 	display: inline-flex;

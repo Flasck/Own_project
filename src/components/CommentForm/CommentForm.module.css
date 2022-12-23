@@ -146,3 +146,13 @@
 }
 
 
+@media screen and (max-width: 400px) {
+	.form__topBlock {
+		flex-direction: column-reverse;
+        gap: 0em;
+	}
+    .form__block__rating {
+        justify-content: center;
+        margin-bottom: 0.5em;
+    }
+}

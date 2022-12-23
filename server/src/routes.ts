@@ -15,8 +15,8 @@ Api.addRouteJSON("/", async q =>
 		"POST /feedback": { author: "string", email: "string", text: "string" },
 		"/feedbacks/list": "Page with feedbacks list",
 		"/feedbacks/form": "Page with send feedback form",
-		"/comments": [{ id: "string", author: "string", email: "string", text: "string" }],
-		"POST /comment": { author: "string", email: "string", text: "string" },
+		"/comments": [{ id: "string", author: "string", rate: "number", text: "string" }],
+		"POST /comment": { author: "string", rate: "number", text: "string" },
 		"/comments/list": "Page with comments list",
 		"/comments/form": "Page with send comment form",
 	};

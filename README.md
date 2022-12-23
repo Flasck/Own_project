@@ -53,27 +53,28 @@ npm run start
 ```
 ## Общая структура проекта
 
-    ├─ public/              
-    ├─ server/ 
-        ├─ data/  
+    ├─ public/
+    ├─ server/
+        ├─ data/
             ├─ imgs/
             ├─ pages/
             ├─ texts/
         ├─ src/
     ├─ src/
-        ├─ components/        
-        ├─ pages/        
+        ├─ components/
+        ├─ pages/
             ├─ CommentsPage/
             ├─ MainPage/
             ├─ NotFoundPage/
             ├─ PersonalDataPage/
             ├─ ProjectsPage/
             ├─ ServerErrorPage/
-        ├─ store/   
-        ├─ utils/    
-    ├─ webpack.config.js    
+        ├─ store/
+        ├─ utils/
+    ├─ webpack.config.js
     ├─ babel.config.js
     ├─ eslintrc.js
 
 
+## [Док по серверу](./server/README.md)
 

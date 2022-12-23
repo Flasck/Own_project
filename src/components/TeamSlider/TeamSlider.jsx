@@ -131,8 +131,8 @@ export const TeamSlider = () =>
 			// Получаем изначальные измерения
 			resize()
 
-			// Слушатели нажатий
 			const slider = wrapperRef.current
+			// Слушатели нажатий
 			slider.addEventListener("touchstart", touchStart)
 			slider.addEventListener("touchmove", touchMove)
 			slider.addEventListener("touchend", touchEnd)
@@ -142,15 +142,15 @@ export const TeamSlider = () =>
 			slider.addEventListener("mousemove", mouseMove)
 			window.addEventListener("mouseup", mouseUp)
 
-			// Слушатель изменений окна
-			window.addEventListener("resize", resize)
-
 			// Навигация по клавишам
 			document.addEventListener("keyup", e =>
 			{
 				if (e.key === "ArrowLeft") toPrevSlide()
 				if (e.key === "ArrowRight") toNextSlide()
 			})
+
+			// Слушатель изменений окна
+			window.addEventListener("resize", resize)
 		}
 	}, [PeopleList])
 
@@ -167,11 +167,22 @@ export const TeamSlider = () =>
 					</div>
 					<div className={classNames(styles.blur, styles.blur_side_left)} />
 					<div className={classNames(styles.blur, styles.blur_side_right)} />
-					<div className={classNames(styles.btnArrow, styles.btnArrow_type_prev, params.slide === 0 ? styles.btnArrow_disabled : "")} onClick={toPrevSlide}>
+					<div
+						className={classNames(
+							styles.btnArrow,
+							styles.btnArrow_type_prev,
+							params.slide === 0 ? styles.btnArrow_disabled : ""
+						)}
+						onClick={toPrevSlide}
+					>
 						<span>❮</span>
 					</div>
 					<div
-						className={classNames(styles.btnArrow, styles.btnArrow_type_next, params.slide === PeopleList.length - 1 ? styles.btnArrow_disabled : "")}
+						className={classNames(
+							styles.btnArrow,
+							styles.btnArrow_type_next,
+							params.slide === PeopleList.length - 1 ? styles.btnArrow_disabled : ""
+						)}
 						onClick={toNextSlide}
 					>
 						<span>❯</span>
