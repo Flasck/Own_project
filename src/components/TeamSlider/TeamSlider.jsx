@@ -11,7 +11,8 @@ import { PersonCard } from "./PersonCard/PersonCard"
 
 const params = { gap: 0, step: 0, slide: 0, initialOffset: 0, initTouch: 0, lastTouch: 0, threshold: 0 }
 
-export const TeamSlider = () => {
+export const TeamSlider = () =>
+{
 	// Текстовые данные
 	const dispatch = useDispatch()
 	const curLan = useSelector(selectLanguage)
@@ -27,56 +28,68 @@ export const TeamSlider = () => {
 	const cardRef = useRef(null)
 
 	// Функции переключения между слайдами
-	const toPrevSlide = () => {
-		if (params.slide > 0) {
+	const toPrevSlide = () =>
+	{
+		if (params.slide > 0)
+		{
 			params.slide -= 1
 			moveSlide()
 			reRender()
 		}
 	}
-	const toNextSlide = () => {
-		if (params.slide < PeopleList.length - 1) {
+	const toNextSlide = () =>
+	{
+		if (params.slide < PeopleList.length - 1)
+		{
 			params.slide += 1
 			moveSlide()
 			reRender()
 		}
 	}
-	const selectSlide = (slide) => {
+	const selectSlide = slide =>
+	{
 		params.slide = slide
 		moveSlide()
 		reRender()
 	}
 
 	// Функции свайпов пальцами
-	function touchStart(e) {
+	function touchStart(e)
+	{
 		if (wrapperRef.current) wrapperRef.current.classList.add(styles.grab)
 		params.initTouch = e.touches[0].clientX
 		params.lastTouch = e.touches[0].clientX
 	}
-	function touchMove(e) {
+	function touchMove(e)
+	{
 		params.lastTouch = e.touches[0].clientX
 		moveSlide(params.lastTouch - params.initTouch)
 	}
-	function touchEnd() {
+	function touchEnd()
+	{
 		if (wrapperRef.current) wrapperRef.current.classList.remove(styles.grab)
 		params.lastTouch - params.initTouch > params.threshold ? toPrevSlide() : moveSlide()
 		params.lastTouch - params.initTouch < -params.threshold ? toNextSlide() : moveSlide()
 	}
 
 	// Функции свайпов мышью
-	function mouseDown(e) {
+	function mouseDown(e)
+	{
 		if (wrapperRef.current) wrapperRef.current.classList.add(styles.grab)
 		params.initTouch = e.clientX
 		params.lastTouch = e.clientX
 	}
-	function mouseMove(e) {
-		if (e.buttons === 1) {
+	function mouseMove(e)
+	{
+		if (e.buttons === 1)
+		{
 			params.lastTouch = e.clientX
 			moveSlide(params.lastTouch - params.initTouch)
 		}
 	}
 
-	function mouseUp() {
+	function mouseUp()
+	{
 		if (wrapperRef.current) wrapperRef.current.classList.remove(styles.grab)
 		params.lastTouch - params.initTouch > params.threshold ? toPrevSlide() : moveSlide()
 		params.lastTouch - params.initTouch < -params.threshold ? toNextSlide() : moveSlide()
@@ -85,12 +98,13 @@ export const TeamSlider = () => {
 	}
 
 	// Функция перерасчета параметров
-	const resize = () => {
-		if (wrapperRef.current && cardRef.current) {
-			params.gap =
-				(wrapperRef.current.offsetWidth - cardRef.current.offsetWidth) / 2 - cardRef.current.offsetWidth / 4 < 50
-					? 100
-					: (wrapperRef.current.offsetWidth - cardRef.current.offsetWidth) / 2 - cardRef.current.offsetWidth / 4
+	const resize = () =>
+	{
+		if (wrapperRef.current && cardRef.current)
+		{
+			params.gap =				(wrapperRef.current.offsetWidth - cardRef.current.offsetWidth) / 2 - cardRef.current.offsetWidth / 4 < 50
+				? 100
+				: (wrapperRef.current.offsetWidth - cardRef.current.offsetWidth) / 2 - cardRef.current.offsetWidth / 4
 
 			params.step = cardRef.current.offsetWidth + params.gap
 			params.initialOffset = (wrapperRef.current.offsetWidth - cardRef.current.offsetWidth) / 2
@@ -101,16 +115,19 @@ export const TeamSlider = () => {
 	}
 
 	// Функция сдвига слайдера
-	const moveSlide = (move = 0) => {
+	const moveSlide = (move = 0) =>
+	{
 		if (sliderRef.current)
 			sliderRef.current.style.transform = `translate3d(${params.initialOffset - params.slide * params.step + move}px, 0, 0)`
 	}
 
 	// Функция перерендеринга
-	const reRender = () => setState((s) => !s)
+	const reRender = () => setState(s => !s)
 
-	useLayoutEffect(() => {
-		if (wrapperRef.current && cardRef.current) {
+	useLayoutEffect(() =>
+	{
+		if (wrapperRef.current && cardRef.current)
+		{
 			// Получаем изначальные измерения
 			resize()
 
@@ -126,7 +143,8 @@ export const TeamSlider = () => {
 			window.addEventListener("mouseup", mouseUp)
 
 			// Навигация по клавишам
-			document.addEventListener("keyup", (e) => {
+			document.addEventListener("keyup", e =>
+			{
 				if (e.key === "ArrowLeft") toPrevSlide()
 				if (e.key === "ArrowRight") toNextSlide()
 			})
@@ -142,7 +160,7 @@ export const TeamSlider = () => {
 				<section className={styles.slider}>
 					<div className={styles.slider__overflow} ref={wrapperRef}>
 						<div className={styles.slides__line} style={{ gap: `${params.gap}px` }} ref={sliderRef}>
-							{PeopleList.map((person) => (
+							{PeopleList.map(person => (
 								<PersonCard key={person.id} person={person} refLink={cardRef} />
 							))}
 						</div>

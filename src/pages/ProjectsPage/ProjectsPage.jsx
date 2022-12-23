@@ -7,10 +7,10 @@ import { LoadProjectsIfNotExist } from "@store/ProjectsSlice/LoadProjectsIfNotEx
 import { selectProjectsStatus } from "@store/ProjectsSlice/selectors"
 import { selectConstants } from "@store/ConstantsSlice/selectors"
 import { Statuses } from "@utils/Statuses"
-import styles from "./ProjectsPage.module.css"
-import { ProjectPagePlaceholder } from "./ProjectPagePlaceholder"
 import { Button } from "@components/Button/Button"
 import { classNames } from "@utils/classNames"
+import styles from "./ProjectsPage.module.css"
+import { ProjectPagePlaceholder } from "./ProjectPagePlaceholder"
 
 export const ProjectsPage = () =>
 {
@@ -33,7 +33,8 @@ export const ProjectsPage = () =>
 			</section>
 			<div className={classNames(styles.loadMore, count >= projects.length && styles.loadMore_hiden)}>
 				<Button
-					onClick={() => setCount(v => (window.innerWidth > 700 ? v + 4 : v + 2))}>
+					onClick={() => setCount(v => (window.innerWidth > 700 ? v + 4 : v + 2))}
+				>
 					{text?.projectsPage?.showMore}
 				</Button>
 			</div>

@@ -3,7 +3,8 @@ import { useSelector } from "react-redux"
 import { selectLanguage } from "@store/LanguageSlice/selectors"
 import styles from "./NotFoundPage.module.css"
 
-export const NotFoundPage = () => {
+export const NotFoundPage = () =>
+{
 	const lang = useSelector(selectLanguage)
 
 	return (
