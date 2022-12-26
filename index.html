@@ -1,1 +1,9 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Turtle</title><script defer="defer" src="runtime.4df93f1202e385bd612c.js"></script><script defer="defer" src="index.a415582d04f51f13dc40.js"></script></head><body><div id="root"></div></body></html>
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Turtle</title><script>{
+			const queryString = window.location.search;
+			const urlParams = new URLSearchParams(queryString);
+			const redirectPage = urlParams.get("redirect");
+			if (redirectPage)
+			{
+				window.history.replaceState({}, "Turtle", redirectPage);
+			}
+		}</script><script defer="defer" src="runtime.1f09191ce51eb566ad9d.js"></script><script defer="defer" src="index.b88554a8cfd14c40ffc8.js"></script></head><body><div id="root"></div></body></html>
