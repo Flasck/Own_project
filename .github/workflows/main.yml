@@ -22,15 +22,15 @@ jobs:
       run: |
         mkdir dist/OurCases
         cp public/redirect.html dist/OurCases/index.html
-        sed 's/REDIRECTPAGE/OurCases/g' dist/OurCases/index.html
+        sed -i 's/REDIRECTPAGE/OurCases/g' dist/OurCases/index.html
 
         mkdir dist/CommentsPage
         cp public/redirect.html dist/CommentsPage/index.html
-        sed 's/REDIRECTPAGE/CommentsPage/g' dist/CommentsPage/index.html
+        sed -i 's/REDIRECTPAGE/CommentsPage/g' dist/CommentsPage/index.html
 
         mkdir dist/personalData
         cp public/redirect.html dist/personalData/index.html
-        sed 's/REDIRECTPAGE/personalData/g' dist/personalData/index.html
+        sed -i 's/REDIRECTPAGE/personalData/g' dist/personalData/index.html
     - name: Deploy with gh-pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
