@@ -41,21 +41,25 @@
 .front_side_base {
 	-webkit-transform: perspective(700px) rotateY(180deg);
 	transform: perspective(700px) rotateY(180deg);
+	opacity: 0;
 }
 
 .back_side_base {
 	-webkit-transform: perspective(700px) rotateY(360deg);
 	transform: perspective(700px) rotateY(360deg);
+	opacity: 1;
 }
 
 .front_side_rev {
 	-webkit-transform: perspective(700px) rotateY(0deg);
 	transform: perspective(700px) rotateY(0deg);
+	opacity: 1;
 }
 
 .back_side_rev {
 	-webkit-transform: perspective(700px) rotateY(180deg);
 	transform: perspective(700px) rotateY(180deg);
+	opacity: 0;
 }
 
 .desc {
