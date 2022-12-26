@@ -5,6 +5,17 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Turtle</title>
+		<script>
+		{
+			const queryString = window.location.search;
+			const urlParams = new URLSearchParams(queryString);
+			const redirectPage = urlParams.get("redirect");
+			if (redirectPage)
+			{
+				window.history.replaceState({}, "Turtle", redirectPage);
+			}
+		}
+		</script>
 	</head>
 	<body>
 		<div id="root"></div>

@@ -20,6 +20,7 @@
 	align-items: center;
 	border-radius: 10px;
 	border: 1px solid;
+	transform-style: preserve-3d;
 	transition: 0.3s ease-in;
 	backface-visibility: hidden;
 	background: rgba(255, 255, 255, 0.05);
